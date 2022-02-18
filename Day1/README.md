@@ -21,7 +21,7 @@ jegan@tektutor:~$ oc get nodes
 The expected output is
 
 <pre>
-NAME                             STATUS   ROLES           AGE   VERSION
+<b>NAME                             STATUS   ROLES           AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master,worker   62m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
@@ -38,7 +38,7 @@ The expected output is
 
 <pre>
 jegan@tektutor:~$ <b>oc get nodes -o wide</b>
-NAME                             STATUS   ROLES           AGE   VERSION           INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
+<b>NAME                             STATUS   ROLES           AGE   VERSION           INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME</b>
 master-1.tektutor.tektutor.org   Ready    master,worker   64m   v1.22.3+fdba464   192.168.122.13    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 master-2.tektutor.tektutor.org   Ready    master,worker   65m   v1.22.3+fdba464   192.168.122.228   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 master-3.tektutor.tektutor.org   Ready    master,worker   64m   v1.22.3+fdba464   192.168.122.89    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
@@ -177,7 +177,7 @@ The expected output is
 
 <pre>
 jegan@tektutor:~$ <b>oc adm top nodes</b>
-NAME                             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+<b>NAME                             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%</b>
 master-1.tektutor.tektutor.org   1782m        23%    7618Mi          51%       
 master-2.tektutor.tektutor.org   1730m        23%    7356Mi          49%       
 master-3.tektutor.tektutor.org   1920m        25%    6831Mi          45%       
@@ -189,7 +189,7 @@ worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%
 Before removing the worker role from master nodes
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
-NAME                             STATUS   ROLES           AGE   VERSION
+<b>NAME                             STATUS   ROLES           AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master,worker   62m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
@@ -208,7 +208,7 @@ After removing the worker role from master nodes
 jegan@tektutor:~$ <b>oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'</b>
 scheduler.config.openshift.io/cluster patched
 jegan@tektutor:~$ <b>oc get nodes</b>
-NAME                             STATUS   ROLES    AGE   VERSION
+<b>NAME                             STATUS   ROLES    AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master   86m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master   88m   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master   87m   v1.22.3+fdba464
@@ -221,7 +221,7 @@ Before adding the worker role to the master nodes
 
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
-NAME                             STATUS   ROLES    AGE   VERSION
+<b>NAME                             STATUS   ROLES    AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master   86m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master   88m   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master   87m   v1.22.3+fdba464
@@ -238,10 +238,10 @@ oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"maste
 After adding the worker role to the master nodes
 
 <pre>
-jegan@tektutor:~$ oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":true}}'
+jegan@tektutor:~$ <b>oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":true}}'</b>
 scheduler.config.openshift.io/cluster patched
-jegan@tektutor:~$ oc get nodes
-NAME                             STATUS   ROLES           AGE   VERSION
+jegan@tektutor:~$ <b>oc get nodes</b>
+<b>NAME                             STATUS   ROLES           AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master,worker   92m   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
@@ -254,8 +254,8 @@ worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 Currently, in my cluster master nodes have worker role.
 
 <pre>
-jegan@tektutor:~$ oc get nodes
-NAME                             STATUS   ROLES           AGE   VERSION
+jegan@tektutor:~$ <b>oc get nodes</b>
+<b>NAME                             STATUS   ROLES           AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master,worker   92m   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
@@ -320,10 +320,10 @@ The expected output is
 If you list the nodes after removing the worker role from master nodes, the output expected is shown below
 
 <pre>
-jegan@tektutor:~$ oc edit schedulers.config.openshift.io cluster
+jegan@tektutor:~$ <b>oc edit schedulers.config.openshift.io cluster</b>
 scheduler.config.openshift.io/cluster edited
-jegan@tektutor:~$ oc get nodes
-NAME                             STATUS   ROLES    AGE   VERSION
+jegan@tektutor:~$ <b>oc get nodes</b>
+<b>NAME                             STATUS   ROLES    AGE   VERSION</b>
 master-1.tektutor.tektutor.org   Ready    master   11h   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master   11h   v1.22.3+fdba464
 master-3.tektutor.tektutor.org   Ready    master   11h   v1.22.3+fdba464
@@ -339,8 +339,8 @@ oc get projects
 The expected output is
 
 <pre>
-jegan@tektutor:~$ oc get projects
-NAME                                               DISPLAY NAME   STATUS
+jegan@tektutor:~$ <b>oc get projects</b>
+<b>NAME                                               DISPLAY NAME   STATUS</b>
 default                                                           Active
 kube-node-lease                                                   Active
 kube-public                                                       Active
@@ -423,7 +423,7 @@ oc new-project jegan
 
 The expected output is
 <pre>
-jegan@tektutor:~$ oc new-project jegan
+jegan@tektutor:~$ <b>oc new-project jegan</b>
 Already on project "jegan" on server "https://api.tektutor.tektutor.org:6443".
 
 You can add applications to this project with the 'new-app' command. For example, try:
@@ -487,8 +487,8 @@ oc get deploy
 
 The expected output is
 <pre>
-jegan@tektutor:~$ oc get deploy
-NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+jegan@tektutor:~$<b> oc get deploy<b>
+<b>NAME    READY   UP-TO-DATE   AVAILABLE   AGE</b>
 nginx   1/1     1            1           97s
 </pre>
 
@@ -500,8 +500,8 @@ oc get rs
 
 The expected output is
 <pre>
-jegan@tektutor:~$ oc get rs
-NAME               DESIRED   CURRENT   READY   AGE
+jegan@tektutor:~$ <b>oc get rs</b>
+<b>NAME               DESIRED   CURRENT   READY   AGE</b>
 nginx-5dd56f5c87   1         1         1       96s
 nginx-6f99d9668b   0         0         0       101s
 </pre>
@@ -516,8 +516,8 @@ oc get po
 The expected output is
 
 <pre>
-jegan@tektutor:~$ oc get po
-NAME                     READY   STATUS    RESTARTS   AGE
+jegan@tektutor:~$ <b>oc get po</b>
+<b>NAME                     READY   STATUS    RESTARTS   AGE</b>
 nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
 </pre>
 
@@ -658,7 +658,7 @@ oc describe deploy/nginx
 The expected output is
 
 <pre>jegan@tektutor:~$ <b>oc get deploy</b>
-NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+<b>NAME    READY   UP-TO-DATE   AVAILABLE   AGE</b>
 nginx   1/1     1            1           12m
 jegan@tektutor:~$ <b>oc describe deploy/nginx</b>
 Name:                   nginx
@@ -710,19 +710,19 @@ oc scale deploy nginx --replicas=5
 The expected output is
 <pre>
 jegan@tektutor:~$ <b>oc get deploy</b>
-NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+<b>NAME    READY   UP-TO-DATE   AVAILABLE   AGE</b>
 nginx   1/1     1            1           14m
 jegan@tektutor:~$ <b>oc scale deploy nginx --replicas=5</b>
 deployment.apps/nginx scaled
 jegan@tektutor:~$ <b>oc get po</b>
-NAME                     READY   STATUS              RESTARTS   AGE
+<b>NAME                     READY   STATUS              RESTARTS   AGE</b>
 nginx-5dd56f5c87-4jq5q   0/1     ContainerCreating   0          3s
 nginx-5dd56f5c87-qg9vv   1/1     Running             0          14m
 nginx-5dd56f5c87-sg57k   1/1     Running             0          3s
 nginx-5dd56f5c87-sv8bj   0/1     ContainerCreating   0          3s
 nginx-5dd56f5c87-zb5cw   1/1     Running             0          3s
 jegan@tektutor:~$ <b>oc get po -w</b>
-NAME                     READY   STATUS    RESTARTS   AGE
+<b>NAME                     READY   STATUS    RESTARTS   AGE</b>
 nginx-5dd56f5c87-4jq5q   1/1     Running   0          6s
 nginx-5dd56f5c87-qg9vv   1/1     Running   0          14m
 nginx-5dd56f5c87-sg57k   1/1     Running   0          6s
@@ -742,7 +742,7 @@ The expected output is
 jegan@tektutor:~$ <b>oc expose deploy/nginx --type=NodePort --port=80</b>
 service/nginx exposed
 jegan@tektutor:~$ <b>oc get svc</b>
-NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+<b>NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE</b>
 nginx   NodePort   172.30.216.75   <none>        80:30327/TCP   4s
 jegan@tektutor:~$ <b>oc describe svc/nginx</b>
 Name:                     nginx
@@ -786,8 +786,8 @@ curl http://192.168.122.222:30327
 The expected output is
 
 <pre>
-jegan@tektutor:~$ oc get nodes -o wide
-NAME                             STATUS   ROLES           AGE    VERSION           INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
+jegan@tektutor:~$ <b>oc get nodes -o wide</b>
+<b>NAME                             STATUS   ROLES           AGE    VERSION           INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME</b>
 master-1.tektutor.tektutor.org   Ready    master,worker   117m   v1.22.3+fdba464   192.168.122.13    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 master-2.tektutor.tektutor.org   Ready    master,worker   118m   v1.22.3+fdba464   192.168.122.228   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 master-3.tektutor.tektutor.org   Ready    master,worker   118m   v1.22.3+fdba464   192.168.122.89    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
@@ -842,4 +842,3 @@ Commercial support is available at
 </body>
 </html>
 </pre>
-
