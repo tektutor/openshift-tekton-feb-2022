@@ -168,6 +168,23 @@ Allocated resources:
 Events:              <none>
 </pre>
 
+### Print node usage statistics
+```
+oc adm top nodes
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc adm top nodes</b>
+NAME                             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%   
+master-1.tektutor.tektutor.org   1782m        23%    7618Mi          51%       
+master-2.tektutor.tektutor.org   1730m        23%    7356Mi          49%       
+master-3.tektutor.tektutor.org   1920m        25%    6831Mi          45%       
+worker-1.tektutor.tektutor.org   280m         5%     1221Mi          8%        
+worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%        
+</pre>
+
 
 ### Listing the existing projects in OpenShift cluster
 ```
