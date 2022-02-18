@@ -526,3 +526,44 @@ Events:
   Normal  Created         5m7s   kubelet            Created container nginx
   Normal  Started         5m7s   kubelet            Started container nginx
 </pre>
+
+### Find details of a replicaset
+```
+oc describe rs/nginx-5dd56f5c87
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc describe rs/nginx-5dd56f5c87</b>
+Name:           nginx-5dd56f5c87
+Namespace:      jegan
+Selector:       deployment=nginx,pod-template-hash=5dd56f5c87
+Labels:         deployment=nginx
+                pod-template-hash=5dd56f5c87
+Annotations:    deployment.kubernetes.io/desired-replicas: 1
+                deployment.kubernetes.io/max-replicas: 2
+                deployment.kubernetes.io/revision: 2
+                image.openshift.io/triggers:
+                  [{"from":{"kind":"ImageStreamTag","name":"nginx:stable"},"fieldPath":"spec.template.spec.containers[?(@.name==\"nginx\")].image"}]
+                openshift.io/generated-by: OpenShiftNewApp
+Controlled By:  Deployment/nginx
+Replicas:       1 current / 1 desired
+Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:       deployment=nginx
+                pod-template-hash=5dd56f5c87
+  Annotations:  openshift.io/generated-by: OpenShiftNewApp
+  Containers:
+   nginx:
+    Image:        twalter/openshift-nginx@sha256:b6a09b124c14ea2bb81f6081fb0d6e4f5214b9a1c98f6173fffc8e07d2382ca3
+    Ports:        80/TCP, 8081/TCP
+    Host Ports:   0/TCP, 0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:
+  Type    Reason            Age    From                   Message
+  ----    ------            ----   ----                   -------
+  Normal  SuccessfulCreate  8m30s  replicaset-controller  Created pod: nginx-5dd56f5c87-qg9vv
+</pre>
