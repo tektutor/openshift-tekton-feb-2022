@@ -397,7 +397,8 @@ svc/nginx - 172.30.155.175 ports 80, 8081
 1 info identified, use 'oc status --suggest' to see details.
 </pre>
 
-List the deployments under your project
+### List the deployments under your project
+
 ```
 oc get deploy
 ```
@@ -409,7 +410,7 @@ NAME    READY   UP-TO-DATE   AVAILABLE   AGE
 nginx   1/1     1            1           97s
 </pre>
 
-List the replicasets under your project
+### List the replicasets under your project
 
 ```
 oc get rs
@@ -424,7 +425,7 @@ nginx-6f99d9668b   0         0         0       101s
 </pre>
 
 
-List the pods in your project
+### List the pods in your project
 
 ```
 oc get po
@@ -436,4 +437,92 @@ The expected output is
 jegan@tektutor:~$ oc get po
 NAME                     READY   STATUS    RESTARTS   AGE
 nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
+</pre>
+
+
+### Find details of a pod 
+
+```
+oc describe pod nginx-5dd56f5c87-qg9vv
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc describe pod nginx-5dd56f5c87-qg9vv</b>
+Name:         nginx-5dd56f5c87-qg9vv
+Namespace:    jegan
+Priority:     0
+Node:         worker-1.tektutor.tektutor.org/192.168.122.36
+Start Time:   Fri, 18 Feb 2022 19:11:47 +0530
+Labels:       deployment=nginx
+              pod-template-hash=5dd56f5c87
+Annotations:  k8s.v1.cni.cncf.io/network-status:
+                [{
+                    "name": "openshift-sdn",
+                    "interface": "eth0",
+                    "ips": [
+                        "10.128.2.23"
+                    ],
+                    "default": true,
+                    "dns": {}
+                }]
+              k8s.v1.cni.cncf.io/networks-status:
+                [{
+                    "name": "openshift-sdn",
+                    "interface": "eth0",
+                    "ips": [
+                        "10.128.2.23"
+                    ],
+                    "default": true,
+                    "dns": {}
+                }]
+              openshift.io/generated-by: OpenShiftNewApp
+              openshift.io/scc: restricted
+Status:       Running
+IP:           10.128.2.23
+IPs:
+  IP:           10.128.2.23
+Controlled By:  ReplicaSet/nginx-5dd56f5c87
+Containers:
+  nginx:
+    Container ID:   cri-o://3ce51e0eda9606f88f8ae256c18f8e9655e33a96569b5311370e165276ba83e9
+    Image:          twalter/openshift-nginx@sha256:b6a09b124c14ea2bb81f6081fb0d6e4f5214b9a1c98f6173fffc8e07d2382ca3
+    Image ID:       docker.io/twalter/openshift-nginx@sha256:b6a09b124c14ea2bb81f6081fb0d6e4f5214b9a1c98f6173fffc8e07d2382ca3
+    Ports:          80/TCP, 8081/TCP
+    Host Ports:     0/TCP, 0/TCP
+    State:          Running
+      Started:      Fri, 18 Feb 2022 19:11:50 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sflcd (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-sflcd:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+    ConfigMapName:           openshift-service-ca.crt
+    ConfigMapOptional:       <nil>
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason          Age    From               Message
+  ----    ------          ----   ----               -------
+  Normal  Scheduled       5m10s  default-scheduler  Successfully assigned jegan/nginx-5dd56f5c87-qg9vv to worker-1.tektutor.tektutor.org
+  Normal  AddedInterface  5m7s   multus             Add eth0 [10.128.2.23/23] from openshift-sdn
+  Normal  Pulled          5m7s   kubelet            Container image "twalter/openshift-nginx@sha256:b6a09b124c14ea2bb81f6081fb0d6e4f5214b9a1c98f6173fffc8e07d2382ca3" already present on machine
+  Normal  Created         5m7s   kubelet            Created container nginx
+  Normal  Started         5m7s   kubelet            Started container nginx
 </pre>
