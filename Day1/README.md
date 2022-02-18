@@ -13,6 +13,22 @@ Login successful.
 You have access to 65 projects, the list has been suppressed. You can list all projects with 'oc projects'
 </pre>
 
+### Listing the nodes in your OpenShift Cluster
+```
+jegan@tektutor:~$ oc get nodes
+```
+
+The expected output is
+
+<pre>
+NAME                             STATUS   ROLES           AGE   VERSION
+master-1.tektutor.tektutor.org   Ready    master,worker   62m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
+worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
+worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
+</pre>
+
 ### Listing the existing projects in OpenShift cluster
 ```
 oc get projects
