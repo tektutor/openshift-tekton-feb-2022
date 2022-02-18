@@ -249,6 +249,32 @@ worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 </pre>
 
+### Alternatively, you may also edit this to remove the worker role from Master nodes
+```
+oc edit schedulers.config.openshift.io cluster
+```
+
+The expected output is
+<pre>
+  1 # Please edit the object below. Lines beginning with a '#' will be ignored,
+  2 # and an empty file will abort the edit. If an error occurs while saving this file will be
+  3 # reopened with the relevant failures.
+  4 #
+  5 apiVersion: config.openshift.io/v1
+  6 kind: Scheduler
+  7 metadata:
+  8   creationTimestamp: "2022-02-18T11:57:59Z"
+  9   generation: 4
+ 10   name: cluster
+ 11   resourceVersion: "70128"
+ 12   uid: c5810f75-bc59-45f2-84bb-7c1d5b1b4bcf
+ 13 spec:
+ 14   <b>mastersSchedulable: false</b>
+ 15   policy:
+ 16     name: ""
+ 17 status: {}
+</pre>
+
 ### Listing the existing projects in OpenShift cluster
 ```
 oc get projects
