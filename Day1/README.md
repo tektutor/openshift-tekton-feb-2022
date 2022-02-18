@@ -37,7 +37,7 @@ oc get nodes -o wide
 The expected output is
 
 <pre>
-jegan@tektutor:~$ oc get nodes -o wide
+jegan@tektutor:~$ <b>oc get nodes -o wide</b>
 NAME                             STATUS   ROLES           AGE   VERSION           INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
 master-1.tektutor.tektutor.org   Ready    master,worker   64m   v1.22.3+fdba464   192.168.122.13    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 master-2.tektutor.tektutor.org   Ready    master,worker   65m   v1.22.3+fdba464   192.168.122.228   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
@@ -54,7 +54,7 @@ oc describe node/master-1.tektutor.tektutor.org
 The expected output will be similar to
 
 <pre>
-jegan@tektutor:~$ oc describe node master-1.tektutor.tektutor.org
+jegan@tektutor:~$ <b>oc describe node master-1.tektutor.tektutor.org</b>
 Name:               master-1.tektutor.tektutor.org
 Roles:              master,worker
 Labels:             beta.kubernetes.io/arch=amd64
@@ -188,6 +188,7 @@ worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%
 ### Removing worker role from master node
 Before removing the worker role from master nodes
 <pre>
+jegan@tektutor:~$ <b>oc get nodes</b>
 NAME                             STATUS   ROLES           AGE   VERSION
 master-1.tektutor.tektutor.org   Ready    master,worker   62m   v1.22.3+fdba464
 master-2.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
@@ -195,6 +196,8 @@ master-3.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
+
+Let's remove the worker role from the master nodes
 
 ```
 oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'
