@@ -190,9 +190,9 @@ Before removing the worker role from master nodes
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
 <b>NAME                             STATUS   ROLES           AGE   VERSION</b>
-master-1.tektutor.tektutor.org   Ready    master,worker   62m   v1.22.3+fdba464
-master-2.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
-master-3.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
+master-1.tektutor.tektutor.org   Ready    <b>master,worker</b>   62m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    <b>master,worker</b>   63m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    <b>master,worker</b>   63m   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
@@ -209,9 +209,9 @@ jegan@tektutor:~$ <b>oc patch schedulers.config.openshift.io/cluster --type merg
 scheduler.config.openshift.io/cluster patched
 jegan@tektutor:~$ <b>oc get nodes</b>
 <b>NAME                             STATUS   ROLES    AGE   VERSION</b>
-master-1.tektutor.tektutor.org   Ready    master   86m   v1.22.3+fdba464
-master-2.tektutor.tektutor.org   Ready    master   88m   v1.22.3+fdba464
-master-3.tektutor.tektutor.org   Ready    master   87m   v1.22.3+fdba464
+master-1.tektutor.tektutor.org   Ready    <b>master</b>   86m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    <b>master</b>   88m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    <b>master</b>   87m   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker   68m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 </pre>
@@ -222,9 +222,9 @@ Before adding the worker role to the master nodes
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
 <b>NAME                             STATUS   ROLES    AGE   VERSION</b>
-master-1.tektutor.tektutor.org   Ready    master   86m   v1.22.3+fdba464
-master-2.tektutor.tektutor.org   Ready    master   88m   v1.22.3+fdba464
-master-3.tektutor.tektutor.org   Ready    master   87m   v1.22.3+fdba464
+master-1.tektutor.tektutor.org   Ready    <b>master</b>   86m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    <b>master</b>   88m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    <b>master</b>   87m   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker   68m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 </pre>
@@ -242,9 +242,9 @@ jegan@tektutor:~$ <b>oc patch schedulers.config.openshift.io/cluster --type merg
 scheduler.config.openshift.io/cluster patched
 jegan@tektutor:~$ <b>oc get nodes</b>
 <b>NAME                             STATUS   ROLES           AGE   VERSION</b>
-master-1.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
-master-2.tektutor.tektutor.org   Ready    master,worker   92m   v1.22.3+fdba464
-master-3.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
+master-1.tektutor.tektutor.org   Ready    <b>master,worker</b>   91m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    <b>master,worker</b>   92m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    <b>master,worker</b>   91m   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 </pre>
@@ -256,9 +256,9 @@ Currently, in my cluster master nodes have worker role.
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
 <b>NAME                             STATUS   ROLES           AGE   VERSION</b>
-master-1.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
-master-2.tektutor.tektutor.org   Ready    master,worker   92m   v1.22.3+fdba464
-master-3.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
+master-1.tektutor.tektutor.org   Ready    <b>master,worker</b>   91m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    <b>master,worker</b>   92m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    <b>master,worker</b>   91m   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 </pre>
@@ -324,9 +324,9 @@ jegan@tektutor:~$ <b>oc edit schedulers.config.openshift.io cluster</b>
 scheduler.config.openshift.io/cluster edited
 jegan@tektutor:~$ <b>oc get nodes</b>
 <b>NAME                             STATUS   ROLES    AGE   VERSION</b>
-master-1.tektutor.tektutor.org   Ready    master   11h   v1.22.3+fdba464
-master-2.tektutor.tektutor.org   Ready    master   11h   v1.22.3+fdba464
-master-3.tektutor.tektutor.org   Ready    master   11h   v1.22.3+fdba464
+master-1.tektutor.tektutor.org   Ready    <b>master</b>   11h   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    <b>master</b>   11h   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    <b>master</b>   11h   v1.22.3+fdba464
 worker-1.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 </pre>
