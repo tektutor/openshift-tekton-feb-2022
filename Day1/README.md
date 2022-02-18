@@ -185,6 +185,66 @@ worker-1.tektutor.tektutor.org   280m         5%     1221Mi          8%
 worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%        
 </pre>
 
+### Removing worker role from master node
+Before removing the worker role from master nodes
+<pre>
+NAME                             STATUS   ROLES           AGE   VERSION
+master-1.tektutor.tektutor.org   Ready    master,worker   62m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    master,worker   63m   v1.22.3+fdba464
+worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
+worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
+</pre>
+
+```
+oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'
+```
+
+After removing the worker role from master nodes
+<pre>
+jegan@tektutor:~$ <b>oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'</b>
+scheduler.config.openshift.io/cluster patched
+jegan@tektutor:~$ <b>oc get nodes</b>
+NAME                             STATUS   ROLES    AGE   VERSION
+master-1.tektutor.tektutor.org   Ready    master   86m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    master   88m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    master   87m   v1.22.3+fdba464
+worker-1.tektutor.tektutor.org   Ready    worker   68m   v1.22.3+fdba464
+worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
+</pre>
+
+### Adding worker role to the master nodes
+Before adding the worker role to the master nodes
+
+<pre>
+jegan@tektutor:~$ <b>oc get nodes</b>
+NAME                             STATUS   ROLES    AGE   VERSION
+master-1.tektutor.tektutor.org   Ready    master   86m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    master   88m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    master   87m   v1.22.3+fdba464
+worker-1.tektutor.tektutor.org   Ready    worker   68m   v1.22.3+fdba464
+worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
+</pre>
+
+Now let's add the worker role to all the master nodes in the OpenShift cluster
+
+```
+oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":true}}'
+```
+
+After adding the worker role to the master nodes
+
+<pre>
+jegan@tektutor:~$ oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":true}}'
+scheduler.config.openshift.io/cluster patched
+jegan@tektutor:~$ oc get nodes
+NAME                             STATUS   ROLES           AGE   VERSION
+master-1.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
+master-2.tektutor.tektutor.org   Ready    master,worker   92m   v1.22.3+fdba464
+master-3.tektutor.tektutor.org   Ready    master,worker   91m   v1.22.3+fdba464
+worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
+worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
+</pre>
 
 ### Listing the existing projects in OpenShift cluster
 ```
