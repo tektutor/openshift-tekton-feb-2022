@@ -683,3 +683,81 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
+
+### Accessing the nginx NodePort service
+
+Nginx NodePort service can be accessed using one the below commands
+
+```
+curl http://master-1.tektutor.tektutor.org:30327
+curl http://master-2.tektutor.tektutor.org:30327
+curl http://master-3.tektutor.tektutor.org:30327
+curl http://worker-1.tektutor.tektutor.org:30327
+curl http://worker-2.tektutor.tektutor.org:30327
+curl http://192.168.122.13:30327
+curl http://192.168.122.228:30327
+curl http://192.168.122.89:30327
+curl http://192.168.122.36:30327
+curl http://192.168.122.222:30327
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ oc get nodes -o wide
+NAME                             STATUS   ROLES           AGE    VERSION           INTERNAL-IP       EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
+master-1.tektutor.tektutor.org   Ready    master,worker   117m   v1.22.3+fdba464   192.168.122.13    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
+master-2.tektutor.tektutor.org   Ready    master,worker   118m   v1.22.3+fdba464   192.168.122.228   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
+master-3.tektutor.tektutor.org   Ready    master,worker   118m   v1.22.3+fdba464   192.168.122.89    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
+worker-1.tektutor.tektutor.org   Ready    worker          99m    v1.22.3+fdba464   192.168.122.36    <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
+worker-2.tektutor.tektutor.org   Ready    worker          100m   v1.22.3+fdba464   192.168.122.222   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
+
+jegan@tektutor:~$ <b>oc describe svc/nginx</b>
+Name:                     nginx
+Namespace:                jegan
+Labels:                   app=nginx
+                          app.kubernetes.io/component=nginx
+                          app.kubernetes.io/instance=nginx
+Annotations:              <none>
+Selector:                 deployment=nginx
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       172.30.216.75
+IPs:                      172.30.216.75
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30327/TCP
+Endpoints:                10.128.2.23:80,10.128.2.26:80,10.128.2.27:80 + 2 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+jegan@tektutor:~$ curl 192.168.122.13:31030
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+</pre>
+
