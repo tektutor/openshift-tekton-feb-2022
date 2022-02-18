@@ -95,7 +95,7 @@ openshift-vsphere-infra                                           Active
 oc new-project jegan
 ```
 
-Though using your name as project name is neither professional nor a best practice for this training, I
+Though using your name as project name is neither professional nor a best practice. For this training, I
 would suggest use your name as 10 participants are sharing a single OpenShift cluster.  Using your name
 as project name, helps other participants using the same cluster to identify the projects they created
 vs other participants.
@@ -107,4 +107,9 @@ This also helps unintented deletion of projects created by other participants.
 oc new-app twalter/openshift-nginx:stable --name nginx
 ```
 
+You can check the status of the deployments as shown below
+
+```
+oc status
+```
 
