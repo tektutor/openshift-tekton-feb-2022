@@ -619,3 +619,31 @@ Events:
   Normal  ScalingReplicaSet  12m   deployment-controller  Scaled up replica set nginx-5dd56f5c87 to 1
   Normal  ScalingReplicaSet  12m   deployment-controller  Scaled down replica set nginx-6f99d9668b to 0
 </pre>
+
+### Scaling up a deployment
+```
+oc scale deploy nginx --replicas=5
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc get deploy</b>
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+nginx   1/1     1            1           14m
+jegan@tektutor:~$ <b>oc scale deploy nginx --replicas=5</b>
+deployment.apps/nginx scaled
+jegan@tektutor:~$ <b>oc get po</b>
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-5dd56f5c87-4jq5q   0/1     ContainerCreating   0          3s
+nginx-5dd56f5c87-qg9vv   1/1     Running             0          14m
+nginx-5dd56f5c87-sg57k   1/1     Running             0          3s
+nginx-5dd56f5c87-sv8bj   0/1     ContainerCreating   0          3s
+nginx-5dd56f5c87-zb5cw   1/1     Running             0          3s
+jegan@tektutor:~$ <b>oc get po -w</b>
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-5dd56f5c87-4jq5q   1/1     Running   0          6s
+nginx-5dd56f5c87-qg9vv   1/1     Running   0          14m
+nginx-5dd56f5c87-sg57k   1/1     Running   0          6s
+nginx-5dd56f5c87-sv8bj   1/1     Running   0          6s
+nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
+</pre>
