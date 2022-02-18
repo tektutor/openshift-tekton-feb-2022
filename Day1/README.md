@@ -24,7 +24,6 @@ The expected output is
 jegan@tektutor:~$ oc get projects
 NAME                                               DISPLAY NAME   STATUS
 default                                                           Active
-jegan                                                             Terminating
 kube-node-lease                                                   Active
 kube-public                                                       Active
 kube-system                                                       Active
