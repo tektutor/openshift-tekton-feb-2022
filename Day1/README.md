@@ -567,3 +567,55 @@ Events:
   ----    ------            ----   ----                   -------
   Normal  SuccessfulCreate  8m30s  replicaset-controller  Created pod: nginx-5dd56f5c87-qg9vv
 </pre>
+
+### Finding more details of a deployment
+```
+oc describe deploy/nginx
+```
+
+The expected output is
+
+<pre>jegan@tektutor:~$ <b>oc get deploy</b>
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+nginx   1/1     1            1           12m
+jegan@tektutor:~$ <b>oc describe deploy/nginx</b>
+Name:                   nginx
+Namespace:              jegan
+CreationTimestamp:      Fri, 18 Feb 2022 19:11:42 +0530
+Labels:                 app=nginx
+                        app.kubernetes.io/component=nginx
+                        app.kubernetes.io/instance=nginx
+Annotations:            deployment.kubernetes.io/revision: 2
+                        image.openshift.io/triggers:
+                          [{"from":{"kind":"ImageStreamTag","name":"nginx:stable"},"fieldPath":"spec.template.spec.containers[?(@.name==\"nginx\")].image"}]
+                        openshift.io/generated-by: OpenShiftNewApp
+Selector:               deployment=nginx
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:       deployment=nginx
+  Annotations:  openshift.io/generated-by: OpenShiftNewApp
+  Containers:
+   nginx:
+    Image:        twalter/openshift-nginx@sha256:b6a09b124c14ea2bb81f6081fb0d6e4f5214b9a1c98f6173fffc8e07d2382ca3
+    Ports:        80/TCP, 8081/TCP
+    Host Ports:   0/TCP, 0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   nginx-5dd56f5c87 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  12m   deployment-controller  Scaled up replica set nginx-6f99d9668b to 1
+  Normal  ScalingReplicaSet  12m   deployment-controller  Scaled up replica set nginx-5dd56f5c87 to 1
+  Normal  ScalingReplicaSet  12m   deployment-controller  Scaled down replica set nginx-6f99d9668b to 0
+</pre>
