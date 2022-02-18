@@ -396,3 +396,44 @@ svc/nginx - 172.30.155.175 ports 80, 8081
 
 1 info identified, use 'oc status --suggest' to see details.
 </pre>
+
+List the deployments under your project
+```
+oc get deploy
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ oc get deploy
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+nginx   1/1     1            1           97s
+</pre>
+
+List the replicasets under your project
+
+```
+oc get rs
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ oc get rs
+NAME               DESIRED   CURRENT   READY   AGE
+nginx-5dd56f5c87   1         1         1       96s
+nginx-6f99d9668b   0         0         0       101s
+</pre>
+
+
+List the pods in your project
+
+```
+oc get po
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ oc get po
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
+</pre>
