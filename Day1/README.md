@@ -327,9 +327,6 @@ openshift-vsphere-infra                                           Active
 </pre>
 
 ### Creating a project from command line
-```
-oc new-project jegan
-```
 
 Though using your name as project name is neither professional nor a best practice. For this training, I
 would suggest use your name as 10 participants are sharing a single OpenShift cluster.  Using your name
@@ -338,14 +335,64 @@ vs other participants.
 
 This also helps unintented deletion of projects created by other participants.
 
+```
+oc new-project jegan
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ oc new-project jegan
+Already on project "jegan" on server "https://api.tektutor.tektutor.org:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app rails-postgresql-example
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
+</pre>
+
+
 ### Creating an application
 ```
 oc new-app twalter/openshift-nginx:stable --name nginx
 ```
 
-You can check the status of the deployments as shown below
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc new-app twalter/openshift-nginx:stable --name nginx</b>
+--> Found container image 4786608 (3 years old) from Docker Hub for "twalter/openshift-nginx:stable"
+
+    * An image stream tag will be created as "nginx:stable" that will track this image
+
+--> Creating resources ...
+    imagestream.image.openshift.io "nginx" created
+    deployment.apps "nginx" created
+    service "nginx" created
+--> Success
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose service/nginx' 
+    Run 'oc status' to view your app.
+</pre>
+
+Let's check the status of the deployments as shown below
 
 ```
 oc status
 ```
 
+The expected output is
+
+<pre>
+egan@tektutor:~$ <b>oc status</b>
+In project jegan on server https://api.tektutor.tektutor.org:6443
+
+svc/nginx - 172.30.155.175 ports 80, 8081
+  deployment/nginx deploys istag/nginx:stable 
+    deployment #2 running for 47 seconds - 1 pod
+    deployment #1 deployed 52 seconds ago
+
+
+1 info identified, use 'oc status --suggest' to see details.
+</pre>
