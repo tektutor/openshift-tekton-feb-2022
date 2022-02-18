@@ -733,7 +733,7 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 
-jegan@tektutor:~$ curl 192.168.122.13:31030
+jegan@tektutor:~$ <b>curl 192.168.122.13:31030</b>
 <!DOCTYPE html>
 <html>
 <head>
