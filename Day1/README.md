@@ -647,3 +647,39 @@ nginx-5dd56f5c87-sg57k   1/1     Running   0          6s
 nginx-5dd56f5c87-sv8bj   1/1     Running   0          6s
 nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
 </pre>
+
+### Creating a NodePort external service for nginx deployment
+
+```
+oc expose deploy/nginx --type=NodePort --port=80
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc expose deploy/nginx --type=NodePort --port=80</b>
+service/nginx exposed
+jegan@tektutor:~$ <b>oc get svc</b>
+NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+nginx   NodePort   172.30.216.75   <none>        80:30327/TCP   4s
+jegan@tektutor:~$ <b>oc describe svc/nginx</b>
+Name:                     nginx
+Namespace:                jegan
+Labels:                   app=nginx
+                          app.kubernetes.io/component=nginx
+                          app.kubernetes.io/instance=nginx
+Annotations:              <none>
+Selector:                 deployment=nginx
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       172.30.216.75
+IPs:                      172.30.216.75
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30327/TCP
+Endpoints:                10.128.2.23:80,10.128.2.26:80,10.128.2.27:80 + 2 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+</pre>
