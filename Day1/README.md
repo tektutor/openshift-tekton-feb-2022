@@ -5,6 +5,8 @@
 4. User Provisioned Installation (UPI) - used for development & production
 
 ## Installing RedHat OpenShift Code Ready Containers (CRC)
+Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
+
 ##### Installing kubectl
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
