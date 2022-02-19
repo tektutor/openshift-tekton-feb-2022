@@ -230,7 +230,7 @@ https://docs.openshift.com/container-platform/4.9/installing/index.html
 - Using KVM ( Kernal-based Virtual Machine ) 6 Virtual Machines were created within RedHat CentOS v7.9
      - 3 master virtual machines are created to setup the OpenShift cluster with 3 Master Nodes
      - 2 worker Virtual machines are created to setup the OpenShift cluster with 2 Worker Nodes
-     - 1 LoadBalancer virtual machines with HAProxy is setup to expose the cluster accessible.  
+     - 1 LoadBalancer virtual machines with HAProxy is setup to make the cluster accessible.  
 
 - Master Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0(Ootpa)
   - 8 Virtual Cores
