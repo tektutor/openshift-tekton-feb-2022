@@ -24,7 +24,7 @@ sudo mv ./kubectl /usr/bin
 When prompted for password, type administrator password of your Linux OS.
 
 ## Installing Code Ready Containers in Linux
-Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help your try this in your personal laptop/desktop post the training for your self-learning purposes only.
+Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
 ```
 cd /home/alchemy/Downloads
