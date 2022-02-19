@@ -11,7 +11,7 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/bin
 ```
-When prompted for password, type 'welcome' as the administrator password in your Ubuntu Lab machine.
+When prompted for password, type administrator password of your Linux OS.
 
 ### Installing Code Ready Containers in Linux
 ```
@@ -81,7 +81,7 @@ Your system is correctly setup for using CodeReady Containers, you can now run '
 ```
 The expected output is
 <pre>
-[jegan@tektutor crc-linux-1.38.0-amd64]$ ./crc start
+[jegan@tektutor crc-linux-1.38.0-amd64]$ <b>./crc start<b>
 INFO Checking if running as non-root              
 INFO Checking if running inside WSL2              
 INFO Checking if crc-admin-helper executable is cached 
