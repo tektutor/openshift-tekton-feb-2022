@@ -260,7 +260,7 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - Server 2 ( 192.168.1.118 )
 </pre>
 
-Do and Don'ts, please don't offended :warning:
+##### Do and Don'ts, please don't offended :warning:
 <pre>
 Kindly stick onto the credentials details given to you.  
 Please avoid switching from one user to other 
