@@ -617,7 +617,7 @@ The expected output is
   4 #
   5 apiVersion: config.openshift.io/v1
   6 kind: Scheduler
-  7 metadata:
+  7 metadata::heavy_dollar_sign:
   8   creationTimestamp: "2022-02-18T11:57:59Z"
   9   generation: 4
  10   name: cluster
@@ -800,7 +800,7 @@ oc get deploy
 
 The expected output is
 <pre>
-jegan@tektutor:~$<b> oc get deploy<b>
+jegan@tektutor:~$<b> oc get deploy</b>
 <b>NAME    READY   UP-TO-DATE   AVAILABLE   AGE</b>
 nginx   1/1     1            1           97s
 </pre>
