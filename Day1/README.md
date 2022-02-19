@@ -1,11 +1,11 @@
-### OpenShift Installation Options
+## OpenShift Installation Options
 1. RedHat OpenShift Code Ready Containers (CRC) - used for learning purposes only
 2. RedHat OpenShift Developer Sandbox - used for learning purposes only
 3. Installer Provisioned Installation (IPI) - used for development & production
 4. User Provisioned Installation (UPI) - used for development & production
 
-### Installing RedHat OpenShift Code Ready Containers (CRC)
-### Installing kubectl
+## Installing RedHat OpenShift Code Ready Containers (CRC)
+##### Installing kubectl
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x ./kubectl
@@ -13,7 +13,7 @@ sudo mv ./kubectl /usr/bin
 ```
 When prompted for password, type administrator password of your Linux OS.
 
-### Installing Code Ready Containers in Linux
+## Installing Code Ready Containers in Linux
 ```
 cd /home/alchemy/Downloads
 tar xvf crc-linux-amd64.tar.xz
@@ -23,7 +23,7 @@ cd crc-linux-1.38.0-amd64
 
 The expected output is
 <pre>
-jegan@ubuntu:~/Downloads/crc-linux-1.38.0-amd64$ ./crc setup
+jegan@ubuntu:~/Downloads/crc-linux-1.38.0-amd64$ <b>./crc setup</b>
 INFO Checking if running as non-root              
 INFO Checking if running inside WSL2              
 INFO Checking if crc-admin-helper executable is cached 
@@ -166,15 +166,15 @@ eval $(./crc oc-env)
 oc login -u kubeadmin https://api.crc.testing:6443
 ```
 
-### Using RedHat OpenShift Developer Sandbox for Free for learning purposes
+## Using RedHat OpenShift Developer Sandbox for Free for learning purposes
 https://developers.redhat.com/developer-sandbox?source=sso
 
-### OpenShift Installer Provisioned Installation (IPI)
+## OpenShift Installer Provisioned Installation (IPI)
 
-### OpenShift User Provisioned Installtion (UPI)
+## OpenShift User Provisioned Installtion (UPI)
 
 
-### Understanding our Training Lab OpenShift Setup
+## Understanding our Training Lab OpenShift Setup
 Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
 
 You may refer the official documentation for detailed installation instructions 
@@ -206,8 +206,7 @@ As part of RedHat Enterprise Core OS, we get kubelet and CRI-O container runtime
 
 Our OpenShift version is 4.9.21 which uses Kubernetes v1.22.3.x
 
-
-### Login to OpenShift Cluster using CLI client
+##### Login to OpenShift Cluster using CLI client
 ```
 oc login -u kubeadmin https://api.tektutor.okd4.tektutor.org:6443
 ```
@@ -222,7 +221,7 @@ Login successful.
 You have access to 65 projects, the list has been suppressed. You can list all projects with 'oc projects'
 </pre>
 
-### Listing the nodes in your OpenShift Cluster
+##### Listing the nodes in your OpenShift Cluster
 ```
 jegan@tektutor:~$ oc get nodes
 ```
@@ -238,7 +237,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
 
-### List Openshift Nodes with IP details
+##### List Openshift Nodes with IP details
 ```
 oc get nodes -o wide
 ```
@@ -255,7 +254,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          46m   v1.22.3+fdba464 
 worker-2.tektutor.tektutor.org   Ready    worker          47m   v1.22.3+fdba464   192.168.122.222   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 </pre>
 
-### Find more details of an OpenShift Cluster Node
+##### Find more details of an OpenShift Cluster Node
 ```
 oc describe node/master-1.tektutor.tektutor.org
 ```
@@ -377,7 +376,7 @@ Allocated resources:
 Events:              <none>
 </pre>
 
-### Print node usage statistics
+##### Print node usage statistics
 ```
 oc adm top nodes
 ```
@@ -394,7 +393,7 @@ worker-1.tektutor.tektutor.org   280m         5%     1221Mi          8%
 worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%        
 </pre>
 
-### Removing worker role from master node
+##### Removing worker role from master node
 Before removing the worker role from master nodes
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
@@ -425,7 +424,7 @@ worker-1.tektutor.tektutor.org   Ready    worker   68m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 </pre>
 
-### Adding worker role to the master nodes
+##### Adding worker role to the master nodes
 Before adding the worker role to the master nodes
 
 <pre>
@@ -540,7 +539,7 @@ worker-1.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 </pre>
 
-### Listing the existing projects in OpenShift cluster
+##### Listing the existing projects in OpenShift cluster
 ```
 oc get projects
 ```
@@ -617,7 +616,7 @@ openshift-user-workload-monitoring                                Active
 openshift-vsphere-infra                                           Active
 </pre>
 
-### Creating a project from command line
+##### Creating a project from command line
 
 Though using your name as project name is neither professional nor a best practice. For this training, I
 would suggest use your name as 10 participants are sharing a single OpenShift cluster.  Using your name
@@ -645,7 +644,7 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
 </pre>
 
 
-### Creating an application
+##### Creating an application
 ```
 oc new-app twalter/openshift-nginx:stable --name nginx
 ```
@@ -688,7 +687,7 @@ svc/nginx - 172.30.155.175 ports 80, 8081
 1 info identified, use 'oc status --suggest' to see details.
 </pre>
 
-### List the deployments under your project
+##### List the deployments under your project
 
 ```
 oc get deploy
@@ -701,7 +700,7 @@ jegan@tektutor:~$<b> oc get deploy<b>
 nginx   1/1     1            1           97s
 </pre>
 
-### List the replicasets under your project
+##### List the replicasets under your project
 
 ```
 oc get rs
@@ -716,7 +715,7 @@ nginx-6f99d9668b   0         0         0       101s
 </pre>
 
 
-### List the pods in your project
+##### List the pods in your project
 
 ```
 oc get po
@@ -731,7 +730,7 @@ nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
 </pre>
 
 
-### Find details of a pod 
+##### Find details of a pod 
 
 ```
 oc describe pod nginx-5dd56f5c87-qg9vv
@@ -818,7 +817,7 @@ Events:
   Normal  Started         5m7s   kubelet            Started container nginx
 </pre>
 
-### Find details of a replicaset
+##### Find details of a replicaset
 ```
 oc describe rs/nginx-5dd56f5c87
 ```
@@ -939,7 +938,7 @@ nginx-5dd56f5c87-sv8bj   1/1     Running   0          6s
 nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
 </pre>
 
-### Creating a NodePort external service for nginx deployment
+##### Creating a NodePort external service for nginx deployment
 
 ```
 oc expose deploy/nginx --type=NodePort --port=80
@@ -975,7 +974,7 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
 
-### Accessing the nginx NodePort service
+##### Accessing the nginx NodePort service
 
 Nginx NodePort service can be accessed using one the below commands
 
