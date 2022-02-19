@@ -271,6 +271,8 @@ If you keep switching or create numerous deployments it will overload our cluste
 ```
 oc login -u kubeadmin https://api.tektutor.okd4.tektutor.org:6443
 ```
+The URL for your cluster will be different, hence check your Linux Desktop for a file named openshift.txt to find your API endpoint URL.
+
 The expected output is
 <pre>
 oc login -u kubeadmin https://api.tektutor.tektutor.org:6443
