@@ -290,13 +290,14 @@ Please avoid switching between the clusters.
 
 ##### :question: What will happen if I don't follow the above requests?
 <pre>
-When you switch using other user credentials, actually you will end up using other participants credential.  
+1. When you switch using other user credentials, actually you will end up using other participant's credential.  
 It will be confusing for both of you, as the projects gets switched in your lab everytime other participants switches 
-to his/her project.  There is chance that either your or the other participants may delete each other projects.
-It will overload our cluster leading to many of our deployments crashing. 
-This might even bring down our cluster altogether. 
-Hence your kind co-operation is requested to deliver this training smoothly.
+to his/her project and vice versa on other participants lab environment. There is chance that either your or the other participants may delete each other projects.
+2. It will overload our cluster leading to many of our deployments crashing. 
+3. This might even bring down our cluster altogether. 
+4. We will lose lot of time fixing the cluster.
 </pre>
+Hence your kind co-operation is requested to deliver this training smoothly.
 
 ##### Login to OpenShift Cluster using CLI client
 ```
