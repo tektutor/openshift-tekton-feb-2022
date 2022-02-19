@@ -1644,3 +1644,12 @@ jegan@tektutor:~$ <b>oc get po</b>
 <b>NAME                READY   STATUS     RESTARTS   AGE</b>
 spring-ms-1-build   0/1     Init:0/2   0          3s
 </pre>
+
+Once the image is built successfully, OpenShift will deploy the Pod as shown below
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc get po</b>
+<b>NAME                        READY   STATUS      RESTARTS   AGE</b>
+spring-ms-1-build           0/1     Completed   0          17m
+spring-ms-d75cfd98b-b2mhp   1/1     Running     0          15m
+</pre>
