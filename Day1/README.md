@@ -154,7 +154,7 @@ Try to stop and start
 ```
 ./crc stop
 ./crc start
-```
+```107.83
 
 ##### Login to CRC Cluster as a developer via CLI
 ```
@@ -177,7 +177,8 @@ This mode of OpenShift installation is preferred if budget is not a constraint a
 However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
 
 For example:-
-Recently I installed RedHat OpenShift in AWS. 
+
+I recently installed RedHat OpenShift in AWS. 
 
 I used the OpenShift cluster for 9 days
 
