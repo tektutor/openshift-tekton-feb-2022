@@ -172,9 +172,26 @@ oc login -u kubeadmin https://api.crc.testing:6443
 https://developers.redhat.com/developer-sandbox?source=sso
 
 ## OpenShift Installer Provisioned Installation (IPI)
-This mode of OpenShift installation is preferred in case you wish to perform the OpenShift installation in Cloud environments or with VMWare vSphere, etc.,
+This mode of OpenShift installation is preferred if budget is not a constraint and you wish to perform the OpenShift installation in Cloud environments or with VMWare vSphere, etc.,
 
-However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
+However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
+
+For example:-
+Recently I installed RedHat OpenShift in AWS. 
+
+I used the OpenShift cluster for 9 days
+
+The automatic installation spinned off 
+
+On Demand Linux Amazon Elastic Compute Cloud running Linux/Unix costed - $420
+- EC2 m5.xlarge Instance ( 4 vCPU with 16 GB RAM ) 
+- EC2 r5.xlarge Instance ( 4 vCPU with 32 GB RAM - good for memory intensive computing )
+- EC2 m5.2xlarge ( 8 vCPU with 32 GB RAM )
+
+Amazon NAT Gateway costed $94
+Load Balancing - $20 
+
+The total bill was $707(rounded) including GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for corporates i.e Development & Production.
 
 You may refer more details about this in the official documentation
 https://docs.openshift.com/container-platform/4.9/installing/index.html
