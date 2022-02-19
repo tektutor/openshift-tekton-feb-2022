@@ -188,7 +188,7 @@ eval $(./crc oc-env)
 oc login -u kubeadmin https://api.crc.testing:6443
 ```
 
-## Using RedHat OpenShift Developer Sandbox for Free
+## Using RedHat OpenShift Developer Sandbox for Free :-1:
 https://developers.redhat.com/developer-sandbox?source=sso
 
 ## OpenShift Installer Provisioned Installation (IPI)
@@ -276,7 +276,7 @@ Please avoid switching from one user to other.
 Please avoid switching between the clusters.
 </pre>
 
-:information_source: 
+:information_source: What will happen if I don't follow the above?
 <pre>
 If you keep switching or create numerous deployments, it will overload our cluster leading to many of our deployments crashing. This might even bring down our cluster altogether. 
 Hence your kind co-operation is requested.
