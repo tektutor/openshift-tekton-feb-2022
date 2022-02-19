@@ -211,7 +211,7 @@ On Demand Linux Amazon Elastic Compute Cloud running Linux/Unix costed - $420
 Amazon NAT Gateway costed $94
 Load Balancing - $20 
 
-The total bill was $707(rounded) including GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for corporates i.e Development & Production.
+The total bill was $707(rounded) :angry: including :angry: :angry: GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for corporates i.e Development & Production.
 
 You may refer more details about this in the official documentation
 https://docs.openshift.com/container-platform/4.9/installing/index.html
