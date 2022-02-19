@@ -254,7 +254,7 @@ https://docs.openshift.com/container-platform/4.9/installing/index.html
      - 2 worker Virtual machines are created to setup the OpenShift cluster with 2 Worker Nodes
      - 1 LoadBalancer virtual machines with HAProxy is setup to make the cluster accessible.  
 
-- Master Node Virtual Machine Hardware Configuration (RedHat Enterpri:question:se Linux Core OS - v49.84.202202081504-0 [Ootpa])
+- Master Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0 [Ootpa])
   - 8 Virtual Cores
   - 64 GB RAM
   - 500 GB HDD Storage
