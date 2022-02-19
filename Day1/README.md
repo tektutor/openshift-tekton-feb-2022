@@ -14,7 +14,7 @@
 4. User Provisioned Infrastructure (UPI) - Ideal for Learning, R&D, Development & Production
 
 ## Installing RedHat OpenShift Code Ready Containers (CRC)
-Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
+:warning: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
 
 ##### Installing kubectl
 ```
@@ -25,7 +25,7 @@ sudo mv ./kubectl /usr/bin
 When prompted for password, type administrator password of your Linux OS.
 
 ## Installing Code Ready Containers in Linux
-Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
+:warning: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
 ```
 cd /home/alchemy/Downloads
@@ -260,6 +260,7 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - Server 2 ( 192.168.1.118 )
 </pre>
 
+Do and Don'ts, please don't offended :warning:
 <pre>
 Kindly stick onto the credentials details given to you.  
 Please avoid switching from one user to other 
