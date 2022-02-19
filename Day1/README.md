@@ -260,14 +260,18 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - Server 2 ( 192.168.1.118 )
 </pre>
 
-##### Do and Don'ts, please don't offended :warning:
+##### Do and Don'ts, please don't get offended :warning:
 <pre>
-Kindly stick onto the credentials details given to you.  
-Please avoid switching from one user to other 
-Please avoid switching between the clusters
+Kindly stick onto the credential details given to you.  
+Please avoid switching from one user to other. 
+Please avoid switching between the clusters.
 </pre>
 
-If you keep switching or create numerous deployments it will overload our cluster leading to many of our deployments crashing. This might even bring down our cluster altogether. Hence your kind co-operation is requested.
+:information_source: 
+<pre>
+If you keep switching or create numerous deployments, it will overload our cluster leading to many of our deployments crashing. This might even bring down our cluster altogether. 
+Hence your kind co-operation is requested.
+</pre>
 
 ##### Login to OpenShift Cluster using CLI client
 ```
