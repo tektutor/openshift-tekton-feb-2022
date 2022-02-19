@@ -234,7 +234,7 @@ Our Training Lab is setup using User Provisioned Infrastructure, almost everythi
 
 Lab Server Hardware Configuration
 <pre>
-PowerEdge R630 
+Dell PowerEdge R630 
 Processor Type: Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10Ghz
   - Logical Processors: 64
 NICs : 4
@@ -242,7 +242,7 @@ NICs : 4
 6 TB HDD
 </pre>
 
-We have used two such servers to setup our Lab.
+We have used two such servers to setup our Lab with two OpenShift Clusters.
 
 You may refer the official documentation for detailed installation instructions 
 https://docs.openshift.com/container-platform/4.9/installing/index.html
