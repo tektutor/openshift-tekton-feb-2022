@@ -221,7 +221,7 @@ https://docs.openshift.com/container-platform/4.9/installing/index.html
 ## :heavy_check_mark: OpenShift User Provisioned Infrastructure (UPI)
 This mode of OpenShift installation is highly preferred :thumbsup: and flexible :satisfied: in many cases. This approach let's you take control of the installation process, allows you to customize things giving more flexibily in setting up your OpenShift in your own preferred way. 
 
-But this involves doing everything manually yourself :weary: .  This is a very lengthy process and many things can go wrong during the installation, hence installing OpenShift using approach involves several attempts but the end result almost always will be fruitful as you would have learned many things along the way :)
+But this involves doing everything manually yourself :weary: .  This is a very lengthy process and many things can go wrong during the installation, hence installing OpenShift using approach involves several attempts but the end result almost always will be fruitful as you would have learned many things along the way :v:
 
 I remember the first time I attempted this it took about 7 days to get my cluster up and running. The official documentations are very exhaustive and no single approach works in all environment, hence there are always many missing pieces of information that is required for your environment which you will have to figure out yourself.  Sometimes it takes few hours and sometimes it takes few days to find out the missing piece of information. It is like solving a puzzle.
 
