@@ -14,7 +14,7 @@
 4. User Provisioned Infrastructure (UPI) - Ideal for Learning, R&D, Development & Production
 
 ## Installing RedHat OpenShift Code Ready Containers (CRC)
-:warning: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
+:x: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
 
 ##### Installing kubectl
 ```
@@ -25,7 +25,7 @@ sudo mv ./kubectl /usr/bin
 When prompted for password, type administrator password of your Linux OS.
 
 ## Installing Code Ready Containers in Linux
-:warning: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
+:x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
 ```
 cd /home/alchemy/Downloads
@@ -89,6 +89,8 @@ Your system is correctly setup for using CodeReady Containers, you can now run '
 </pre>
 
 ##### Starting your local CRC OpenShift Cluster
+:x:  Please don't attempt this in our training lab.
+
 ```
 ./crc start
 ```
@@ -153,6 +155,8 @@ Use the 'oc' command line interface:
 when the crc prompts for pull secret, you need to paste the content of pull-secret.txt and hit enter.
 
 ##### Troubleshooting CRC start
+:x:  Please don't attempt this in our training lab.
+
 It is commonly noticed that ./crc start command fails many times. 
 
 Make sure
@@ -169,12 +173,16 @@ Try to stop and start
 ```
 
 ##### Login to CRC Cluster as a developer via CLI
+:x:  Please don't attempt this in our training lab.
+
 ```
 eval $(./crc oc-env)
 oc login -u developer https://api.crc.testing:6443
 ```
 
 ##### Login to CRC Cluster as an administrator via CLI
+:x:  Please don't attempt this in our training lab.
+
 ```
 eval $(./crc oc-env)
 oc login -u kubeadmin https://api.crc.testing:6443
@@ -188,8 +196,7 @@ This mode of OpenShift installation is preferred if budget is not a constraint a
 
 However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
 
-For example:-
-
+### :information_source: For example:-
 I recently installed RedHat OpenShift in AWS. 
 
 I used the OpenShift cluster for 9 days
