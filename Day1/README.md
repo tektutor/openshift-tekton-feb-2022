@@ -259,7 +259,13 @@ OpenShift Cluster - 1 ( 10 Users - user1 thru user10 )
 
 OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
 
-Kindly stick onto the credentials details give to you.  Please avoid switching from one user to other or switching between the clusters as this will overload our cluster leading to many deployments crashing. This might even bring down our cluster altogether. Hence your kind co-operation is requested.
+<pre>
+Kindly stick onto the credentials details given to you.  
+Please avoid switching from one user to other 
+Please avoid switching between the clusters
+</pre>
+
+If you keep switching or create numerous deployments it will overload our cluster leading to many of our deployments crashing. This might even bring down our cluster altogether. Hence your kind co-operation is requested.
 
 ##### Login to OpenShift Cluster using CLI client
 ```
