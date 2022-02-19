@@ -211,7 +211,7 @@ On Demand Linux Amazon Elastic Compute Cloud running Linux/Unix costed - $420
 Amazon NAT Gateway costed $94 
 Load Balancing - $20 
 
-The total bill was :heavy_dollar_sign: :heavy_dollar_sign: $707(rounded) :angry: including :disappointed: :disappointed: GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for :heavy_check_mark: corporates :moneybag: :heavy_dollar_sign: i.e Development :heavy_check_mark: & Production :heavy_check_mark:.
+The total bill was :heavy_dollar_sign::heavy_dollar_sign: $707(rounded) :angry: including :disappointed: :disappointed: GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for :heavy_check_mark: corporates :moneybag: :heavy_dollar_sign: i.e Development :heavy_check_mark: & Production :heavy_check_mark:.
 
  :-1: Not recommended for self-learning
 
@@ -362,7 +362,7 @@ CreationTimestamp:  Fri, 18 Feb 2022 17:34:13 +0530
 Taints:             <none>
 Unschedulable:      false
 Lease:
-  HolderIdentity:  master-1.tektutor.tektutor.org
+  HolderIdentity:  master-1.tektutor.tektutor.org:heavy_dollar_sign:
   AcquireTime:     <unset>
   RenewTime:       Fri, 18 Feb 2022 18:41:28 +0530
 Conditions:
