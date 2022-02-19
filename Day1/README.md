@@ -247,17 +247,15 @@ https://docs.openshift.com/container-platform/4.9/installing/index.html
   - 16 GB RAM
   - 100 GB HDD Storage
 
+<pre>
 As part of RedHat Enterprise Core OS, we get kubelet and CRI-O container runtime out of the box on all master and worker nodes.
-
 Our OpenShift version is 4.9.21 which uses Kubernetes v1.22.3.x
-
 There are 2 such separate OpenShift clusters setup for our training lab.
 
 Each OpenShift cluster supports upto 10 users.
-
 OpenShift Cluster - 1 ( 10 Users - user1 thru user10 )
-
 OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
+</pre>
 
 <pre>
 Kindly stick onto the credentials details given to you.  
