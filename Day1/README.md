@@ -217,7 +217,7 @@ I remember the first time I attempted this it took about 7 days to get my cluste
 
 I help organizations in setting up Production Grade OpenShift Cluster, you may hire me as a Freelance Consultant. 
 
-I can be reached @ jegan@tektutor.org
+I can be reached - jegan@tektutor.org
 
 ## Understanding our Training Lab OpenShift Setup
 Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
