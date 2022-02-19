@@ -166,7 +166,7 @@ eval $(./crc oc-env)
 oc login -u kubeadmin https://api.crc.testing:6443
 ```
 
-## Using RedHat OpenShift Developer Sandbox for Free meant for learning purposes only and not suitable for Production use
+## Using RedHat OpenShift Developer Sandbox for Free
 https://developers.redhat.com/developer-sandbox?source=sso
 
 ## OpenShift Installer Provisioned Installation (IPI)
