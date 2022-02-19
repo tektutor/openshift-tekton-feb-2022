@@ -1495,3 +1495,41 @@ exit
 pod "dnstest" deleted
 jegan@tektutor:~$
 </pre>
+
+It is also possible to access any type of service within the OpenShift cluster with the Service IP and its port as shown below
+```
+curl 172.30.69.35:8081
+curl http://172.30.69.35:8081
+curl http://nginx:8081
+```
+
+The expected output is
+
+<pre>
+root@dnstest:/# <b>curl 172.30.69.35:8081</b>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+Welcome to nginx!
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+</pre>
