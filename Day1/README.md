@@ -1563,3 +1563,72 @@ The expected output is
 jegan@tektutor:~$ <b>oc delete project jegan</b>
 project.project.openshift.io "jegan" deleted
 </pre>
+
+
+## Let's create a new project to try the next lab exercise
+```
+oc new-project jegan
+```
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc new-project jegan</b>
+Already on project "jegan" on server "https://api.tektutor.tektutor.org:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app rails-postgresql-example
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
+</pre>
+
+Let's now try to deploy an simple spring boot based microservice application within this project from my GitHub Repository
+
+```
+oc new-app https://github.com/tektutor/spring-ms.git
+```
+To be precise, though the above GitHub repository has the source code of the SpringBoot application, OpenShift will pick the Dockerfile as the first choice from the above GitHub Repository by default.
+
+Using the Dockerfile from the GitHub, it then builds the custom image and pushes the image into OpenShift Private Container Registry before it proceeds to deploy the application into the cluster.
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc new-app https://github.com/tektutor/spring-ms.git</b>
+--> Found container image 15bbbf6 (7 days old) from docker.io for "docker.io/openjdk:latest"
+
+    * An image stream tag will be created as "openjdk:latest" that will track the source image
+    * A Docker build using source code from https://github.com/tektutor/spring-ms.git will be created
+      * The resulting image will be pushed to image stream tag "spring-ms:latest"
+      * Every time "openjdk:latest" changes a new build will be triggered
+
+--> Creating resources ...
+    imagestream.image.openshift.io "openjdk" created
+    imagestream.image.openshift.io "spring-ms" created
+    buildconfig.build.openshift.io "spring-ms" created
+    deployment.apps "spring-ms" created
+--> Success
+    Build scheduled, use 'oc logs -f buildconfig/spring-ms' to track its progress.
+    Run 'oc status' to view your app.
+</pre>
+
+You may check the status at any point in time
+```
+oc status
+```
+
+The expected output is
+<pre>
+egan@tektutor:~$ <b>oc status</b>
+In project jegan on server https://api.tektutor.tektutor.org:6443
+
+deployment/spring-ms deploys istag/spring-ms:latest <-
+  bc/spring-ms docker builds https://github.com/tektutor/spring-ms.git on istag/openjdk:latest 
+    not built yet
+  deployment #1 running for 3 seconds - 0/1 pods growing to 1
+
+
+2 warnings, 1 info identified, use 'oc status --suggest' to see details.
+</pre>
