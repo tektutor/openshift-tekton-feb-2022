@@ -1142,7 +1142,7 @@ jegan@tektutor:~$ <b>curl 192.168.122.13:31030</b>
 </style>
 </head>
 <body>
-<h1>Welcome to nginx!</h1>
+Welcome to nginx!
 <p>If you see this page, the nginx web server is successfully installed and
 working. Further configuration is required.</p>
 
