@@ -1653,3 +1653,100 @@ jegan@tektutor:~$ <b>oc get po</b>
 spring-ms-1-build           0/1     Completed   0          17m
 spring-ms-d75cfd98b-b2mhp   1/1     Running     0          15m
 </pre>
+
+Java spring-boot applications typically uses port 8080, hence let's create a clusterip service for the above deployment.
+
+```
+oc expose deploy/spring-ms --port=8080
+oc describe svc/spring-ms
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc expose deploy spring-ms --port=8080</b>
+service/spring-ms exposed
+jegan@tektutor:~$ <b>oc describe svc/spring-ms</b>
+Name:              spring-ms
+Namespace:         jegan
+Labels:            app=spring-ms
+                   app.kubernetes.io/component=spring-ms
+                   app.kubernetes.io/instance=spring-ms
+Annotations:       <none>
+Selector:          deployment=spring-ms
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                172.30.223.200
+IPs:               172.30.223.200
+Port:              <unset>  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         10.128.2.114:8080
+Session Affinity:  None
+Events:            <none>
+</pre>
+
+Let's create a public route for the service to access the service from outside the OpenShift cluster
+
+```
+oc expose svc spring-ms
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc expose svc spring-ms</b>
+route.route.openshift.io/spring-ms exposed
+</pre>
+
+Let's us now list the route
+```
+oc get route
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc get route</b>
+<b>NAME        HOST/PORT                                    PATH   SERVICES    PORT   TERMINATION   WILDCARD</b>
+spring-ms   spring-ms-jegan.apps.tektutor.tektutor.org          spring-ms   8080                 None
+</pre>
+
+Let's us now find details about the route
+
+```
+oc describe route spring-ms
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ oc describe route spring-ms
+Name:			spring-ms
+Namespace:		jegan
+Created:		5 minutes ago
+Labels:			app=spring-ms
+			app.kubernetes.io/component=spring-ms
+			app.kubernetes.io/instance=spring-ms
+Annotations:		openshift.io/host.generated=true
+Requested Host:		spring-ms-jegan.apps.tektutor.tektutor.org
+			   exposed on router default (host router-default.apps.tektutor.tektutor.org) 5 minutes ago
+Path:			<none>
+TLS Termination:	<none>
+Insecure Policy:	<none>
+Endpoint Port:		8080
+
+Service:	spring-ms
+Weight:		100 (100%)
+Endpoints:	10.128.2.114:8080
+</pre>
+
+You may now access the route as shown below
+
+```
+curl spring-ms-jegan.apps.tektutor.tektutor.org
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>curl spring-ms-jegan.apps.tektutor.tektutor.org</b>
+Greetings from Spring Boot!
+</pre>
