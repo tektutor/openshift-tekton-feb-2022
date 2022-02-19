@@ -457,6 +457,9 @@ worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%
 </pre>
 
 ##### Removing worker role from master node
+
+*** Kindly do not attempt this in our lab environment.  However, I'll give a hands-on demo from my local lab environment.
+
 Before removing the worker role from master nodes
 <pre>
 jegan@tektutor:~$ <b>oc get nodes</b>
@@ -470,7 +473,7 @@ worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 
 Let's remove the worker role from the master nodes
 
-Please do not attempt this in our training lab as this will affect the overall number of Pods that can be deployed in our OpenShift cluster.  
+*** Please do not attempt this in our training lab as this will affect the overall number of Pods that can be deployed in our OpenShift cluster.  
 
 ```
 oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'
@@ -490,6 +493,9 @@ worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 </pre>
 
 ##### Adding worker role to the master nodes
+
+*** Kindly do not attempt this in our lab environment.  However, I'll give a hands-on demo from my local lab environment.
+
 Before adding the worker role to the master nodes
 
 <pre>
@@ -503,6 +509,8 @@ worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 </pre>
 
 Now let's add the worker role to all the master nodes in the OpenShift cluster
+
+*** Kindly do not attempt this in our lab environment.  However, I'll give a hands-on demo from my local lab environment.
 
 ```
 oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":true}}'
@@ -524,6 +532,8 @@ worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 
 ### Alternatively, you may also edit this to remove the worker role from Master nodes
 
+*** Kindly do not attempt this in our lab environment.  However, I'll give a hands-on demo from my local lab environment.
+
 Currently, in my cluster master nodes have worker role.
 
 <pre>
@@ -536,6 +546,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 </pre>
 
+*** Kindly do not attempt this in our lab environment.  However, I'll give a hands-on demo from my local lab environment.
 
 We can remove the worker role from master as shown below
 
