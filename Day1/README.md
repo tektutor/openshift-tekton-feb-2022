@@ -81,7 +81,7 @@ INFO Checking if CRC bundle is extracted in '$HOME/.crc'
 INFO Checking if /home/jegan/.crc/cache/crc_libvirt_4.9.12.crcbundle exists 
 INFO Extracting bundle from the CRC executable    
 INFO Ensuring directory /home/jegan/.crc/cache exists 
-INFO Extracting embedded bundle crc_libvirt_4.9.12.crcbundle to /home/jegan/.crc/cache 
+INFO Extracting embedded bundle crc_libvirt_4.9.12.crcbu:moneybag:ndle to /home/jegan/.crc/cache 
 INFO Uncompressing crc_libvirt_4.9.12.crcbundle   
 crc.qcow2: 11.69 GiB / 11.69 GiB [------------------------------------------------------] 100.00%
 oc: 117.16 MiB / 117.16 MiB [-----------------------------------------------------------] 100.00%
@@ -208,10 +208,10 @@ On Demand Linux Amazon Elastic Compute Cloud running Linux/Unix costed - $420
 - EC2 r5.xlarge Instance ( 4 vCPU with 32 GB RAM - good for memory intensive computing )
 - EC2 m5.2xlarge ( 8 vCPU with 32 GB RAM )
 
-Amazon NAT Gateway costed $94
+Amazon NAT Gateway costed $94 
 Load Balancing - $20 
 
-The total bill was $707(rounded) :angry: including :disappointed: :disappointed: GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for :heavy_check_mark: corporates i.e Development :heavy_check_mark: & Production :heavy_check_mark:.
+The total bill was $707(rounded) :angry: including :disappointed: :disappointed: GST $107.83 for 9 Days. This is way too expensive for your learning purpose, this is more suitable for :heavy_check_mark: corporates :moneybag: i.e Development :heavy_check_mark: & Production :heavy_check_mark:.
 
  :-1: Not recommended for self-learning
 
