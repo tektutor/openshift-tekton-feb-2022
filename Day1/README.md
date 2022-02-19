@@ -1,8 +1,16 @@
+# Gentle Requests
+1. Our training lab environment already has OpenShift Cluster pre-installed
+2. Hence, you don't have to perform any installation listed below
+3. The installation procedures listed below are purely meant for your future reference
+4. Any type of OpenShift installation will corrupt our OpenShift cluster, hence kindly co-operate
+5. Please delete your project after you complete each exercise to avoid overloading the OpenShift cluster
+6. Kind request to create only one project per participant
+
 ## OpenShift Installation Options
 1. RedHat OpenShift Code Ready Containers (CRC) - Ideal for self-learning purposes only
-2. RedHat OpenShift Developer Sandbox - ideal for self-learning purposes only
-3. Installer Provisioned Infrastructure (IPI) - Ideal for Development & Production
-4. User Provisioned Infrastructure (UPI) - Ideal for Development & Production
+2. RedHat OpenShift Developer Sandbox - Ideal for self-learning purposes only
+3. Installer Provisioned Infrastructure (IPI) - Ideal for R&D, Development & Production
+4. User Provisioned Infrastructure (UPI) - Ideal for Learning, R&D, Development & Production
 
 ## Installing RedHat OpenShift Code Ready Containers (CRC)
 Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
@@ -16,6 +24,8 @@ sudo mv ./kubectl /usr/bin
 When prompted for password, type administrator password of your Linux OS.
 
 ## Installing Code Ready Containers in Linux
+Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help your try this in your personal laptop/desktop post the training for your self-learning purposes only.
+
 ```
 cd /home/alchemy/Downloads
 tar xvf crc-linux-amd64.tar.xz
@@ -234,6 +244,15 @@ As part of RedHat Enterprise Core OS, we get kubelet and CRI-O container runtime
 
 Our OpenShift version is 4.9.21 which uses Kubernetes v1.22.3.x
 
+There are 2 such separate OpenShift clusters setup for our training lab.
+
+Each OpenShift cluster supports upto 10 users.
+
+OpenShift Cluster - 1 ( 10 Users - user1 thru user10 )
+OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
+
+Kindly stick onto the credentials details give to you.  Please avoid switching from one user to other or switching between the clusters as this will overload our cluster leading to many deployments crashing. This might even bring down our cluster altogether. Hence your kind co-operation is requested.
+
 ##### Login to OpenShift Cluster using CLI client
 ```
 oc login -u kubeadmin https://api.tektutor.okd4.tektutor.org:6443
@@ -434,6 +453,8 @@ worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
 
 Let's remove the worker role from the master nodes
+
+Please do not attempt this in our training lab as this will affect the overall number of Pods that can be deployed in our OpenShift cluster.  
 
 ```
 oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'
