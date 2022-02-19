@@ -1,3 +1,19 @@
+### OpenShift Installation Options
+1. RedHat OpenShift Code Ready Containers (CRC) - used for learning purposes only
+2. RedHat OpenShift Developer Sandbox - used for learning purposes only
+3. Installer Provisioned Installation (IPI) - used for development & production
+4. User Provisioned Installation (UPI) - used for development & production
+
+### Installing RedHat OpenShift Code Ready Containers (CRC)
+
+### Using RedHat OpenShift Developer Sandbox for Free for learning purposes
+https://developers.redhat.com/developer-sandbox?source=sso
+
+### OpenShift Installer Provisioned Installation (IPI)
+
+### OpenShift User Provisioned Installtion (UPI)
+
+
 ### Login to OpenShift Cluster using CLI client
 ```
 oc login -u kubeadmin https://api.tektutor.okd4.tektutor.org:6443
