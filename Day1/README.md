@@ -276,9 +276,10 @@ Please avoid switching from one user to other.
 Please avoid switching between the clusters.
 </pre>
 
-:information_source: What will happen if I don't follow the above?
+##### :information_source: What will happen if I don't follow the above requests?
 <pre>
-If you keep switching or create numerous deployments, it will overload our cluster leading to many of our deployments crashing. This might even bring down our cluster altogether. 
+It will overload our cluster leading to many of our deployments crashing. 
+This might even bring down our cluster altogether. 
 Hence your kind co-operation is requested.
 </pre>
 
