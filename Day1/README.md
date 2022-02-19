@@ -51,7 +51,7 @@ INFO Checking if active user/process is currently part of the libvirt group
 INFO Checking if libvirt daemon is running        
 INFO Checking if a supported libvirt version is installed 
 INFO Checking if crc-driver-libvirt is installed  
-INFO Installing crc-driver-libvirt                
+INFO Installing crc-driver-libvirt                expose
 INFO Checking crc daemon systemd service          
 INFO Setting up crc daemon systemd service        
 INFO Checking crc daemon systemd socket units     
@@ -140,7 +140,7 @@ Log in as administrator:
   Username: kubeadmin
   Password: B8XxM-aY9yz-zhwJY-5HU7d
 
-Log in as user:
+Log in as user:expose
   Username: developer
   Password: developer
 
@@ -232,12 +232,12 @@ https://docs.openshift.com/container-platform/4.9/installing/index.html
      - 2 worker Virtual machines are created to setup the OpenShift cluster with 2 Worker Nodes
      - 1 LoadBalancer virtual machines with HAProxy is setup to make the cluster accessible.  
 
-- Master Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0(Ootpa)
+- Master Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0 [Ootpa])
   - 8 Virtual Cores
   - 64 GB RAM
   - 500 GB HDD Storage
 
-- Worker Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0(Ootpa)
+- Worker Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0[Ootpa])
   - 8 Virtual Cores
   - 64 GB RAM
   - 500 GB HDD Storage
