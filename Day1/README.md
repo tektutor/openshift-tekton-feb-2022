@@ -1186,8 +1186,8 @@ oc delete svc nginx
 The expected output is
 
 <pre>
-jegan@tektutor:~$ oc get svc
-NAME    TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+jegan@tektutor:~$ <b>oc get svc</b>
+<b>NAME    TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE</b>
 nginx   NodePort   172.30.8.94   <none>        8081:31030/TCP   14h
 jegan@tektutor:~$ oc delete svc nginx
 service "nginx" deleted
@@ -1202,12 +1202,12 @@ oc expose deploy nginx --type=LoadBalancer --port=8081
 The expected output is
 <pre>
 jegan@tektutor:~$ <b>oc get deploy</b>
-NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+<b>NAME    READY   UP-TO-DATE   AVAILABLE   AGE</b>
 nginx   5/5     5            5           14h
 jegan@tektutor:~$ <b>oc expose deploy nginx --type=LoadBalancer --port=8081</b>
 service/nginx exposed
 jegan@tektutor:~$ <b>oc get svc</b>
-NAME    TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+<b>NAME    TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE</b>
 nginx   LoadBalancer   172.30.94.17   <pending>     8081:31918/TCP   4s
 jegan@tektutor:~$ <b>oc describe svc nginx</b>
 Name:                     nginx
@@ -1247,7 +1247,7 @@ curl worker-2.tektutor.tektutor.org:31918
 The expected output is
 
 <pre>
-jegan@tektutor:~$ curl master-1.tektutor.tektutor.org:31918
+jegan@tektutor:~$ <b>curl master-1.tektutor.tektutor.org:31918</b>
 <!DOCTYPE html>
 <html>
 <head>
@@ -1333,7 +1333,7 @@ If you don't see a command prompt, try pressing enter.
 root@dnstest:/# root@dnstest:/# 
 root@dnstest:/# 
 root@dnstest:/# curl nginx:8081
-<b>ash: curl: command not found</b>
+<b>bash: curl: command not found</b>
 root@dnstest:/# <b>apt update && apt install -y curl</b>
 Ign http://archive.ubuntu.com trusty InRelease
 Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
