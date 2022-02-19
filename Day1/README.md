@@ -1255,3 +1255,243 @@ Commercial support is available at
 </body>
 </html>
 </pre>
+
+##### Creating a ClusterIP Service for nginx deployment
+
+We need to delete any existing service for nginx deployment before we can create the ClusterIP service for nginx deployment.
+
+```
+oc delete svc/nginx
+```
+
+Now let's create the ClusterIP internal service for nginx deployment
+
+```
+oc expose deploy/nginx --type=ClusterIP --port=8081
+oc get svc
+oc describe svc/nginx 
+```
+
+As ClusterIP service is an internal service, it is accessible only within the OpenShift cluster as opposed to NodePort or LoadBalancer services.  Hence we need to attempt to access the ClusterIP from a Pod shell as the Pod is running within the Cluster, service discovery works as expected.
+
+Let's create a dnstest pod to access the nginx clusterip service from its shell
+
+```
+oc run dnstest -it --restart Never --rm --image tutum/dnsutils bash
+```
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc delete svc nginx</b>
+service "nginx" deleted
+jegan@tektutor:~$ <b>oc expose deploy/nginx --type=ClusterIP --port=8081</b>
+service/nginx exposed
+jegan@tektutor:~$ <b>oc get svc</b>
+<b>NAME    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE</b>
+nginx   ClusterIP   172.30.69.35   <none>        8081/TCP   3s
+jegan@tektutor:~$ <b>oc describe svc/nginx</b>
+Name:              nginx
+Namespace:         jegan
+Labels:            app=nginx
+                   app.kubernetes.io/component=nginx
+                   app.kubernetes.io/instance=nginx
+Annotations:       <none>
+Selector:          deployment=nginx
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                172.30.69.35
+IPs:               172.30.69.35
+Port:              <unset>  8081/TCP
+TargetPort:        8081/TCP
+Endpoints:         10.128.2.23:8081,10.128.2.26:8081,10.128.2.27:8081 + 2 more...
+Session Affinity:  None
+Events:            <none>
+jegan@tektutor:~$ <b>oc run dnstest -it --restart Never --rm --image tutum/dnsutils bash</b>
+
+If you don't see a command prompt, try pressing enter.
+
+root@dnstest:/# root@dnstest:/# 
+root@dnstest:/# 
+root@dnstest:/# curl nginx:8081
+<b>ash: curl: command not found</b>
+root@dnstest:/# <b>apt update && apt install -y curl</b>
+Ign http://archive.ubuntu.com trusty InRelease
+Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
+Get:2 http://archive.ubuntu.com trusty-security InRelease [65.9 kB]
+Get:3 http://archive.ubuntu.com trusty Release.gpg [933 B]
+Get:4 http://archive.ubuntu.com trusty Release [58.5 kB]        
+Get:5 http://archive.ubuntu.com trusty-updates/main Sources [532 kB]
+Get:6 http://archive.ubuntu.com trusty-updates/restricted Sources [6444 B]     
+Get:7 http://archive.ubuntu.com trusty-updates/universe Sources [288 kB]       
+Get:8 http://archive.ubuntu.com trusty-updates/main amd64 Packages [1460 kB]   
+Get:9 http://archive.ubuntu.com trusty-updates/restricted amd64 Packages [21.4 kB]
+Get:10 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [671 kB]
+Get:11 http://archive.ubuntu.com trusty-security/main Sources [220 kB]         
+Get:12 http://archive.ubuntu.com trusty-security/restricted Sources [5050 B]   
+Get:13 http://archive.ubuntu.com trusty-security/universe Sources [127 kB]     
+Get:14 http://archive.ubuntu.com trusty-security/main amd64 Packages [1032 kB] 
+Get:15 http://archive.ubuntu.com trusty-security/restricted amd64 Packages [18.1 kB]
+Get:16 http://archive.ubuntu.com trusty-security/universe amd64 Packages [378 kB]
+Get:17 http://archive.ubuntu.com trusty/main Sources [1335 kB]                 
+Get:18 http://archive.ubuntu.com trusty/restricted Sources [5335 B]            
+Get:19 http://archive.ubuntu.com trusty/universe Sources [7926 kB]             
+Get:20 http://archive.ubuntu.com trusty/main amd64 Packages [1743 kB]          
+Get:21 http://archive.ubuntu.com trusty/restricted amd64 Packages [16.0 kB]    
+Get:22 http://archive.ubuntu.com trusty/universe amd64 Packages [7589 kB]      
+Fetched 23.6 MB in 14s (1608 kB/s)                                             
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+  ca-certificates libasn1-8-heimdal libcurl3 libgssapi3-heimdal
+  libhcrypto4-heimdal libheimbase1-heimdal libheimntlm0-heimdal
+  libhx509-5-heimdal libidn11 libkrb5-26-heimdal libldap-2.4-2
+  libroken18-heimdal librtmp0 libsasl2-2 libsasl2-modules libsasl2-modules-db
+  libwind0-heimdal openssl
+Suggested packages:
+  libsasl2-modules-otp libsasl2-modules-ldap libsasl2-modules-sql
+  libsasl2-modules-gssapi-mit libsasl2-modules-gssapi-heimdal
+The following NEW packages will be installed:
+  ca-certificates curl libasn1-8-heimdal libcurl3 libgssapi3-heimdal
+  libhcrypto4-heimdal libheimbase1-heimdal libheimntlm0-heimdal
+  libhx509-5-heimdal libidn11 libkrb5-26-heimdal libldap-2.4-2
+  libroken18-heimdal librtmp0 libsasl2-2 libsasl2-modules libsasl2-modules-db
+  libwind0-heimdal openssl
+0 upgraded, 19 newly installed, 0 to remove and 111 not upgraded.
+Need to get 2152 kB of archives.
+After this operation, 6868 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libroken18-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [39.9 kB]
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libasn1-8-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [160 kB]
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libhcrypto4-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [84.1 kB]
+Get:4 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libheimbase1-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [29.0 kB]
+Get:5 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libwind0-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [47.9 kB]
+Get:6 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libhx509-5-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [104 kB]
+Get:7 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libkrb5-26-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [196 kB]
+Get:8 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libheimntlm0-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [15.2 kB]
+Get:9 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libgssapi3-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.2 [89.7 kB]
+Get:10 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libidn11 amd64 1.28-1ubuntu2.2 [94.6 kB]
+Get:11 http://archive.ubuntu.com/ubuntu/ trusty/main libsasl2-modules-db amd64 2.1.25.dfsg1-17build1 [14.9 kB]
+Get:12 http://archive.ubuntu.com/ubuntu/ trusty/main libsasl2-2 amd64 2.1.25.dfsg1-17build1 [56.5 kB]
+Get:13 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libldap-2.4-2 amd64 2.4.31-1+nmu2ubuntu8.5 [153 kB]
+Get:14 http://archive.ubuntu.com/ubuntu/ trusty-updates/main librtmp0 amd64 2.4+20121230.gitdf6c518-1ubuntu0.1 [50.4 kB]
+Get:15 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libcurl3 amd64 7.35.0-1ubuntu2.20 [173 kB]
+Get:16 http://archive.ubuntu.com/ubuntu/ trusty-updates/main openssl amd64 1.0.1f-1ubuntu2.27 [489 kB]
+Get:17 http://archive.ubuntu.com/ubuntu/ trusty-updates/main ca-certificates all 20170717~14.04.2 [166 kB]
+Get:18 http://archive.ubuntu.com/ubuntu/ trusty/main libsasl2-modules amd64 2.1.25.dfsg1-17build1 [64.3 kB]
+Get:19 http://archive.ubuntu.com/ubuntu/ trusty-updates/main curl amd64 7.35.0-1ubuntu2.20 [123 kB]
+Fetched 2152 kB in 6s (340 kB/s)                                               
+Preconfiguring packages ...
+Selecting previously unselected package libroken18-heimdal:amd64.
+(Reading database ... 11700 files and directories currently installed.)
+Preparing to unpack .../libroken18-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libroken18-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libasn1-8-heimdal:amd64.
+Preparing to unpack .../libasn1-8-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libasn1-8-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libhcrypto4-heimdal:amd64.
+Preparing to unpack .../libhcrypto4-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libhcrypto4-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libheimbase1-heimdal:amd64.
+Preparing to unpack .../libheimbase1-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libheimbase1-heimdal:amd64 (1.6~git20131207+dfoc run dnstest -it --restart Never --rm --image tutum/dnsutils bashsg-1ubuntu1.2) ...
+Selecting previously unselected package libwind0-heimdal:amd64.
+Preparing to unpack .../libwind0-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libwind0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libhx509-5-heimdal:amd64.
+Preparing to unpack .../libhx509-5-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libhx509-5-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libkrb5-26-heimdal:amd64.
+Preparing to unpack .../libkrb5-26-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libkrb5-26-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libheimntlm0-heimdal:amd64.
+Preparing to unpack .../libheimntlm0-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libheimntlm0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libgssapi3-heimdal:amd64.
+Preparing to unpack .../libgssapi3-heimdal_1.6~git20131207+dfsg-1ubuntu1.2_amd64.deb ...
+Unpacking libgssapi3-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Selecting previously unselected package libidn11:amd64.
+Preparing to unpack .../libidn11_1.28-1ubuntu2.2_amd64.deb ...
+Unpacking libidn11:amd64 (1.28-1ubuntu2.2) ...
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../libsasl2-modules-db_2.1.25.dfsg1-17build1_amd64.deb ...
+Unpacking libsasl2-modules-db:amd64 (2.1.25.dfsg1-17build1) ...
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../libsasl2-2_2.1.25.dfsg1-17build1_amd64.deb ...
+Unpacking libsasl2-2:amd64 (2.1.25.dfsg1-17build1) ...
+Selecting previously unselected package libldap-2.4-2:amd64.
+Preparing to unpack .../libldap-2.4-2_2.4.31-1+nmu2ubuntu8.5_amd64.deb ...
+Unpacking libldap-2.4-2:amd64 (2.4.31-1+nmu2ubuntu8.5) ...
+Selecting previously unselected package librtmp0:amd64.
+Preparing to unpack .../librtmp0_2.4+20121230.gitdf6c518-1ubuntu0.1_amd64.deb ...
+Unpacking librtmp0:amd64 (2.4+20121230.gitdf6c518-1ubuntu0.1) ...
+Selecting previously unselected package libcurl3:amd64.
+Preparing to unpack .../libcurl3_7.35.0-1ubuntu2.20_amd64.deb ...
+Unpacking libcurl3:amd64 (7.35.0-1ubuntu2.20) ...
+Selecting previously unselected package openssl.
+Preparing to unpack .../openssl_1.0.1f-1ubuntu2.27_amd64.deb ...
+Unpacking openssl (1.0.1f-1ubuntu2.27) ...
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../ca-certificates_20170717~14.04.2_all.deb ...
+Unpacking ca-certificates (20170717~14.04.2) ...
+Selecting previously unselected package libsasl2-modules:amd64.
+Preparing to unpack .../libsasl2-modules_2.1.25.dfsg1-17build1_amd64.deb ...
+Unpacking libsasl2-modules:amd64 (2.1.25.dfsg1-17build1) ...
+Selecting previously unselected package curl.
+Preparing to unpack .../curl_7.35.0-1ubuntu2.20_amd64.deb ...
+Unpacking curl (7.35.0-1ubuntu2.20) ...
+Setting up libroken18-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libasn1-8-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libhcrypto4-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libheimbase1-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libwind0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libhx509-5-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libkrb5-26-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libheimntlm0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libgssapi3-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.2) ...
+Setting up libidn11:amd64 (1.28-1ubuntu2.2) ...
+Setting up libsasl2-modules-db:amd64 (2.1.25.dfsg1-17build1) ...
+Setting up libsasl2-2:amd64 (2.1.25.dfsg1-17build1) ...
+Setting up libldap-2.4-2:amd64 (2.4.31-1+nmu2ubuntu8.5) ...
+Setting up librtmp0:amd64 (2.4+20121230.gitdf6c518-1ubuntu0.1) ...
+Setting up libcurl3:amd64 (7.35.0-1ubuntu2.20) ...
+Setting up openssl (1.0.1f-1ubuntu2.27) ...
+Setting up ca-certificates (20170717~14.04.2) ...
+Setting up libsasl2-modules:amd64 (2.1.25.dfsg1-17build1) ...
+Setting up curl (7.35.0-1ubuntu2.20) ...
+Processing triggers for libc-bin (2.19-0ubuntu6.6) ...
+Processing triggers for ca-certificates (20170717~14.04.2) ...
+Updating certificates in /etc/ssl/certs... 148 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d....done.
+root@dnstest:/# <b>curl nginx:8081</b>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+Welcome to nginx!
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+root@dnstest:/# exit
+exit
+pod "dnstest" deleted
+jegan@tektutor:~$
+</pre>
