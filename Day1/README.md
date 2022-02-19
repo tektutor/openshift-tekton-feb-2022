@@ -172,9 +172,17 @@ oc login -u kubeadmin https://api.crc.testing:6443
 https://developers.redhat.com/developer-sandbox?source=sso
 
 ## OpenShift Installer Provisioned Installation (IPI)
+This mode of OpenShift installation is preferred in case you wish to perform the OpenShift installation in Cloud environments or with VMWare vSphere, etc.,
 
-## OpenShift User Provisioned Installtion (UPI)
+However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
 
+You may refer more details about this in the official documentation
+https://docs.openshift.com/container-platform/4.9/installing/index.html
+
+## OpenShift User Provisioned Infrastructure (UPI)
+This mode of OpenShift installation is highly preferred and flexible in many cases. This approach let's you take control of the installation process, allows you to customizing things giving more flexibily in setting up your OpenShift in your own preferred way. 
+
+But this involves doing everything manually yourself.  This is a very lengthy process and many things can go wrong during the installation, hence installing OpenShift using approach involves several attempts but the end result almost always will be fruitful as you would have learned many things along the way :)
 
 ## Understanding our Training Lab OpenShift Setup
 Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
