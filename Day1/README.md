@@ -1621,7 +1621,7 @@ oc status
 
 The expected output is
 <pre>
-egan@tektutor:~$ <b>oc status</b>
+jegan@tektutor:~$ <b>oc status</b>
 In project jegan on server https://api.tektutor.tektutor.org:6443
 
 deployment/spring-ms deploys istag/spring-ms:latest <-
@@ -1631,4 +1631,16 @@ deployment/spring-ms deploys istag/spring-ms:latest <-
 
 
 2 warnings, 1 info identified, use 'oc status --suggest' to see details.
+</pre>
+
+Let us now check, how many pods are running
+```
+oc get po
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc get po</b>
+<b>NAME                READY   STATUS     RESTARTS   AGE</b>
+spring-ms-1-build   0/1     Init:0/2   0          3s
 </pre>
