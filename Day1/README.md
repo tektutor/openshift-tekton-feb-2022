@@ -161,10 +161,11 @@ Make sure
 3. You have alteast 8 vCPU in your system
 
 Try to stop and start
+
 ```
 ./crc stop
 ./crc start
-```107.83
+```
 
 ##### Login to CRC Cluster as a developer via CLI
 ```
