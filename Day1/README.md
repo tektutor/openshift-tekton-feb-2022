@@ -81,7 +81,7 @@ Your system is correctly setup for using CodeReady Containers, you can now run '
 ```
 The expected output is
 <pre>
-[jegan@tektutor crc-linux-1.38.0-amd64]$ <b>./crc start<b>
+[jegan@tektutor crc-linux-1.38.0-amd64]$ <b>./crc start</b>
 INFO Checking if running as non-root              
 INFO Checking if running inside WSL2              
 INFO Checking if crc-admin-helper executable is cached 
