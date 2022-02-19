@@ -14,6 +14,39 @@ https://developers.redhat.com/developer-sandbox?source=sso
 ### OpenShift User Provisioned Installtion (UPI)
 
 
+### Understanding our Training Lab OpenShift Setup
+Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
+
+You may refer the official documentation for detailed installation instructions 
+https://docs.openshift.com/container-platform/4.9/installing/index.html
+
+- RedHat CentOS 7.9 64-bit OS is installed on the Server directly as base OS.
+- Within RedHat CentOS 7.9, KVM Opensource Hypervisor is installed for Virtualization
+- Using KVM ( Kernal-based Virtual Machine ) 6 Virtual Machines were created within RedHat CentOS v7.9
+     - 3 master virtual machines are created to setup the OpenShift cluster with 3 Master Nodes
+     - 2 worker Virtual machines are created to setup the OpenShift cluster with 2 Worker Nodes
+     - 1 LoadBalancer virtual machines with HAProxy is setup to expose the cluster accessible.  
+
+- Master Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0(Ootpa)
+  - 8 Virtual Cores
+  - 64 GB RAM
+  - 500 GB HDD Storage
+
+- Worker Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0(Ootpa)
+  - 8 Virtual Cores
+  - 64 GB RAM
+  - 500 GB HDD Storage
+
+- LoadBalancer (HAProxy - Centos 7 cloud image: CentOS-7-x86_64-GenericCloud.qcow2)
+  - 2 Virtual Cores
+  - 16 GB RAM
+  - 100 GB HDD Storage
+
+As part of RedHat Enterprise Core OS, we get kubelet and CRI-O container runtime out of the box on all master and worker nodes.
+
+Our OpenShift version is 4.9.21 which uses Kubernetes v1.22.3.x
+
+
 ### Login to OpenShift Cluster using CLI client
 ```
 oc login -u kubeadmin https://api.tektutor.okd4.tektutor.org:6443
