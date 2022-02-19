@@ -1155,3 +1155,59 @@ Commercial support is available at
 </body>
 </html>
 </pre>
+
+##### Creating a LoadBalancer external service
+As we can't create more than one service type per deployment, we need to delete the existing NodePort service for the nginx deployment before we can create LoadBalancer service.
+
+```
+oc get svc
+oc delete svc nginx
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ oc get svc
+NAME    TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+nginx   NodePort   172.30.8.94   <none>        8081:31030/TCP   14h
+jegan@tektutor:~$ oc delete svc nginx
+service "nginx" deleted
+</pre>
+
+Now let's create the LoadBalancer external service for nginx deployment
+
+```
+oc expose deploy nginx --type=LoadBalancer --port=8081
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc get deploy</b>
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+nginx   5/5     5            5           14h
+jegan@tektutor:~$ <b>oc expose deploy nginx --type=LoadBalancer --port=8081</b>
+service/nginx exposed
+jegan@tektutor:~$ <b>oc get svc</b>
+NAME    TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+nginx   LoadBalancer   172.30.94.17   <pending>     8081:31918/TCP   4s
+jegan@tektutor:~$ <b>oc describe svc nginx</b>
+Name:                     nginx
+Namespace:                jegan
+Labels:                   app=nginx
+                          app.kubernetes.io/component=nginx
+                          app.kubernetes.io/instance=nginx
+Annotations:              <none>
+Selector:                 deployment=nginx
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       172.30.94.17
+IPs:                      172.30.94.17
+Port:                     <unset>  8081/TCP
+TargetPort:               8081/TCP
+NodePort:                 <unset>  31918/TCP
+Endpoints:                10.128.2.23:8081,10.128.2.26:8081,10.128.2.27:8081 + 2 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+</pre>
