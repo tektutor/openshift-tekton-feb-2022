@@ -1,4 +1,4 @@
-:warning: 
+:info: 
 ## Gentle Requests
 1. Our training lab environment already has OpenShift Cluster pre-installed
 2. Hence, you don't have to perform any installation listed below
