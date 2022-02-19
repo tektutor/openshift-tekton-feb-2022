@@ -3,7 +3,7 @@
 1. Our training lab environment already has OpenShift Cluster pre-installed
 2. Hence, you don't have to perform any installation listed below
 3. The installation procedures listed below are purely meant for your future reference
-4. Any type of OpenShift installation will corrupt our OpenShift cluster, hence kindly co-operate
+4. Any type of OpenShift installation will corrupt our OpenShift clus:question:ter, hence kindly co-operate
 5. Please delete your project after you complete each exercise to avoid overloading the OpenShift cluster
 6. Kind request to create only one project per participant
 
@@ -242,7 +242,7 @@ https://docs.openshift.com/container-platform/4.9/installing/index.html
      - 2 worker Virtual machines are created to setup the OpenShift cluster with 2 Worker Nodes
      - 1 LoadBalancer virtual machines with HAProxy is setup to make the cluster accessible.  
 
-- Master Node Virtual Machine Hardware Configuration (RedHat Enterprise Linux Core OS - v49.84.202202081504-0 [Ootpa])
+- Master Node Virtual Machine Hardware Configuration (RedHat Enterpri:question:se Linux Core OS - v49.84.202202081504-0 [Ootpa])
   - 8 Virtual Cores
   - 64 GB RAM
   - 500 GB HDD Storage
@@ -276,7 +276,7 @@ Please avoid switching from one user to other.
 Please avoid switching between the clusters.
 </pre>
 
-##### :information_source: What will happen if I don't follow the above requests?
+##### :question: What will happen if I don't follow the above requests?
 <pre>
 It will overload our cluster leading to many of our deployments crashing. 
 This might even bring down our cluster altogether. 
