@@ -1552,3 +1552,14 @@ Commercial support is available at
 </body>
 </html>
 </pre>
+
+## Let's delete the project to clean up all the deployments, services, routes, etc we created earlier
+```
+oc delete project jegan
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>oc delete project jegan</b>
+project.project.openshift.io "jegan" deleted
+</pre>
