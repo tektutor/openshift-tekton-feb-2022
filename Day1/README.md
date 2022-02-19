@@ -489,6 +489,8 @@ worker-1.tektutor.tektutor.org   280m         5%     1221Mi          8%
 worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%        
 </pre>
 
+Actually, the lab setup you are using is much more powerful than my local lab.  As my local lab workstation has 48 Virtual Cores, 128 GB RAM and 1 TB SSD, while the training lab that you are using has got 64 Virtual Cores, 512 GB RAM and 6 TB SSD.  Hence the above output would vary, which is expected.
+
 ##### Removing worker role from master node
 
 :x: Please don't attempt this in our training lab.
