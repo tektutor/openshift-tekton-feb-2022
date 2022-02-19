@@ -1211,3 +1211,47 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
+
+##### Accessing the LoadBalancer external service
+LoadBalancer type of Service is useful in creating in provisioning a LoadBalancer in AWS/Azure/GCP, etc
+
+But when we create a LoadBalancer service in local openshift cluster, it works like a NodePort service. 
+
+```
+curl master-1.tektutor.tektutor.org:31918
+curl master-2.tektutor.tektutor.org:31918
+curl master-3.tektutor.tektutor.org:31918
+curl worker-1.tektutor.tektutor.org:31918
+curl worker-2.tektutor.tektutor.org:31918
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~$ curl master-1.tektutor.tektutor.org:31918
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+Welcome to nginx!
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+</pre>
