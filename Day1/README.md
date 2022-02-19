@@ -215,9 +215,9 @@ But this involves doing everything manually yourself.  This is a very lengthy pr
 
 I remember the first time I attempted this it took about 7 days to get my cluster up and running. The official documentations are very exhaustive and no single approach works in all environment, hence there are always many missing pieces of information that is required for your environment which you will have to figure out yourself.  Sometimes it takes few hours and sometimes it takes few days to find out the missing piece of information. It is like solving a puzzle.
 
-I help organizations in setting up Production Grade OpenShift Cluster, you may hire me as a Freelance Consultant. 
+I help organizations in setting up Production Grade OpenShift Cluster, many organizations hire me as a Freelance Consultant on need basis. 
 
-I can be reached - jegan@tektutor.org
+In case you are looking for a Consultant, you know how to reach me now - jegan@tektutor.org
 
 ## Understanding our Training Lab OpenShift Setup
 Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
