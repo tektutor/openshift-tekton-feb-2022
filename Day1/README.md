@@ -216,7 +216,7 @@ The total bill was $707(rounded) :angry: including :angry: :angry: GST $107.83 f
 You may refer more details about this in the official documentation
 https://docs.openshift.com/container-platform/4.9/installing/index.html
 
-## OpenShift User Provisioned Infrastructure (UPI)
+## :heavy_check_mark: OpenShift User Provisioned Infrastructure (UPI)
 This mode of OpenShift installation is highly preferred and flexible in many cases. This approach let's you take control of the installation process, allows you to customize things giving more flexibily in setting up your OpenShift in your own preferred way. 
 
 But this involves doing everything manually yourself.  This is a very lengthy process and many things can go wrong during the installation, hence installing OpenShift using approach involves several attempts but the end result almost always will be fruitful as you would have learned many things along the way :)
@@ -225,7 +225,7 @@ I remember the first time I attempted this it took about 7 days to get my cluste
 
 I help organizations in setting up Production Grade OpenShift Cluster, many organizations hire me as a Freelance Consultant on need basis. 
 
-In case you are looking for a Consultant, you know how to reach me now - jegan@tektutor.org
+In case you are looking for a Consultant, you know how to reach me now :sunglasses: - jegan@tektutor.org
 
 ## Understanding our Training Lab OpenShift Setup
 Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
