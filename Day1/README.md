@@ -982,7 +982,7 @@ Events:
   Normal  SuccessfulCreate  8m30s  replicaset-controller  Created pod: nginx-5dd56f5c87-qg9vv
 </pre>
 
-### Finding more details of a deployment
+### Finding details of a deployment
 ```
 oc describe deploy/nginx
 ```
