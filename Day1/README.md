@@ -1,8 +1,9 @@
 # RedHat OpenShift Container Platform (OCP)
-<pre>
 For training/consulting/coaching, you may reach me
-jegan@tektutor.org
-+91 822-000-5626 (WhatsApp)
+
+<pre>
+    jegan@tektutor.org
+    +91 822-000-5626 (WhatsApp)
 </pre>
 
 ## ℹ️ Things to note 
