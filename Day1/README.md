@@ -255,6 +255,7 @@ NICs : 4
 512 GB RAM
 6 TB HDD
 </pre>
+The Server with this kind of configuration might cost you Rs.10,00,000+ 
 
 We have used two such servers to setup our Lab with two OpenShift Clusters.
 
