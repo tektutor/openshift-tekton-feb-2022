@@ -305,7 +305,7 @@ Please avoid switching from one user to other.
 Please avoid switching between the clusters.
 Please create only one project per participant as the Cluster is shared by 10 participants.
 Please use your name as the project name so we can easily manage them.
-At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 = 100 Pods.
+At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 participants = 100 Pods.
 Once you are done with a lab exercise, please delete the project and recreate with the same name.
 </pre>
 
