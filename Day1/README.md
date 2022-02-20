@@ -772,8 +772,9 @@ vs other participants.
 This also helps unintented deletion of projects created by other participants.
 
 ```
-oc new-project jegan
+oc new-project jegan --description="Projects created by Jegan" --display-name="Jegan's Project"
 ```
+In the above command description and display name are optional.
 
 The expected output is
 <pre>
