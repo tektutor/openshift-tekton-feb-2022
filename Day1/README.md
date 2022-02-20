@@ -311,7 +311,7 @@ Once you are done with a lab exercise, please delete the project and recreate wi
 
 ##### :question: What will happen if I don't follow the above requests?
 <pre>
-- When you switch using other user credentials, actually you will end up using other participant's credential.  
+- When you switch using other user credentials, actually you will end up using other participant's lab machine.  
 - It will be confusing for both of you, as the projects gets switched in your lab everytime other participant 
   switches to his/her project and vice versa on other participants lab environment. 
 - There is a chance that either you or the other participant may delete each other projects.
