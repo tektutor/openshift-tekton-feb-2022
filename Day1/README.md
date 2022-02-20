@@ -513,7 +513,7 @@ worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%
 
 Actually, the lab setup you are using is much more powerful than my local lab.  As my local lab workstation has 48 Virtual Cores, 128 GB RAM and 1 TB SSD, while the training lab that you are using has got 64 Virtual Cores, 512 GB RAM and 6 TB SSD.  Hence the above output would vary, which is expected.
 
-##🍿Demo - Removing worker role from master node
+## 🍿Demo - Removing worker role from master node
 
 :x: Please don't attempt this in our training lab 🔴🔴🔴
 
@@ -685,7 +685,7 @@ worker-1.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 </pre>
 
-##⛹️‍ Lab - Listing the existing projects in OpenShift cluster
+## ⛹️‍ Lab - Listing the existing projects in OpenShift cluster
 ```
 oc get projects
 ```
@@ -762,7 +762,7 @@ openshift-user-workload-monitoring                                Active
 openshift-vsphere-infra                                           Active
 </pre>
 
-##⛹️‍♂️ Lab - Creating a project from command line
+## ⛹️‍♂️ Lab - Creating a project from command line
 
 Though using your name as project name is neither professional nor a best practice. For this training, I
 would suggest use your name as 10 participants are sharing a single OpenShift cluster.  Using your name
@@ -790,7 +790,7 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
 </pre>
 
 
-##⛹️‍ Lab - Creating an application
+## ⛹️‍ Lab - Creating an application
 ```
 oc new-app twalter/openshift-nginx:stable --name nginx
 ```
@@ -846,7 +846,7 @@ jegan@tektutor:~$<b> oc get deploy</b>
 nginx   1/1     1            1           97s
 </pre>
 
-##### ⛹️‍♂️ Lab - List the replicasets under your project
+## ⛹️‍♂️ Lab - List the replicasets under your project
 
 ```
 oc get rs
@@ -861,7 +861,7 @@ nginx-6f99d9668b   0         0         0       101s
 </pre>
 
 
-##### ⛹️‍♀️ Lab - List the pods in your project
+## ⛹️‍♀️ Lab - List the pods in your project
 
 ```
 oc get po
@@ -876,7 +876,7 @@ nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
 </pre>
 
 
-##### ⛹️‍♀️ Lab - Find details of a pod 
+## ⛹️‍♀️ Lab - Find details of a pod 
 
 ```
 oc describe pod nginx-5dd56f5c87-qg9vv
@@ -963,7 +963,7 @@ Events:
   Normal  Started         5m7s   kubelet            Started container nginx
 </pre>
 
-#####⛹️‍♂️ Lab - Find details of a replicaset
+## ⛹️‍♂️ Lab - Find details of a replicaset
 ```
 oc describe rs/nginx-5dd56f5c87
 ```
@@ -1056,7 +1056,7 @@ Events:
   Normal  ScalingReplicaSet  12m   deployment-controller  Scaled down replica set nginx-6f99d9668b to 0
 </pre>
 
-##⛹️‍♀️ Lab - Scaling up a deployment
+## ⛹️‍♀️ Lab - Scaling up a deployment
 ```
 oc scale deploy nginx --replicas=5
 ```
@@ -1084,7 +1084,7 @@ nginx-5dd56f5c87-sv8bj   1/1     Running   0          6s
 nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
 </pre>
 
-##⛹️‍♂️ Lab - Creating a NodePort external service for nginx deployment
+## ⛹️‍♂️ Lab - Creating a NodePort external service for nginx deployment
 
 ```
 oc expose deploy/nginx --type=NodePort --port=80
@@ -1120,7 +1120,7 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
 
-#####⛹️‍♀️ Lab - Accessing the nginx NodePort service
+## ⛹️‍♀️ Lab - Accessing the nginx NodePort service
 
 Nginx NodePort service can be accessed using one the below commands
 
@@ -1197,7 +1197,7 @@ Commercial support is available at
 </html>
 </pre>
 
-##⛹️‍♂️ Lab - Creating a LoadBalancer external service
+## ⛹️‍♂️ Lab - Creating a LoadBalancer external service
 As we can't create more than one service type per deployment, we need to delete the existing NodePort service for the nginx deployment before we can create LoadBalancer service.
 
 ```
@@ -1253,7 +1253,7 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
 
-#####⛹️‍ Lab - Accessing the LoadBalancer external service
+## ⛹️‍ Lab - Accessing the LoadBalancer external service
 LoadBalancer type of Service is useful in creating in provisioning a LoadBalancer in AWS/Azure/GCP, etc
 
 But when we create a LoadBalancer service in local openshift cluster, it works like a NodePort service. 
@@ -1297,7 +1297,7 @@ Commercial support is available at
 </html>
 </pre>
 
-##⛹️‍♀️ Lab - Creating a ClusterIP Service for nginx deployment
+## ⛹️‍♀️ Lab - Creating a ClusterIP Service for nginx deployment
 
 We need to delete any existing service for nginx deployment before we can create the ClusterIP service for nginx deployment.
 
@@ -1575,7 +1575,7 @@ Commercial support is available at
 </html>
 </pre>
 
-##⛹️‍♂️ Lab - Let's delete the project to clean up all the deployments, services, routes, etc we created earlier
+## ⛹️‍♂️ Lab - Let's delete the project to clean up all the deployments, services, routes, etc we created earlier
 ```
 oc delete project jegan
 ```
@@ -1587,7 +1587,7 @@ project.project.openshift.io "jegan" deleted
 </pre>
 
 
-##⛹️‍♀️ Lab - Let's create a new project to try the next lab exercise
+## ⛹️‍♀️ Lab - Let's create a new project to try the next lab exercise
 ```
 oc new-project jegan
 ```
