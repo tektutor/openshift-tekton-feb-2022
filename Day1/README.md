@@ -6,13 +6,36 @@ For training/consulting/coaching, you may reach me
     +91 822-000-5626 (WhatsApp)
 </pre>
 
-## ℹ️ Things to note 
+## ⛔ Need your attention - You don't have to install OpenShift in our Training Lab ⛔
 1. Our training lab environment already has OpenShift Cluster pre-installed
 2. Hence, you don't have to perform any installation listed below
 3. The installation procedures listed below are meant for your future reference
-4. Any type of OpenShift installation in our lab environment will corrupt our OpenShift cluster, hence kindly co-operate
-5. Please delete your project after you complete each exercise to avoid overloading the OpenShift cluster
-6. Kind request to create only one project per participant
+4. Any attempt to perform OpenShift installation in our lab environment will corrupt our OpenShift cluster
+
+## 🔴🔴 Do and Don'ts, please don't get offended :warning ⛔
+<pre>
+Kindly stick onto the credential details given to you.  
+Please avoid switching from one user to other user. 
+Please avoid switching between the clusters.
+Please create only one project per participant as the Cluster is shared by 10 participants.
+Please use your name as the project name so we can easily manage them.
+At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 participants = 100 Pods.
+Once you are done with a lab exercise, please delete the project and recreate with the same name.
+</pre>
+
+## :question: What will happen if I don't follow the above requests?
+<pre>
+- When you switch using other user credentials, actually you will end up using other participant's lab machine.  
+- It will be confusing for both of you, as the projects gets switched in your lab everytime other participant 
+  switches to his/her project and vice versa on other participants lab environment. 
+- There is a chance that either you or the other participant may delete each other projects.
+- It will overload our cluster leading to many of our deployments crashing. 
+- This might even bring down our cluster altogether. 
+- We will lose lot of time in fixing the cluster.
+</pre>
+
+Hence your kind co-operation is requested to deliver this training smoothly.
+
 
 ## ℹ️ OpenShift Installation Options
 1. RedHat OpenShift Code Ready Containers (CRC) - Ideal for self-learning purposes only
@@ -297,30 +320,6 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - Server 2 ( 192.168.1.118 )
    - user41 thru user50 will be using Cluster 2
 </pre>
-
-##### 📑 Do and Don'ts, please don't get offended :warning:
-<pre>
-Kindly stick onto the credential details given to you.  
-Please avoid switching from one user to other. 
-Please avoid switching between the clusters.
-Please create only one project per participant as the Cluster is shared by 10 participants.
-Please use your name as the project name so we can easily manage them.
-At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 participants = 100 Pods.
-Once you are done with a lab exercise, please delete the project and recreate with the same name.
-</pre>
-
-##### :question: What will happen if I don't follow the above requests?
-<pre>
-- When you switch using other user credentials, actually you will end up using other participant's lab machine.  
-- It will be confusing for both of you, as the projects gets switched in your lab everytime other participant 
-  switches to his/her project and vice versa on other participants lab environment. 
-- There is a chance that either you or the other participant may delete each other projects.
-- It will overload our cluster leading to many of our deployments crashing. 
-- This might even bring down our cluster altogether. 
-- We will lose lot of time in fixing the cluster.
-</pre>
-
-Hence your kind co-operation is requested to deliver this training smoothly.
 
 ## ⛹️‍♂️ Lab - Login to OpenShift Cluster using CLI client
 ```
