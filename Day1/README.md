@@ -306,8 +306,8 @@ Please avoid switching between the clusters.
 ##### :question: What will happen if I don't follow the above requests?
 <pre>
 - When you switch using other user credentials, actually you will end up using other participant's credential.  
-- It will be confusing for both of you, as the projects gets switched in your lab everytime other participant switches 
-  to his/her project and vice versa on other participants lab environment. 
+- It will be confusing for both of you, as the projects gets switched in your lab everytime other participant 
+  switches to his/her project and vice versa on other participants lab environment. 
 - There is chance that either you or the other participant may delete each other projects.
 - It will overload our cluster leading to many of our deployments crashing. 
 - This might even bring down our cluster altogether. 
