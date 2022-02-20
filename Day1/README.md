@@ -355,7 +355,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
 
-## ⛹️‍♂️ List Openshift Nodes with IP details
+## ⛹️‍♂️ Lab - List Openshift Nodes with IP details
 ```
 oc get nodes -o wide
 ```
@@ -494,7 +494,7 @@ Allocated resources:
 Events:              <none>
 </pre>
 
-##### ⛹️‍ Lab- Print node usage statistics
+## ⛹️‍ Lab- Print node usage statistics
 ```
 oc adm top nodes
 ```
@@ -515,7 +515,7 @@ Actually, the lab setup you are using is much more powerful than my local lab.  
 
 ##🍿Demo - Removing worker role from master node
 
-:x: Please don't attempt this in our training lab.
+:x: Please don't attempt this in our training lab 🔴🔴🔴
 
 However, I'll give a hands-on demo from my local lab environment.
 
@@ -532,7 +532,7 @@ worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 
 🍿Demo - Let's remove the worker role from the master nodes
 
-:x: Please don't attempt this in our training lab. This will affect the overall number of Pods that can be deployed in our OpenShift cluster.  
+:x: Please don't attempt this in our training lab. This will affect the overall number of Pods that can be deployed in our OpenShift cluster.  🔴🔴🔴
 
 However, I'll give a hands-on demo from my local lab environment.
 
@@ -556,7 +556,7 @@ worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 
 ##🍿Demo - Adding worker role to the master nodes
 
-:x: Please don't attempt this in our training lab. This will affect the overall number of Pods that can be deployed in our OpenShift cluster. 
+:x: Please don't attempt this in our training lab. This will affect the overall number of Pods that can be deployed in our OpenShift cluster 🔴🔴🔴
 
 However, I'll give a hands-on demo from my local lab environment.
 
@@ -574,7 +574,7 @@ worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 
 Now let's add the worker role to all the master nodes in the OpenShift cluster
 
-:x: Please don't attempt this in our training lab.  
+:x: Please don't attempt this in our training lab 🔴🔴🔴
 
 However, I'll give a hands-on demo from my local lab environment.
 
@@ -598,7 +598,7 @@ worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 
 ##🍿Alternatively, you may also edit this to remove the worker role from Master nodes
 
-:x: Please don't attempt this in our training lab.  
+:x: Please don't attempt this in our training lab 🔴🔴🔴
 
 However, I'll give a hands-on demo from my local lab environment.
 
@@ -614,7 +614,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 </pre>
 
-:x: Please don't attempt this in our training lab.  
+:x: Please don't attempt this in our training lab 🔴🔴🔴
 
 However, I'll give a hands-on demo from my local lab environment.
 
