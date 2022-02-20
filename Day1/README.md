@@ -7,10 +7,12 @@ For training/consulting/coaching, you may reach me
 </pre>
 
 ## ⛔ Need your attention - You don't have to install OpenShift in our Training Lab
-1. Our training lab environment already has OpenShift Cluster pre-installed
-2. Hence, you don't have to perform any installation listed below
-3. The installation procedures listed below are meant for your future reference
-4. Any attempt to perform OpenShift installation in our lab environment will corrupt our OpenShift cluster
+<pre>
+Our training lab environment already has OpenShift Cluster pre-installed
+Hence, you don't have to perform any installation listed below
+The installation procedures listed below are meant for your future reference
+Any attempt to perform OpenShift installation in our lab environment will corrupt our OpenShift cluster
+</pre>
 
 ## 🔴🔴 Do and Don'ts, please don't get offended ⛔⛔
 <pre>
