@@ -23,7 +23,7 @@ At any point in time, please do not scale beyond 5 pods per participants, imagin
 Once you are done with a lab exercise, please delete the project and recreate with the same name.
 </pre>
 
-## :question: What will happen if I don't follow the above requests?
+## What will happen if I don't follow the above requests :question::question::question:
 <pre>
 - When you switch using other user credentials, actually you will end up using other participant's lab machine.  
 - It will be confusing for both of you, as the projects gets switched in your lab everytime other participant 
