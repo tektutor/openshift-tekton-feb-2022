@@ -34,8 +34,7 @@ Once you are done with a lab exercise, please delete the project and recreate wi
 - We will lose lot of time in fixing the cluster.
 </pre>
 
-Hence your kind co-operation is requested to deliver this training smoothly.
-
+🧑‍🤝‍🧑 Hence your kind co-operation is requested to deliver this training smoothly.
 
 ## ℹ️ OpenShift Installation Options
 1. RedHat OpenShift Code Ready Containers (CRC) - Ideal for self-learning purposes only 🎓👨‍🎓👩‍🎓
@@ -59,7 +58,7 @@ When prompted for password, type administrator password of your Linux OS.
 ##### ℹ️ Installing Code Ready Containers in Linux
 :x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
-```💲
+```
 cd /home/alchemy/Downloads
 tar xvf crc-linux-amd64.tar.xz
 cd crc-linux-1.38.0-amd64
