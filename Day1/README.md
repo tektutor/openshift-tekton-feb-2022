@@ -30,7 +30,7 @@ When prompted for password, type administrator password of your Linux OS.
 ##### ℹ️ Installing Code Ready Containers in Linux
 :x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
-```
+```💲
 cd /home/alchemy/Downloads
 tar xvf crc-linux-amd64.tar.xz
 cd crc-linux-1.38.0-amd64
@@ -193,7 +193,7 @@ oc login -u kubeadmin https://api.crc.testing:6443
 
 ## ℹ️ Using RedHat OpenShift Developer Sandbox for Free 👨‍🎓
 
-As we already have a working OpenShift Cluster pre-installed, you don't have to do this during the training.
+<em>As we already have a working OpenShift Cluster pre-installed, you don't have to do this during the training.<em>
 
 You may setup a RedHat Cluster almost instantaneously and very helpful for self-learning.  However, some advanced features like Eventing, installing Operators, etc will not work in this Free environment.
 
