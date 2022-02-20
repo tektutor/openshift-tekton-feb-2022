@@ -191,10 +191,12 @@ eval $(./crc oc-env)
 oc login -u kubeadmin https://api.crc.testing:6443
 ```
 
-## ℹ️ Using RedHat OpenShift Developer Sandbox for Free :-1:
+## ℹ️ Using RedHat OpenShift Developer Sandbox for Free 👨‍🎓
+You may setup a RedHat Cluster almost instantaneously and very helpful for self-learning.  However, some advanced features like Eventing, installing Operators, etc will not work in this Free environment.
+
 https://developers.redhat.com/developer-sandbox?source=sso
 
-## ℹ️ OpenShift Installer Provisioned Installation (IPI)
+## ℹ️ OpenShift Installer Provisioned Installation (IPI) 💲💲💲
 This mode of OpenShift installation is preferred if budget is not a constraint and you wish to perform the OpenShift installation in Cloud environments or with VMWare vSphere, etc.,
 
 However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
