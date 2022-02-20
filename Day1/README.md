@@ -9,7 +9,7 @@ For training/consulting/coaching, you may reach me
 ## ℹ️ Things to note 
 1. Our training lab environment already has OpenShift Cluster pre-installed
 2. Hence, you don't have to perform any installation listed below
-3. The installation procedures listed below are purely meant for your future reference
+3. The installation procedures listed below are meant for your future reference
 4. Any type of OpenShift installation in our lab environment will corrupt our OpenShift cluster, hence kindly co-operate
 5. Please delete your project after you complete each exercise to avoid overloading the OpenShift cluster
 6. Kind request to create only one project per participant
