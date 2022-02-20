@@ -38,10 +38,10 @@ Hence your kind co-operation is requested to deliver this training smoothly.
 
 
 ## ℹ️ OpenShift Installation Options
-1. RedHat OpenShift Code Ready Containers (CRC) - Ideal for self-learning purposes only
-2. RedHat OpenShift Developer Sandbox - Ideal for self-learning purposes only
-3. Installer Provisioned Infrastructure (IPI) - Ideal for R&D, Development & Production
-4. User Provisioned Infrastructure (UPI) - Ideal for Learning, R&D, Development & Production
+1. RedHat OpenShift Code Ready Containers (CRC) - Ideal for self-learning purposes only 🎓👨‍🎓👩‍🎓
+2. RedHat OpenShift Developer Sandbox - Ideal for self-learning purposes only 🎓👨‍🎓👩‍🎓
+3. Installer Provisioned Infrastructure (IPI) - Ideal for R&D 🚀🚀 , Development 🕵️‍♀️🕵️‍ and Production ⛈️⛅🌕
+4. User Provisioned Infrastructure (UPI) - Ideal for Learning 👨‍🎓👨‍🎓👩‍, R&D 🚀🚀, Development 🕵️‍♀️🕵️‍ & Production ⛈️⛅🌕
 
 ## ℹ️ Installing RedHat OpenShift Code Ready Containers (CRC)
 :x: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
