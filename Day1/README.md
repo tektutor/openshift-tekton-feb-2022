@@ -303,6 +303,9 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
 Kindly stick onto the credential details given to you.  
 Please avoid switching from one user to other. 
 Please avoid switching between the clusters.
+Please create only one project per participant as the Cluster is shared by 10 participants.
+At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 = 100 Pods.
+Once you are done with a lab exercise, please delete the project and recreate with the same name.
 </pre>
 
 ##### :question: What will happen if I don't follow the above requests?
@@ -310,7 +313,7 @@ Please avoid switching between the clusters.
 - When you switch using other user credentials, actually you will end up using other participant's credential.  
 - It will be confusing for both of you, as the projects gets switched in your lab everytime other participant 
   switches to his/her project and vice versa on other participants lab environment. 
-- There is chance that either you or the other participant may delete each other projects.
+- There is a chance that either you or the other participant may delete each other projects.
 - It will overload our cluster leading to many of our deployments crashing. 
 - This might even bring down our cluster altogether. 
 - We will lose lot of time in fixing the cluster.
