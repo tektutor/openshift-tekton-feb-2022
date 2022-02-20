@@ -494,7 +494,7 @@ Allocated resources:
 Events:              <none>
 </pre>
 
-## ⛹️‍ Lab- Print node usage statistics
+## ⛹️‍ Lab - Print node usage statistics
 ```
 oc adm top nodes
 ```
@@ -1251,7 +1251,7 @@ Endpoints:                10.128.2.23:8081,10.128.2.26:8081,10.128.2.27:8081 + 2
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
-</pre>
+</pre>4. 
 
 ## ⛹️‍ Lab - Accessing the LoadBalancer external service
 LoadBalancer type of Service is useful in creating in provisioning a LoadBalancer in AWS/Azure/GCP, etc
