@@ -1,5 +1,6 @@
+# RedHat OpenShift Container Platform (OCP)
 
-## Things to note :information_source:
+## ℹ️ Things to note 
 1. Our training lab environment already has OpenShift Cluster pre-installed
 2. Hence, you don't have to perform any installation listed below
 3. The installation procedures listed below are purely meant for your future reference
@@ -7,16 +8,18 @@
 5. Please delete your project after you complete each exercise to avoid overloading the OpenShift cluster
 6. Kind request to create only one project per participant
 
-## OpenShift Installation Options
+## ℹ️ OpenShift Installation Options
 1. RedHat OpenShift Code Ready Containers (CRC) - Ideal for self-learning purposes only
 2. RedHat OpenShift Developer Sandbox - Ideal for self-learning purposes only
 3. Installer Provisioned Infrastructure (IPI) - Ideal for R&D, Development & Production
 4. User Provisioned Infrastructure (UPI) - Ideal for Learning, R&D, Development & Production
 
-## Installing RedHat OpenShift Code Ready Containers (CRC)
+## ℹ️ Installing RedHat OpenShift Code Ready Containers (CRC)
 :x: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
 
-##### Installing kubectl
+##### ℹ️ Installing kubectl
+:x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
+
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x ./kubectl
@@ -24,7 +27,7 @@ sudo mv ./kubectl /usr/bin
 ```
 When prompted for password, type administrator password of your Linux OS.
 
-## Installing Code Ready Containers in Linux
+##### ℹ️ Installing Code Ready Containers in Linux
 :x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
 ```
@@ -88,7 +91,7 @@ oc: 117.16 MiB / 117.16 MiB [---------------------------------------------------
 Your system is correctly setup for using CodeReady Containers, you can now run 'crc start' to start the OpenShift cluster
 </pre>
 
-##### Starting your local CRC OpenShift Cluster
+##### ℹ️ Starting your local CRC OpenShift Cluster
 :x:  Please don't attempt this in our training lab.
 
 ```
@@ -154,7 +157,7 @@ Use the 'oc' command line interface:
 </pre>
 when the crc prompts for pull secret, you need to paste the content of pull-secret.txt and hit enter.
 
-##### Troubleshooting CRC start
+##### ℹ️ Troubleshooting CRC start
 :x:  Please don't attempt this in our training lab.
 
 It is commonly noticed that ./crc start command fails many times. 
@@ -165,14 +168,14 @@ Make sure
 2. You have sufficient RAM in the system atleast 16GB or more
 3. You have alteast 8 vCPU in your system
 
-Try to stop and start
+Try to stop and startAgreement
 
 ```
 ./crc stop
 ./crc start
 ```
 
-##### Login to CRC Cluster as a developer via CLI
+##### ℹ️ Login to CRC Cluster as a developer via CLI
 :x:  Please don't attempt this in our training lab.
 
 ```
@@ -180,7 +183,7 @@ eval $(./crc oc-env)
 oc login -u developer https://api.crc.testing:6443
 ```
 
-##### Login to CRC Cluster as an administrator via CLI
+##### ℹ️ Login to CRC Cluster as an administrator via CLI
 :x:  Please don't attempt this in our training lab.
 
 ```
@@ -188,15 +191,15 @@ eval $(./crc oc-env)
 oc login -u kubeadmin https://api.crc.testing:6443
 ```
 
-## Using RedHat OpenShift Developer Sandbox for Free :-1:
+## ℹ️ Using RedHat OpenShift Developer Sandbox for Free :-1:
 https://developers.redhat.com/developer-sandbox?source=sso
 
-## OpenShift Installer Provisioned Installation (IPI)
+## ℹ️ OpenShift Installer Provisioned Installation (IPI)
 This mode of OpenShift installation is preferred if budget is not a constraint and you wish to perform the OpenShift installation in Cloud environments or with VMWare vSphere, etc.,
 
 However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
 
-### :information_source: For example:-
+### ℹ️ For example:-
 I recently installed RedHat OpenShift in AWS. 
 
 I used the OpenShift cluster for 9 days
@@ -229,7 +232,7 @@ I help organizations in setting up Production Grade OpenShift Cluster, many orga
 
 In case you are looking for a Consultant, you know how to reach me now :sunglasses: - jegan@tektutor.org
 
-## Understanding our Training Lab OpenShift Setup
+## ℹ️ Understanding our Training Lab OpenShift Setup
 Our Training Lab is setup using User Provisioned Infrastructure, almost everything was performed manually.
 
 Lab Server Hardware Configuration
@@ -281,7 +284,7 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - Server 2 ( 192.168.1.118 )
 </pre>
 
-##### Do and Don'ts, please don't get offended :warning:
+##### 📑 Do and Don'ts, please don't get offended :warning:
 <pre>
 Kindly stick onto the credential details given to you.  
 Please avoid switching from one user to other. 
@@ -300,7 +303,7 @@ Please avoid switching between the clusters.
 </pre>
 Hence your kind co-operation is requested to deliver this training smoothly.
 
-##### Login to OpenShift Cluster using CLI client
+## ⛹️‍♂️ Lab - Login to OpenShift Cluster using CLI client
 ```
 oc login -u kubeadmin https://api.tektutor.okd4.tektutor.org:6443
 ```
@@ -317,7 +320,7 @@ Login successful.
 You have access to 65 projects, the list has been suppressed. You can list all projects with 'oc projects'
 </pre>
 
-##### Listing the nodes in your OpenShift Cluster
+##### ⛹️‍♀️ Lab - Listing the nodes in your OpenShift Cluster
 ```
 jegan@tektutor:~$ oc get nodes
 ```
@@ -333,7 +336,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
 
-##### List Openshift Nodes with IP details
+##### ⛹️‍♂️ List Openshift Nodes with IP details
 ```
 oc get nodes -o wide
 ```
@@ -350,7 +353,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          46m   v1.22.3+fdba464 
 worker-2.tektutor.tektutor.org   Ready    worker          47m   v1.22.3+fdba464   192.168.122.222   <none>        Red Hat Enterprise Linux CoreOS 49.84.202202081504-0 (Ootpa)   4.18.0-305.34.2.el8_4.x86_64   cri-o://1.22.1-14.rhaos4.9.git7486bc8.el8
 </pre>
 
-##### Find more details of an OpenShift Cluster Node
+## ⛹️‍♂️ Lab - Find more details of an OpenShift Cluster Node
 ```
 oc describe node/master-1.tektutor.tektutor.org
 ```
@@ -472,7 +475,7 @@ Allocated resources:
 Events:              <none>
 </pre>
 
-##### Print node usage statistics
+##### ⛹️‍ Lab- Print node usage statistics
 ```
 oc adm top nodes
 ```
@@ -491,7 +494,7 @@ worker-2.tektutor.tektutor.org   234m         4%     1210Mi          8%
 
 Actually, the lab setup you are using is much more powerful than my local lab.  As my local lab workstation has 48 Virtual Cores, 128 GB RAM and 1 TB SSD, while the training lab that you are using has got 64 Virtual Cores, 512 GB RAM and 6 TB SSD.  Hence the above output would vary, which is expected.
 
-##### Removing worker role from master node
+##🍿Demo - Removing worker role from master node
 
 :x: Please don't attempt this in our training lab.
 
@@ -508,18 +511,18 @@ worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
 
-Let's remove the worker role from the master nodes
+🍿Demo - Let's remove the worker role from the master nodes
 
 :x: Please don't attempt this in our training lab. This will affect the overall number of Pods that can be deployed in our OpenShift cluster.  
 
 However, I'll give a hands-on demo from my local lab environment.
-
 
 ```
 oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'
 ```
 
 After removing the worker role from master nodes
+
 <pre>
 jegan@tektutor:~$ <b>oc patch schedulers.config.openshift.io/cluster --type merge -p '{"spec":{"mastersSchedulable":false}}'</b>
 scheduler.config.openshift.io/cluster patched
@@ -532,7 +535,7 @@ worker-1.tektutor.tektutor.org   Ready    worker   68m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   69m   v1.22.3+fdba464
 </pre>
 
-##### Adding worker role to the master nodes
+##🍿Demo - Adding worker role to the master nodes
 
 :x: Please don't attempt this in our training lab. This will affect the overall number of Pods that can be deployed in our OpenShift cluster. 
 
@@ -574,7 +577,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          73m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          74m   v1.22.3+fdba464
 </pre>
 
-### Alternatively, you may also edit this to remove the worker role from Master nodes
+##🍿Alternatively, you may also edit this to remove the worker role from Master nodes
 
 :x: Please don't attempt this in our training lab.  
 
@@ -663,7 +666,7 @@ worker-1.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker   11h   v1.22.3+fdba464
 </pre>
 
-##### Listing the existing projects in OpenShift cluster
+##⛹️‍ Lab - Listing the existing projects in OpenShift cluster
 ```
 oc get projects
 ```
@@ -740,7 +743,7 @@ openshift-user-workload-monitoring                                Active
 openshift-vsphere-infra                                           Active
 </pre>
 
-##### Creating a project from command line
+##⛹️‍♂️ Lab - Creating a project from command line
 
 Though using your name as project name is neither professional nor a best practice. For this training, I
 would suggest use your name as 10 participants are sharing a single OpenShift cluster.  Using your name
@@ -768,7 +771,7 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
 </pre>
 
 
-##### Creating an application
+##⛹️‍ Lab - Creating an application
 ```
 oc new-app twalter/openshift-nginx:stable --name nginx
 ```
@@ -824,7 +827,7 @@ jegan@tektutor:~$<b> oc get deploy</b>
 nginx   1/1     1            1           97s
 </pre>
 
-##### List the replicasets under your project
+##### ⛹️‍♂️ Lab - List the replicasets under your project
 
 ```
 oc get rs
@@ -839,7 +842,7 @@ nginx-6f99d9668b   0         0         0       101s
 </pre>
 
 
-##### List the pods in your project
+##### ⛹️‍♀️ Lab - List the pods in your project
 
 ```
 oc get po
@@ -854,7 +857,7 @@ nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
 </pre>
 
 
-##### Find details of a pod 
+##### ⛹️‍♀️ Lab - Find details of a pod 
 
 ```
 oc describe pod nginx-5dd56f5c87-qg9vv
@@ -941,7 +944,7 @@ Events:
   Normal  Started         5m7s   kubelet            Started container nginx
 </pre>
 
-##### Find details of a replicaset
+#####⛹️‍♂️ Lab - Find details of a replicaset
 ```
 oc describe rs/nginx-5dd56f5c87
 ```
@@ -1034,7 +1037,7 @@ Events:
   Normal  ScalingReplicaSet  12m   deployment-controller  Scaled down replica set nginx-6f99d9668b to 0
 </pre>
 
-### Scaling up a deployment
+##⛹️‍♀️ Lab - Scaling up a deployment
 ```
 oc scale deploy nginx --replicas=5
 ```
@@ -1062,7 +1065,7 @@ nginx-5dd56f5c87-sv8bj   1/1     Running   0          6s
 nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
 </pre>
 
-##### Creating a NodePort external service for nginx deployment
+##⛹️‍♂️ Lab - Creating a NodePort external service for nginx deployment
 
 ```
 oc expose deploy/nginx --type=NodePort --port=80
@@ -1098,7 +1101,7 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
 
-##### Accessing the nginx NodePort service
+#####⛹️‍♀️ Lab - Accessing the nginx NodePort service
 
 Nginx NodePort service can be accessed using one the below commands
 
@@ -1175,7 +1178,7 @@ Commercial support is available at
 </html>
 </pre>
 
-##### Creating a LoadBalancer external service
+##⛹️‍♂️ Lab - Creating a LoadBalancer external service
 As we can't create more than one service type per deployment, we need to delete the existing NodePort service for the nginx deployment before we can create LoadBalancer service.
 
 ```
@@ -1231,7 +1234,7 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
 
-##### Accessing the LoadBalancer external service
+#####⛹️‍ Lab - Accessing the LoadBalancer external service
 LoadBalancer type of Service is useful in creating in provisioning a LoadBalancer in AWS/Azure/GCP, etc
 
 But when we create a LoadBalancer service in local openshift cluster, it works like a NodePort service. 
@@ -1275,7 +1278,7 @@ Commercial support is available at
 </html>
 </pre>
 
-##### Creating a ClusterIP Service for nginx deployment
+##⛹️‍♀️ Lab - Creating a ClusterIP Service for nginx deployment
 
 We need to delete any existing service for nginx deployment before we can create the ClusterIP service for nginx deployment.
 
@@ -1553,7 +1556,7 @@ Commercial support is available at
 </html>
 </pre>
 
-## Let's delete the project to clean up all the deployments, services, routes, etc we created earlier
+##⛹️‍♂️ Lab - Let's delete the project to clean up all the deployments, services, routes, etc we created earlier
 ```
 oc delete project jegan
 ```
@@ -1565,7 +1568,7 @@ project.project.openshift.io "jegan" deleted
 </pre>
 
 
-## Let's create a new project to try the next lab exercise
+##⛹️‍♀️ Lab - Let's create a new project to try the next lab exercise
 ```
 oc new-project jegan
 ```
