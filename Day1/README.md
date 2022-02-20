@@ -47,6 +47,10 @@ For training/consulting/coaching, you may reach me
 ## ℹ️ Installing RedHat OpenShift Code Ready Containers (CRC)
 :x: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
 
+This will be a create a virtual machine using KVM and minimal openshift components are installed within the virtual machine. You need to make sure nested VM is enabled before installing CRC.
+
+The cluster will have a single node that supports both master and worker roles.
+
 ##### ℹ️ Installing kubectl
 :x: Please do not try this in our lab environment as it will corrupt our OpenShift cluster installation.  These instructions are here to help you in setting up OpenShift in your personal laptop/desktop post the training for your self-learning purposes only.
 
@@ -321,6 +325,51 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - Server 2 ( 192.168.1.118 )
    - user41 thru user50 will be using Cluster 2
 </pre>
+
+## OpenShift v4.9 Architecture
+
+The OpenShift cluster has two types of Nodes.
+
+1. Master Node 
+     - This can be Fedora Core OS in case of Opensource OpenShift i.e OKD Origin
+     - Starting from v4.2, the one and only supported OS is RedHat Enterprise Core OS
+3. Worker Node
+     - This can be RedHat Enterprise Linux or RedHat Enterprise Core OS
+
+Nodes can be Physical servers, Virtual Machines or Elastic Computing Machines running in Cloud environment like AWS,GCP,Azure, etc.,
+
+Openshift uses CRI-O Container Engine.
+
+Master Node/Machine
+ - Control Plane components runs here
+      - OpenShift API Server
+      - OpenShift etcd
+      - OpenShift Scheduler
+      - OpenShift Controller Managers
+      - OpenShift OAuth API Server
+      	- responsible for managing user,group authentications
+      - OpenShift OAuth Server
+        - responsible for managing user request tokens
+      - OpenShift DNS
+ - kubelet - Kubernetes Node Agent
+ - kubeproxy
+
+Worker Node/Machine
+ - aka Compute Machines
+ - User applications are deployed as Pods
+ - kubelet Agent
+
+Generally, Master Node doesn't allow deploying user applications. However, they can be configured to accept user applications in some special cases.
+
+Command-line Client Tools
+  oc 
+  kubectl
+  
+RHCOS
+ - immutable Operating System 
+ - specially customized OS for containers
+ - comes with 
+ - ignition
 
 ## ⛹️‍♂️ Lab - Login to OpenShift Cluster using CLI client
 ```
@@ -791,10 +840,11 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
 </pre>
 
 
-## ⛹️‍ Lab - Creating an application
+## ⛹️‍ Lab - Creating an application from an container image
 ```
 oc new-app twalter/openshift-nginx:stable --name nginx
 ```
+In the above "twalter/openshift-nginx:stable" is a Docker Image and "nginx" is the name of the deployment.
 
 The expected output is
 <pre>
@@ -834,7 +884,7 @@ svc/nginx - 172.30.155.175 ports 80, 8081
 1 info identified, use 'oc status --suggest' to see details.
 </pre>
 
-##### List the deployments under your project
+## ⛹️‍♀️ Lab - List the deployments under your project
 
 ```
 oc get deploy
@@ -876,6 +926,10 @@ jegan@tektutor:~$ <b>oc get po</b>
 nginx-5dd56f5c87-qg9vv   1/1     Running   0          99s
 </pre>
 
+## ⛹️‍♂️ Lab - Listing deployment, replicaset and pods
+```
+oc get deploy,rs,po
+```
 
 ## ⛹️‍♀️ Lab - Find details of a pod 
 
@@ -1199,6 +1253,7 @@ Commercial support is available at
 </pre>
 
 ## ⛹️‍♂️ Lab - Creating a LoadBalancer external service
+
 As we can't create more than one service type per deployment, we need to delete the existing NodePort service for the nginx deployment before we can create LoadBalancer service.
 
 ```
@@ -1255,6 +1310,7 @@ Events:                   <none>
 </pre>4. 
 
 ## ⛹️‍ Lab - Accessing the LoadBalancer external service
+
 LoadBalancer type of Service is useful in creating in provisioning a LoadBalancer in AWS/Azure/GCP, etc
 
 But when we create a LoadBalancer service in local openshift cluster, it works like a NodePort service. 
@@ -1607,11 +1663,12 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
     kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
 </pre>
 
-Let's now try to deploy an simple spring boot based microservice application within this project from my GitHub Repository
+Let's now try to deploy an simple spring boot based microservice application using a Dockerfile from GitHub Repository
 
 ```
 oc new-app https://github.com/tektutor/spring-ms.git
 ```
+
 To be precise, though the above GitHub repository has the source code of the SpringBoot application, OpenShift will pick the Dockerfile as the first choice from the above GitHub Repository by default.
 
 Using the Dockerfile from the GitHub, it then builds the custom image and pushes the image into OpenShift Private Container Registry before it proceeds to deploy the application into the cluster.
@@ -1655,6 +1712,12 @@ deployment/spring-ms deploys istag/spring-ms:latest <-
 
 2 warnings, 1 info identified, use 'oc status --suggest' to see details.
 </pre>
+
+Let's now check, the build
+```
+oc get builds
+oc get bc time -o json
+```
 
 Let us now check, how many pods are running
 ```
