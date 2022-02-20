@@ -12,7 +12,7 @@ For training/consulting/coaching, you may reach me
 3. The installation procedures listed below are meant for your future reference
 4. Any attempt to perform OpenShift installation in our lab environment will corrupt our OpenShift cluster
 
-## 🔴🔴 Do and Don'ts, please don't get offended :warning ⛔
+## 🔴🔴 Do and Don'ts, please don't get offended ⛔⛔
 <pre>
 Kindly stick onto the credential details given to you.  
 Please avoid switching from one user to other user. 
