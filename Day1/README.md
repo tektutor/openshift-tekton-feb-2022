@@ -192,6 +192,9 @@ oc login -u kubeadmin https://api.crc.testing:6443
 ```
 
 ## ℹ️ Using RedHat OpenShift Developer Sandbox for Free 👨‍🎓
+
+As we already have a working OpenShift Cluster pre-installed, you don't have to do this during the training.
+
 You may setup a RedHat Cluster almost instantaneously and very helpful for self-learning.  However, some advanced features like Eventing, installing Operators, etc will not work in this Free environment.
 
 https://developers.redhat.com/developer-sandbox?source=sso
