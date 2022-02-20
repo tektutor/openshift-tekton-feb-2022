@@ -339,7 +339,7 @@ Login successful.
 You have access to 65 projects, the list has been suppressed. You can list all projects with 'oc projects'
 </pre>
 
-##### ⛹️‍♀️ Lab - Listing the nodes in your OpenShift Cluster
+## ⛹️‍♀️ Lab - Listing the nodes in your OpenShift Cluster
 ```
 jegan@tektutor:~$ oc get nodes
 ```
@@ -355,7 +355,7 @@ worker-1.tektutor.tektutor.org   Ready    worker          44m   v1.22.3+fdba464
 worker-2.tektutor.tektutor.org   Ready    worker          45m   v1.22.3+fdba464
 </pre>
 
-##### ⛹️‍♂️ List Openshift Nodes with IP details
+## ⛹️‍♂️ List Openshift Nodes with IP details
 ```
 oc get nodes -o wide
 ```
