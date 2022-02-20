@@ -204,7 +204,7 @@ This mode of OpenShift installation is preferred if budget is not a constraint a
 
 However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
 
-###ℹ️ For example:-
+### ℹ️ For example:-
 I recently installed RedHat OpenShift in AWS. 
 
 I used the OpenShift cluster for 9 days
