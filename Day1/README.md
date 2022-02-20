@@ -8,21 +8,21 @@ For training/consulting/coaching, you may reach me
 
 ## ⛔ Need your attention - You don't have to install OpenShift in our Training Lab
 <pre>
-Our training lab environment already has OpenShift Cluster pre-installed
-Hence, you don't have to perform any installation listed below
-The installation procedures listed below are meant for your future reference
-Any attempt to perform OpenShift installation in our lab environment will corrupt our OpenShift cluster
+- Our training lab environment already has OpenShift Cluster pre-installed
+- Hence, you don't have to perform any installation listed below
+- The installation procedures listed below are meant for your future reference
+- Any attempt to perform OpenShift installation in our lab environment will corrupt our OpenShift cluster
 </pre>
 
 ## 🔴🔴 Do and Don'ts, please don't get offended ⛔⛔
 <pre>
-Kindly stick onto the credential details given to you.  
-Please avoid switching from one user to other user. 
-Please avoid switching between the clusters.
-Please create only one project per participant as the Cluster is shared by 10 participants.
-Please use your name as the project name so we can easily manage them.
-At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 participants = 100 Pods.
-Once you are done with a lab exercise, please delete the project and recreate with the same name.
+- Kindly stick onto the credential details given to you.  
+- Please avoid switching from one user to other user. 
+- Please avoid switching between the clusters.
+- Please create only one project per participant as the Cluster is shared by 10 participants.
+- Please use your name as the project name so we can easily manage them.
+- At any point in time, please do not scale beyond 5 pods per participants, imagine 5 x 20 participants = 100 Pods.
+  Once you are done with a lab exercise, please delete the project and recreate with the same name.
 </pre>
 
 ## What will happen if I don't follow the above requests :question::question::question:
