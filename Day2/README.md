@@ -837,3 +837,61 @@ curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
 curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
 curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
 ```
+
+## ⛹️‍♀️ Lab - Creating a deployment in declarative style
+
+Let us clean any existing project and its deployments, pods, etc.,
+```
+oc delete jegan
+```
+You need to replace your project name in the place of "jegan" above
+
+```
+cd ~
+git clone https://github.com/tektutor/openshift-tekton-feb-2022.git
+cd Day2/declarative-manifests
+
+oc new-project jegan
+oc apply -f spring-ms-deploy.yml
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-deploy.yml</b>
+deployment.apps/spring-ms created
+</pre>
+
+See if the deployment is created
+```
+oc get deploy
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get deploy</b>
+<b>NAME        READY   UP-TO-DATE   AVAILABLE   AGE</b>
+spring-ms   1/1     1            1           3s
+</pre>
+
+Now let's create a NodePort external service for the above deployment in declarative style
+```
+oc apply -f spring-ms-nodeport-svc.yml 
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-nodeport-svc.yml</b>
+service/spring-ms created
+</pre>
+
+Let us now list and see if the service is created
+
+```
+oc get svc
+```
+
+The expected output is
+<pre>
+egan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE</b>
+spring-ms   NodePort   172.30.51.83   <none>        8080:30085/TCP   2s
+</pre>
