@@ -1843,7 +1843,7 @@ jegan@tektutor:~$ <b>curl spring-ms-jegan.apps.tektutor.tektutor.org</b>
 Greetings from Spring Boot!
 </pre>
 
-## ⛹️‍♂️ Lab - Understanding a multi-pod application deploying using Wordpress and Mariadb database
+## ⛹️‍♂️ Lab - Understanding a multi-pod application deployment using Wordpress and Mariadb database
 ```
 oc delete project jegan
 oc new-project jegan
