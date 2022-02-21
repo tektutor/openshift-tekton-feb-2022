@@ -850,7 +850,7 @@ You need to replace your project name in the place of "jegan" above
 cd ~
 git clone https://github.com/tektutor/openshift-tekton-feb-2022.git
 cd Day2/declarative-manifests
-
+openshift-tekton-feb-2022
 oc new-project jegan
 oc apply -f spring-ms-deploy.yml
 ```
@@ -888,10 +888,75 @@ Let us now list and see if the service is created
 ```
 oc get svc
 ```
-
+spring-ms-nodeport-svc.yml
 The expected output is
 <pre>
 egan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
 <b>NAME        TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE</b>
 spring-ms   NodePort   172.30.51.83   <none>        8080:30085/TCP   2s
+</pre>
+
+## ⛹️‍♂️ Lab - Creating a ClusterIP Internal Service in declarative style
+
+Let's us first delete the existing service(if any)
+```
+oc get svc
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE</b>
+spring-ms   NodePort   172.30.51.83   <none>        8080:30085/TCP   2s
+</pre>
+
+Let's now delete that service
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc delete -f spring-ms-nodeport-svc.yml
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc delete -f spring-ms-nodeport-svc.yml</b>
+service "spring-ms" deleted
+</pre>
+
+Now it is time to create the ClusterIP Internal service declaratively
+
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc apply -f spring-ms-clusterip-svc.yml
+oc get svc
+oc describe svc/spring-ms
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-clusterip-svc.yml</b>
+service/spring-ms created
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE</b>
+spring-ms   ClusterIP   172.30.81.216   <none>        8080/TCP   4s
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc describe svc/spring-ms</b>
+Name:              spring-ms
+Namespace:         jegan
+Labels:            app=spring-ms
+Annotations:       <none>
+Selector:          deployment=spring-ms
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                172.30.81.216
+IPs:               172.30.81.216
+Port:              <unset>  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         10.128.3.19:8080
+Session Affinity:  None
+Events:            <none>
 </pre>
