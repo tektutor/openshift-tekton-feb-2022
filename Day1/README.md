@@ -47,7 +47,7 @@ For training/consulting/coaching, you may reach me
 ## ℹ️ Installing RedHat OpenShift Code Ready Containers (CRC)
 :x: Please don't attempt this in our training lab as this may corrupt our OpenShift cluster.  The instructions are captured here for your future reference, i.e in case you wish to try this at home post the training.
 
-This will be a create a virtual machine using KVM and minimal openshift components are installed within the virtual machine. You need to make sure nested VM is enabled before installing CRC.
+This will create a virtual machine using KVM and minimal openshift components are installed within the virtual machine. You need to make sure nested VM is enabled before installing CRC.
 
 The cluster will have a single node that supports both master and worker roles.
 
