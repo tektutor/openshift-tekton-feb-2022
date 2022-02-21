@@ -322,9 +322,6 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - user41 thru user50 will be using Cluster 2
 </pre>
 
-Every time the etcd datastore is updates it triggers some type of events
-Controllers are registered for those events, hence they get notified whenever certain events occur
-
 ## RedHat OpenShift Container Platform v4.9 Architecture
 1. kubectl create deploy nginx --image=nginx:latest
 2. kubectl makes a REST call to API server with above information given in kubectl command
@@ -342,7 +339,6 @@ Controllers are registered for those events, hence they get notified whenever ce
 14. Kubelet checks if the container image required to create the Pod containers are present in its local container registry.  If it understands that the image required is missing, kubelet pulls the image from the respective image registry and then it creates the Pod containers.
 15. Kubelet actually interacts with Container Runtime installed on the Node to get the image pulled, creating containers, etc.,
 16. kubelet then updates the API Server periodically as a heart-beat update
-
 
 Kubernetes Overview
 Master Node
@@ -373,8 +369,6 @@ Woker Node
   - User Application Pods (if any)
 
 Control Plane Components typically run in Master Node
-
-
 
 OpenShift Overview
  - is RedHat's distribution of Kubernetes with many additional features developed on top of Kubernetes
@@ -418,11 +412,8 @@ Master Node/Machine
         - responsible for managing user request tokens
       - OpenShift DNS
       - Openshift Network Operator
-      	
-      	  - 
  - kubelet - Kubernetes Node Agent
  
-
 Worker Node/Machine
  - aka Compute Machines
  - User applications are deployed as Pods
@@ -434,11 +425,16 @@ Command-line Client Tools
   oc 
   kubectl
   
-RHCOS
- - immutable Operating System 
+RHCOS (RedHat Enterprise Core OS)
+ - Operating System that is suitable for Container Orchestration Platform like RedHat OpenShift Container Platform
+ - immutable Operating System
+ - self updating OS
  - specially customized OS for containers
- - comes with 
+ - comes with CRI-O Container Engine and kubelet out of the box
  - ignition
+     - during the first boot,it requires certain kernel configuration parameters that helps the RHCOS bootstrap the node
+     - the ignition files are hosted in the LoadBalancer,hence it picks it during the first boot to configure itself 
+       and gets connected to the cluster
 
 ## ⛹️‍♂️ Lab - Login to OpenShift Cluster using CLI client
 ```
@@ -941,7 +937,7 @@ oc status
 The expected output is
 
 <pre>
-egan@tektutor:~$ <b>oc status</b>
+jegan@tektutor:~$ <b>oc status</b>
 In project jegan on server https://api.tektutor.tektutor.org:6443
 
 svc/nginx - 172.30.155.175 ports 80, 8081
@@ -2083,4 +2079,3 @@ Get inside the new pod and list the file to see if the file you uploaded earlier
 was uploaded to the Pod storage.
 
 To be done
-
