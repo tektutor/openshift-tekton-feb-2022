@@ -1203,3 +1203,30 @@ nginx-5dd56f5c87-sg57k   1/1     Running   0          6s
 nginx-5dd56f5c87-sv8bj   1/1     Running   0          6s
 nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
 </pre>
+
+
+## ⛹️‍♀️ Lab - Scaling down a deployment
+Before scaling down
+<pre>
+jegan@tektutor:~/tekton$ oc get po -w
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-5dd56f5c87-9nkzz   1/1     Running   0          4s
+nginx-5dd56f5c87-qswvs   1/1     Running   0          4s
+nginx-5dd56f5c87-s4txx   1/1     Running   0          4s
+nginx-5dd56f5c87-vg7br   1/1     Running   0          56s
+nginx-5dd56f5c87-wp95s   1/1     Running   0          4s
+</pre>
+
+```
+oc scale deploy nginx --replicas=2
+```
+
+After Scaling down, the expected output is
+<pre>
+jegan@tektutor:~/tekton$ <b>oc scale deploy nginx --replicas=2</b>
+deployment.apps/nginx scaled
+jegan@tektutor:~/tekton$ <b>oc get po</b>
+<b>NAME                     READY   STATUS    RESTARTS   AGE</b>
+nginx-5dd56f5c87-qswvs   1/1     Running   0          19s
+nginx-5dd56f5c87-s4txx   1/1     Running   0          19s
+</pre>
