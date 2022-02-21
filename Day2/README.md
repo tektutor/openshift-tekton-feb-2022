@@ -960,3 +960,70 @@ Endpoints:         10.128.3.19:8080
 Session Affinity:  None
 Events:            <none>
 </pre>
+
+## ⛹️‍♂️ Lab - Creating a LoadBalancer External Service in declarative style
+
+Let's us first delete the existing service(if any)
+```
+oc get svc
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE</b>
+spring-ms   ClusterIP   172.30.81.216   <none>        8080/TCP   4s
+</pre>
+
+Let's now delete that service
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc delete -f spring-ms-clusterip-svc.yml
+```
+The expected output is
+<pre>
+egan@tektutor:~/tekton/Day2/declarative-manifests$ oc delete -f spring-ms-clusterip-svc.yml 
+service "spring-ms" deleted
+</pre>
+
+Now it is time to create the Loadbalancer External service declaratively
+
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc apply -f spring-ms-loadbalancer-svc.yml 
+oc get svc
+oc describe svc/spring-ms
+```
+
+The expected output is
+
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-loadbalancer-svc.yml</b>
+service/spring-ms created
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+NAME        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+spring-ms   LoadBalancer   172.30.215.214   <pending>     8080:31301/TCP   2s
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc describe svc/spring-ms</b>
+Name:                     spring-ms
+Namespace:                jegan
+Labels:                   app=spring-ms
+Annotations:              <none>
+Selector:                 deployment=spring-ms
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       172.30.215.214
+IPs:                      172.30.215.214
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  31301/TCP
+Endpoints:                10.128.3.19:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+</pre>
