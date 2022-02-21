@@ -1890,7 +1890,7 @@ Test the route
 oc get route
 ```
 
-⛹️‍♂️ Lab - Understanding A/B Testing 
+## ⛹️‍♂️ Lab - Understanding A/B Testing 
 ```
 oc delete project jegan-bluegreen
 oc new-project ab-deployment --display-name="A/B Deployment" --description="Demonstrates A/B Test Deployment Strategy in OCP."
