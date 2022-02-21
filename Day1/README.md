@@ -1238,6 +1238,6 @@ jegan@tektutor:~/tekton$ <b>oc scale deploy nginx --replicas=2</b>
 deployment.apps/nginx scaled
 jegan@tektutor:~/tekton$ <b>oc get po</b>
 <b>NAME                     READY   STATUS    RESTARTS   AGE</b>
-nginx-5dd56f5c87-qswvs   1/1     Running   0          19s
-nginx-5dd56f5c87-s4txx   1/1     Running   0          19s
+nginx-5dd56f5c87-vtd8x   1/1     Running   0          117s
+nginx-5dd56f5c87-xnc96   1/1     Running   0          117s
 </pre>
