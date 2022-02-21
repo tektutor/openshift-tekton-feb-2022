@@ -1865,7 +1865,7 @@ oc logs build/blue-1
 oc get pods
 oc get service
 oc get route
-oc expose service blue --hostname=bluegreen.UserName.apps.workshop.osecloud.com --name=bluegreen
+oc expose service blue --name=bluegreen
 oc get route
 ```
 
