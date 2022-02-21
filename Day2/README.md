@@ -591,23 +591,23 @@ oc get bc time -o json
 
 Let us now check, how many pods are running
 ```
-oc get po
+oc get po -w
 ```
 
 The expected output is
 <pre>
-jegan@tektutor:~$ <b>oc get po</b>
+jegan@tektutor:~/tekton$ <b>oc get po -w</b>
 <b>NAME                READY   STATUS     RESTARTS   AGE</b>
-spring-ms-1-build   0/1     Init:0/2   0          3s
-</pre>
-
-Once the image is built successfully, OpenShift will deploy the Pod as shown below
-The expected output is
-<pre>
-jegan@tektutor:~$ <b>oc get po</b>
-<b>NAME                        READY   STATUS      RESTARTS   AGE</b>
-spring-ms-1-build           0/1     Completed   0          17m
-spring-ms-d75cfd98b-b2mhp   1/1     Running     0          15m
+spring-ms-1-build   0/1     Init:0/2   0          7s
+spring-ms-1-build   0/1     Init:1/2   0          8s
+spring-ms-1-build   0/1     PodInitializing   0          9s
+spring-ms-1-build   1/1     Running           0          10s
+spring-ms-6f5669c487-7hh94   0/1     Pending           0          0s
+spring-ms-6f5669c487-7hh94   0/1     Pending           0          0s
+spring-ms-6f5669c487-7hh94   0/1     ContainerCreating   0          0s
+spring-ms-1-build            0/1     Completed           0          49s
+spring-ms-6f5669c487-7hh94   0/1     ContainerCreating   0          3s
+spring-ms-6f5669c487-7hh94   1/1     Running             0          14s
 </pre>
 
 Java spring-boot applications typically uses port 8080, hence let's create a clusterip service for the above deployment.
