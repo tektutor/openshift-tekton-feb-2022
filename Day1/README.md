@@ -322,7 +322,59 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - user41 thru user50 will be using Cluster 2
 </pre>
 
+Every time the etcd datastore is updates it triggers some type of events
+Controllers are registered for those events, hence they get notified whenever certain events occur
+
 ## RedHat OpenShift Container Platform v4.9 Architecture
+1. kubectl create deploy nginx --image=nginx:latest
+2. kubectl makes a REST call to API server with above information given in kubectl command
+3. API server creates a Deployment object in etcd datastore
+4. Deployment Controller receives the event that there is a new Deployment created in the Cluster
+5. Deployment Controller request API Server to create ReplicaSet based on the information it received from the event
+6. API Server creates a new ReplicaSet in etcd based on the request it received from Deployment Controller
+7. This then trigger another event saying there is a new ReplicaSet that is created in the Cluster
+8. ReplicaSet Controller receives a notification and then it will request the API Server to create Pod entries in etcd
+9. API Server creates as many Pod entries requested by ReplicaSet Controller in the etcd datastore
+10. New Pod entries created in etcd trigger new Pod created events in the cluster
+11. Scheduler receives the New Pod created event and decides where these Pod containers can be scheduled and informs its decision to the API Server
+12. API Server then updates the Pod definition which already there in the etcd store with the Node information recommended by Scheduler
+13. This triggers another event, the kubelet Kubernetes Agent running on the respective nodes gets an event notification.
+14. Kubelet checks if the container image required to create the Pod containers are present in its local container registry.  If it understands that the image required is missing, kubelet pulls the image from the respective image registry and then it creates the Pod containers.
+15. Kubelet actually interacts with Container Runtime installed on the Node to get the image pulled, creating containers, etc.,
+16. kubelet then updates the API Server periodically as a heart-beat update
+
+
+Kubernetes Overview
+Master Node
+ Kubernetes Control Plane Components  
+  - API Server
+      - implements all Kubernetes functionalities as REST API
+  - Scheduler
+      - is responsible for identifying a health node where a Pod can be deployed
+  - etcd
+  - Controller Managers
+      - Deployment Controller
+      - Node Controller
+      - Endpoint Controller
+      - ReplicaSet Controller
+ 
+- Container Runtime ( Docker, LXC, CRI-O, etc., )
+- kubelet Kubernetes Agent
+- kube-proxy
+    - provides load-balancing functionality to the sevices
+- CoreDNS
+    - helps in supporting service discovery 
+    - i.e it let's you access a service by its name as opposed to its IP Address
+
+Woker Node
+  - Container Runtime ( Docker, LXC, CRI-O,etc., )
+  - kubelet Kubernetes Agent
+  - kube-proxy
+  - User Application Pods (if any)
+
+Control Plane Components typically run in Master Node
+
+
 
 OpenShift Overview
  - is RedHat's distribution of Kubernetes with many additional features developed on top of Kubernetes
@@ -341,7 +393,17 @@ OpenShift Overview
  - Control Plane is nothing but Master node with its Componets, in other words Openshift itself
  - Application Plane or Data Plane is where user applications are deployed
  - Openshift uses CRI-O Container Engine.
- 
+
+Kubernetes/OpenShift Operators
+  - its a convenient way you can package your application
+      	  - easily deploy them in K8s or OpenShift cluster
+      	  - udpate or upgrade them
+      	  - remove them 
+  - it comes with custom application level controllers
+  - the appolication level controllers monitor your custom application and take action when certain things happen
+  - Custom Controllers are created using CRD (Custom Resource Definition)
+  - Through CRD you can create a Custom Resource
+
 Master Node/Machine
  - Control Plane components runs here
       - OpenShift API Server
@@ -356,6 +418,8 @@ Master Node/Machine
         - responsible for managing user request tokens
       - OpenShift DNS
       - Openshift Network Operator
+      	
+      	  - 
  - kubelet - Kubernetes Node Agent
  
 
