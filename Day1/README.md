@@ -1856,7 +1856,8 @@ oc get routes
 
 ## ⛹️‍♀️ Lab - Understanding blue-green deployment in OpenShift
 
-Create the blue deployment
+Create the blue deployment and expose a route as shown below
+
 ```
 oc new-project jegan-bluegreen --display-name="Blue Green Project" --description="Demonstrates Blue Green Deployment in OCP v4.9"
 oc new-app --image-stream=php --code=https://github.com/RedHatWorkshops/bluegreen --env COLOR=blue --name=blue
@@ -1869,19 +1870,105 @@ oc expose service blue --name=bluegreen
 oc get route
 ```
 
-Create the green deployment
+Now create a green deployment of the same application
+
 ```
 oc new-app --image-stream=php --code=https://github.com/RedHatWorkshops/bluegreen --env COLOR=green --name=green
 oc get service
 ```
 
 Edit the route to forward traffic to green
+
 ```
 oc edit route bluegreen
 ```
+
 Change the service name from blue to green and save it.
 
 Test the route
 ```
 oc get route
+```
+
+⛹️‍♂️ Lab - Understanding A/B Testing 
+```
+oc delete project jegan-bluegreen
+oc new-project ab-deployment --display-name="A/B Deployment" --description="Demonstrates A/B Test Deployment Strategy in OCP."
+oc new-app openshift/deployment-example --name=ab-example-a
+oc new-app openshift/deployment-example:v2 --name=ab-example-b
+oc expose svc/ab-example-a
+oc get route
+```
+
+Now let's test the route and see which version of the application is live in the Cluster
+```
+curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
+```
+
+Let us scale the deployments
+```
+oc get deploy
+oc scale deploy ab-example-a --replicas=2
+oc scale deploy ab-example-b --replicas=2
+oc get pods
+```
+
+Now let's edit the existing route
+```
+
+```
+
+The expected output will be similar to
+<pre>
+  1 # Please edit the object below. Lines beginning with a '#' will be ignored,
+  2 # and an empty file will abort the edit. If an error occurs while saving this file will be
+  3 # reopened with the relevant failures.
+  4 #
+  5 apiVersion: route.openshift.io/v1
+  6 kind: Route
+  7 metadata:
+  8   annotations:
+  9     openshift.io/host.generated: "true"
+ 10   creationTimestamp: "2022-02-21T02:20:28Z"
+ 11   labels:
+ 12     app: ab-example-a
+ 13     app.kubernetes.io/component: ab-example-a
+ 14     app.kubernetes.io/instance: ab-example-a
+ 15   name: ab-example-a
+ 16   namespace: jegan-ab-deployment
+ 17   resourceVersion: "122224"
+ 18   uid: 620f826f-944f-4dde-9766-4e0d4fa58b25
+ 19 spec:
+ 20   <b>alternateBackends:
+ 21   - kind: Service
+ 22     name: ab-example-b
+ 23     weight: 50</b>
+ 24   host: ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
+ 25   port:
+ 26     targetPort: 8080-tcp
+ 27   to:
+ 28     kind: Service
+ 29     name: ab-example-a
+ 30     weight: 50
+ 31   wildcardPolicy: None
+ 32 status:
+ 33   ingress:
+ 34   - conditions:
+ 35     - lastTransitionTime: "2022-02-21T02:20:28Z"
+ 36       status: "True"
+ 37       type: Admitted
+ 38     host: ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
+ 39     routerCanonicalHostname: router-default.apps.tektutor.tektutor.org
+ 40     routerName: default
+ 41     wildcardPolicy: None
+</pre>
+
+Make sure you saved it before exiting.
+
+Now try to access the route repeatedly as much time as possible to notice the traffic gets routed to different deployment version.
+```
+curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
+curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
+curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
+curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
 ```
