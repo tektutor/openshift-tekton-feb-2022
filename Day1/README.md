@@ -326,33 +326,42 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
    - user41 thru user50 will be using Cluster 2
 </pre>
 
-## OpenShift v4.9 Architecture
+## RedHat OpenShift Container Platform v4.9 Architecture
 
-The OpenShift cluster has two types of Nodes.
-
-1. Master Node 
-     - This can be Fedora Core OS in case of Opensource OpenShift i.e OKD Origin
-     - Starting from v4.2, the one and only supported OS is RedHat Enterprise Core OS
-3. Worker Node
+OpenShift Overview
+ - is RedHat's distribution of Kubernetes with many additional features developed on top of Kubernetes
+ - Cluter is collections of computers called nodes
+ - Nodes can be Physical Servers, Virtual Machines or Compute Machines in Cloud (AWS,GCP,Azure,etc.,)
+ - Basic unit of work that can be replicated is called a Pod
+ - Pod is a group of related containers that shares network, storage and shared memory, etc
+ - The OpenShift cluster has two types of Nodes.
+   1. Master Node 
+     - Starting from RedHat OCP v4.2, the one and only supported OS is RedHat Enterprise Core OS
+   2. Worker Node
      - This can be RedHat Enterprise Linux or RedHat Enterprise Core OS
-
-Nodes can be Physical servers, Virtual Machines or Elastic Computing Machines running in Cloud environment like AWS,GCP,Azure, etc.,
-
-Openshift uses CRI-O Container Engine.
-
+ - OpenShift supports two types of planes
+   1. Control Plane and
+   2. Application Plane
+ - Control Plane is nothing but Master node with its Componets, in other words Openshift itself
+ - Application Plane or Data Plane is where user applications are deployed
+ - Openshift uses CRI-O Container Engine.
+ 
 Master Node/Machine
  - Control Plane components runs here
       - OpenShift API Server
       - OpenShift etcd
       - OpenShift Scheduler
       - OpenShift Controller Managers
+        - runs control loops that contanstly compare desired state of an application with actual state 
+          and takes action in case they are different
       - OpenShift OAuth API Server
       	- responsible for managing user,group authentications
       - OpenShift OAuth Server
         - responsible for managing user request tokens
       - OpenShift DNS
+      - Openshift Network Operator
  - kubelet - Kubernetes Node Agent
- - kubeproxy
+ 
 
 Worker Node/Machine
  - aka Compute Machines
