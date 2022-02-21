@@ -9,6 +9,9 @@ For training/consulting/coaching, you may reach me
 ## ⛹️‍♂️ Lab - Creating a NodePort external service for nginx deployment
 
 ```
+oc delete project jegan
+oc new-project jegan
+oc new-app twalter/openshift-nginx:stable --name nginx
 oc expose deploy/nginx --type=NodePort --port=80
 ```
 
