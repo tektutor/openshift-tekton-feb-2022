@@ -1853,3 +1853,34 @@ oc logs -f dc/wordpress
 oc expose svc/wordpress
 oc get routes
 ```
+
+## ⛹️‍♀️ Lab - Understanding blue-green deployment in OpenShift
+
+Create the blue deployment
+```
+oc new-project jegan-bluegreen --display-name="Blue Green Project" --description="Demonstrates Blue Green Deployment in OCP v4.9"
+oc new-app --image-stream=php --code=https://github.com/RedHatWorkshops/bluegreen --env COLOR=blue --name=blue
+oc get builds
+oc logs build/blue-1
+oc get pods
+oc get service
+oc expose service blue --hostname=bluegreen.UserName.apps.workshop.osecloud.com --name=bluegreen
+oc get route
+```
+
+Create the green deployment
+```
+oc new-app --image-stream=php --code=https://github.com/RedHatWorkshops/bluegreen --env COLOR=green --name=green
+oc get service
+```
+
+Edit the route to forward traffic to green
+```
+oc edit route bluegreen
+```
+Change the service name from blue to green and save it.
+
+Test the route
+```
+oc get route
+```
