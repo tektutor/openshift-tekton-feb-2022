@@ -326,10 +326,10 @@ OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
 
 OpenShift Overview
  - is RedHat's distribution of Kubernetes with many additional features developed on top of Kubernetes
- - Cluter is collections of computers called nodes
+ - Cluster is a collection of computers called nodes
  - Nodes can be Physical Servers, Virtual Machines or Compute Machines in Cloud (AWS,GCP,Azure,etc.,)
  - Basic unit of work that can be replicated is called a Pod
- - Pod is a group of related containers that shares network, storage and shared memory, etc
+ - Pod is a group of related containers that shares network, storage and shared memory
  - The OpenShift cluster has two types of Nodes.
    1. Master Node 
      - Starting from RedHat OCP v4.2, the one and only supported OS is RedHat Enterprise Core OS
@@ -1842,3 +1842,14 @@ The expected output is
 jegan@tektutor:~$ <b>curl spring-ms-jegan.apps.tektutor.tektutor.org</b>
 Greetings from Spring Boot!
 </pre>
+
+## ⛹️‍♂️ Lab - Understanding a multi-pod application deploying using Wordpress and Mariadb database
+```
+oc delete project jegan
+oc new-project jegan
+oc new-app mariadb-ephemeral
+oc new-app php~https://github.com/wordpress/wordpress
+oc logs -f dc/wordpress
+oc expose svc/wordpress
+oc get routes
+```
