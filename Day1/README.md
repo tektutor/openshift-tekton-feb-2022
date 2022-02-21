@@ -172,7 +172,7 @@ INFO Operators are stable (2/3)...
 INFO Operators are stable (3/3)...                
 INFO Adding crc-admin and crc-developer contexts to kubeconfig... 
 Started the OpenShift cluster.
-
+penShift Installer Provisioned Ins
 The server is accessible via web console at:
   https://console-openshift-console.apps-crc.testing
 
@@ -233,7 +233,7 @@ You may setup a RedHat Cluster almost instantaneously and very helpful for self-
 
 https://developers.redhat.com/developer-sandbox?source=sso
 
-## ℹ️ OpenShift Installer Provisioned Installation (IPI) 💲💲💲
+## ℹ️ OpenShift Installer Provisioned Infrastructure (IPI) 💲💲💲
 This mode of OpenShift installation is preferred if budget is not a constraint and you wish to perform the OpenShift installation in Cloud environments or with VMWare vSphere, etc.,
 
 However, this style of Openshift installation offers less flexibility or configuration options but the installation efforts will be less, as pretty much the installer automates creating infrastructure (VMs, Network, OS installation, etc) and end-to-end OpenShift installation procedure.
