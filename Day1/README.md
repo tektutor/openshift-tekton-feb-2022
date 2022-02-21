@@ -16,7 +16,7 @@ For training/consulting/coaching, you may reach me
 
 ## 🔴🔴 Do and Don'ts, please don't get offended ⛔⛔
 <pre>
-- Kindly stick with the credential details given to you.  
+- Kindly stick to the credential details given to you.  
 - Please avoid switching from one user to other user. 
 - Please avoid switching between the clusters.
 - Please create only one project per participant as the Cluster is shared by 10 participants.
