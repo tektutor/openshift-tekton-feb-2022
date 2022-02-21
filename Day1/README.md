@@ -1206,6 +1206,17 @@ nginx-5dd56f5c87-zb5cw   1/1     Running   0          6s
 
 
 ## ⛹️‍♀️ Lab - Scaling down a deployment
+List the deployment
+```
+oc get deploy
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton$ <b>oc get deploy</b>
+<b>NAME    READY   UP-TO-DATE   AVAILABLE   AGE</b>
+nginx   5/5     5            5           4m41s
+</pre>
+
 Before scaling down
 <pre>
 jegan@tektutor:~/tekton$ oc get po -w
