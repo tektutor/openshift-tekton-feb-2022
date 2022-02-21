@@ -1915,7 +1915,7 @@ oc get pods
 
 Now let's edit the existing route
 ```
-
+oc edit route ab-example-a
 ```
 
 The expected output will be similar to
