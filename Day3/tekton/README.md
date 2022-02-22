@@ -17,6 +17,8 @@
 Please check the screenshot below
 ![Operators](OCP_Pipeline_Operator.png)
 
+You need to select the "Red Hat OpenShift Pipelines" show above
+
 ## Installing Tekton CLI tool
 ```
 cd ~/Downloads
