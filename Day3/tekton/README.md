@@ -287,3 +287,14 @@ STARTED          DURATION     STATUS
 
 No sidecars
 </pre>
+
+If you are curious to the see the output of the task execution, then try this
+```
+tkn taskrun logs echo-hello-world-task-run
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ <b>tkn taskrun logs echo-hello-world-task-run</b>
+[echo] Hello World
+</pre>
