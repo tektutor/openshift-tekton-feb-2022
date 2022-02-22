@@ -9,9 +9,7 @@
 
 🔴 Only one person can perform this task in a Cluster as Tekton is installed cluster wide. 🔴
 
-From the OpenShift web console, switch to Administrator view.  Navigate to Operators --> OperatorHub Menu on the Left side.
-
-Please check the screenshot below
+From the OpenShift web console, switch to Administrator view.  Navigate to Operators --> OperatorHub Menu on the Left side as shown in the screenshot below.
 ![Operators](OCP_Pipeline_Operator.png)
 
 You need to select the "Red Hat OpenShift Pipelines" shown above and then Install it as shown below
