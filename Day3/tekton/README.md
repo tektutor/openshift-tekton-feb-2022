@@ -25,6 +25,9 @@ Your screen will look like this now
 Once you Click on the Install button, you will be taken to below screen
 
 ![Operators](OCP_Install3.png)
+Once the Installation is complete, it will take you the below page
+
+![Operators](OCP_View_Operator.png)
 
 ## Installing Tekton CLI tool
 ```
