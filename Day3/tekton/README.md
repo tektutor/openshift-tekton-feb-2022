@@ -224,4 +224,5 @@ cd ~/openshift-tekton-feb-2022
 git pull
 cd Day3/tekton/
 
+oc apply -f hello-taskrun.yml
 ```
