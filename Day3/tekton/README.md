@@ -141,35 +141,11 @@ tkn task start echo-hello-world
 
 The expected output is
 <pre>
-jegan@tektut  1 apiVersion: tekton.dev/v1beta1
-80
-  2 kind: Task
-81
-  3 metadata:
-82
-  4   name: echo-hello-world
-83
-  5   namespace: jegan
-84
-  6 spec:
-85
-  7   steps:
-86
-  8     - name: echo
-87
-  9       image: ubuntu
-88
- 10       command:
-89
- 11         - echo
-90
- 12       args:
-91
- 13         - "Hello World"or:~/tekton/Day3/tekton/hello$ <b>tkn task start echo-hello-world</b>
-TaskRun started: echo-hello-world-run-9cwrx
+jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>tkn task start echo-hello-world</b>
+TaskRun started: <b>echo-hello-world-run-9cwrx</b>
 
 In order to track the TaskRun progress run:
-tkn taskrun logs echo-hello-world-run-9cwrx -f -n jegan
+<b>tkn taskrun logs echo-hello-world-run-9cwrx -f -n jegan</b>
 </pre>
 
 Let us now check the logs
