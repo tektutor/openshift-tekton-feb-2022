@@ -514,7 +514,7 @@ You can add applications to this project with the 'new-app' command. For example
 to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
 
     kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
-<pre>
+</pre>
 
 Now let's run the cluster task in the new project namespaces
 ```
