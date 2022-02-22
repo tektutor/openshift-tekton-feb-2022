@@ -30,10 +30,38 @@ Triggers version: v0.16.1
 
 ## Tekton Jargons
 Custom Resources added by Tekton project to your OpenShift Cluster
+
 - Step
-   - does one activity
+   - Steps dictates the container that will run as part of the task
+   - This is where the actual operations are performed
+   - Steps can't be executed independently
+   - Steps are always enclosed within a Task
+   
 - Task
-   - is a list of steps executed either sequentially or parallely
+   - Task can be executed independently outside a Pipeline
+   - each Task can have one or more Steps
+   - Task can be scoped to a Project Scope or Cluster wide
+   - Steps are the only required objects to create a Task
+   - Tasks can be resused across Pipelines
+   - Example:-
+       - A Task can clone source code from a GitHub
+       - A Task can build an container image, etc.,
+
+- Pipeline
+   - collection of Tasks
+   - results in an output based on your inputs given to CI/CD pipeline
+   - Multiple Tasks in a Pipeline could be executed sequentially one after the other or in parallel
+   - Example:-
+      - a First Task could clone your source code from your GitHub Repo
+      - a Second Task could compile your application
+      - a Third Task could run Unit Tests on your compiled application
+      - a Fourth Task could package the binaries
+      - a Fifth Task could deploy the binaries to a JFrog Artifactory Server or Sonatype Nexus Server
+     
+    
+
 - TaskRun
+   - is an instance of Task that is executed
+  
 - Pipeline
 - PipelineRun 
