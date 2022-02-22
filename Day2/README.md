@@ -1043,3 +1043,20 @@ Events:                   <none>
     - upgrading a CR from one version to another
     - helps infrasturce engineers & developers who would like to extend Kubernetes API to manage their site and software
 
+## What is Operator SDK?
+- builds on top of Kuberenetes controller-runtime libraries 
+- provides essential Kubernetes controller runtimes in Go programming lanaguage
+- a set of tools that helps in developing, building and deploying an Operator into Kubernetes/OpenShift
+
+## What is Operator Lifecycle Manager (OLM) ?
+- it takes the Operator pattern one level above by creating a OLM Operator which manages Operators
+- it lets you define Operators declaratively
+
+## What is Operator Metering?
+- is used to analyze the resource usage of Operators running in Kubernetes/OpenShift
+- CPU Usage, memory usage, and other metrics
+
+
+
+
+
