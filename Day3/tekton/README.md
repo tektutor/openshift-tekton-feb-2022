@@ -15,7 +15,7 @@ From the OpenShift web console, switch to Administrator view.  Navigate to Opera
 Select "Red Hat OpenShift Pipelines" and Click on Install button.
 ![Operators](OCP_Pipeline_Install.png)
 
-Your screen will look like this now
+You may now click on the Install button
 ![Operators](OCP_Pipeline_Install2.png)
 Once you Click on the Install button, you will be taken to below screen
 
