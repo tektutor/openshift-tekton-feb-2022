@@ -86,7 +86,10 @@ A simple Hello World Task in Tekton looks as shown below
   8     - name: echo
   9       image: ubuntu
  10       command:
- 11         - echo
+ 11         - echojegan@tektutor:~/tekton/Day3/tekton/hello$ oc get task
+NAME               AGE
+echo-hello-world   92s
+
  12       args:
  13         - "Hello World"
 </pre>
@@ -131,4 +134,30 @@ The expected output is
 jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>oc get task</b>
 <b>NAME               AGE</b>
 echo-hello-world   92s
+</pre>
+
+Executing your first hello-world task
+
+```
+tkn task start echo-hello-world
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>tkn task start echo-hello-world</b>
+TaskRun started: echo-hello-world-run-9cwrx
+
+In order to track the TaskRun progress run:
+tkn taskrun logs echo-hello-world-run-9cwrx -f -n jegan
+</pre>
+
+Let us now check the logs
+```
+tkn taskrun logs echo-hello-world-run-9cwrx -f -n jegan
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>tkn taskrun logs echo-hello-world-run-9cwrx -f -n jegan</b>
+[echo] <b>Hello World</b>
 </pre>
