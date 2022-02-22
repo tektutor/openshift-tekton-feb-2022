@@ -12,6 +12,7 @@ For training/consulting/coaching, you may reach me
 oc delete project jegan
 oc new-project jegan
 oc new-app twalter/openshift-nginx:stable --name nginx
+oc delete svc/nginx
 oc expose deploy/nginx --type=NodePort --port=80
 ```
 
