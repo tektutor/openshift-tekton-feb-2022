@@ -1030,6 +1030,7 @@ Events:                   <none>
 
 ## What is a Custom Resource in Kubernetes/OpenShift ?
 - an API extension mechanism in Kubernetes/OpenShift
+- helps you add a new kind of object in your OpenShift Cluster just like Deployment, ReplicaSet, Pod, etc.,
 - a Custom Resource Definition(CRD) defines a Custom Resource(CR)
 - once a CR is created using CRD it can be accessed using kubectl or oc commands
 
