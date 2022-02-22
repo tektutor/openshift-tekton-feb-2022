@@ -1,4 +1,4 @@
-# Tekton
+# Day 3 - Tekton
 
 ## Tekton CI/CD Pipeline
 - Tekton is an opensource knative application that helps you create CI/CD 
