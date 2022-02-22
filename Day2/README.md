@@ -9,6 +9,9 @@ For training/consulting/coaching, you may reach me
 ## ⛹️‍♂️ Lab - Creating a NodePort external service for nginx deployment
 
 ```
+oc delete project jegan
+oc new-project jegan
+oc new-app twalter/openshift-nginx:stable --name nginx
 oc expose deploy/nginx --type=NodePort --port=80
 ```
 
@@ -588,23 +591,23 @@ oc get bc time -o json
 
 Let us now check, how many pods are running
 ```
-oc get po
+oc get po -w
 ```
 
 The expected output is
 <pre>
-jegan@tektutor:~$ <b>oc get po</b>
+jegan@tektutor:~/tekton$ <b>oc get po -w</b>
 <b>NAME                READY   STATUS     RESTARTS   AGE</b>
-spring-ms-1-build   0/1     Init:0/2   0          3s
-</pre>
-
-Once the image is built successfully, OpenShift will deploy the Pod as shown below
-The expected output is
-<pre>
-jegan@tektutor:~$ <b>oc get po</b>
-<b>NAME                        READY   STATUS      RESTARTS   AGE</b>
-spring-ms-1-build           0/1     Completed   0          17m
-spring-ms-d75cfd98b-b2mhp   1/1     Running     0          15m
+spring-ms-1-build   0/1     Init:0/2   0          7s
+spring-ms-1-build   0/1     Init:1/2   0          8s
+spring-ms-1-build   0/1     PodInitializing   0          9s
+spring-ms-1-build   1/1     Running           0          10s
+spring-ms-6f5669c487-7hh94   0/1     Pending           0          0s
+spring-ms-6f5669c487-7hh94   0/1     Pending           0          0s
+spring-ms-6f5669c487-7hh94   0/1     ContainerCreating   0          0s
+spring-ms-1-build            0/1     Completed           0          49s
+spring-ms-6f5669c487-7hh94   0/1     ContainerCreating   0          3s
+spring-ms-6f5669c487-7hh94   1/1     Running             0          14s
 </pre>
 
 Java spring-boot applications typically uses port 8080, hence let's create a clusterip service for the above deployment.
@@ -835,49 +838,225 @@ curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
 curl ab-example-a-jegan-ab-deployment.apps.tektutor.tektutor.org
 ```
 
-### ⛹️‍♂️ Lab - Deploying a Stateful application using Persistent Volume
+## ⛹️‍♀️ Lab - Creating a deployment in declarative style
+
+Let us clean any existing project and its deployments, pods, etc.,
 ```
-oc new-project jegan-stateful-app --description="My Storage-project" --display-name="Storage Project"
-oc new-app php~https://github.com/RedHatWorkshops/openshift-php-upload-demo
+oc delete jegan
+```
+You need to replace your project name in the place of "jegan" above
+
+```
+cd ~
+git clone https://github.com/tektutor/openshift-tekton-feb-2022.git
+cd Day2/declarative-manifests
+openshift-tekton-feb-2022
+oc new-project jegan
+oc apply -f spring-ms-deploy.yml
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-deploy.yml</b>
+deployment.apps/spring-ms created
+</pre>
+
+See if the deployment is created
+```
+oc get deploy
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get deploy</b>
+<b>NAME        READY   UP-TO-DATE   AVAILABLE   AGE</b>
+spring-ms   1/1     1            1           3s
+</pre>
+
+Now let's create a NodePort external service for the above deployment in declarative style
+```
+oc apply -f spring-ms-nodeport-svc.yml 
 ```
 
-Let us now check the status and service
+The expected output is
+
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-nodeport-svc.yml</b>
+service/spring-ms created
+</pre>
+
+Let us now list and see if the service is created
+
 ```
-oc status
 oc get svc
-oc describe svc openshift-php-upload-demo
+```
+spring-ms-nodeport-svc.yml
+The expected output is
+<pre>
+egan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE</b>
+spring-ms   NodePort   172.30.51.83   <none>        8080:30085/TCP   2s
+</pre>
+
+## ⛹️‍♂️ Lab - Creating a ClusterIP Internal Service in declarative style
+
+Let's us first delete the existing service(if any)
+```
+oc get svc
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE</b>
+spring-ms   NodePort   172.30.51.83   <none>        8080:30085/TCP   2s
+</pre>
+
+Let's now delete that service
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc delete -f spring-ms-nodeport-svc.yml
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc delete -f spring-ms-nodeport-svc.yml</b>
+service "spring-ms" deleted
+</pre>
+
+Now it is time to create the ClusterIP Internal service declaratively
+
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc apply -f spring-ms-clusterip-svc.yml
+oc get svc
+oc describe svc/spring-ms
 ```
 
-Let's now create a route for the service 
+The expected output is
+
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-clusterip-svc.yml</b>
+service/spring-ms created
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE</b>
+spring-ms   ClusterIP   172.30.81.216   <none>        8080/TCP   4s
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc describe svc/spring-ms</b>
+Name:              spring-ms
+Namespace:         jegan
+Labels:            app=spring-ms
+Annotations:       <none>
+Selector:          deployment=spring-ms
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                172.30.81.216
+IPs:               172.30.81.216
+Port:              <unset>  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         10.128.3.19:8080
+Session Affinity:  None
+Events:            <none>
+</pre>
+
+## ⛹️‍♂️ Lab - Creating a LoadBalancer External Service in declarative style
+
+Let's us first delete the existing service(if any)
 ```
-oc expose svc openshift-php-upload-demo
-oc get route
+oc get svc
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+<b>NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE</b>
+spring-ms   ClusterIP   172.30.81.216   <none>        8080/TCP   4s
+</pre>
+
+Let's now delete that service
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc delete -f spring-ms-clusterip-svc.yml
+```
+The expected output is
+<pre>
+egan@tektutor:~/tekton/Day2/declarative-manifests$ oc delete -f spring-ms-clusterip-svc.yml 
+service "spring-ms" deleted
+</pre>
+
+Now it is time to create the Loadbalancer External service declaratively
+
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day2/declarative-manifests
+oc apply -f spring-ms-loadbalancer-svc.yml 
+oc get svc
+oc describe svc/spring-ms
 ```
 
-Try to access the route URL from Google Chrome Web browser on the Linux lab machine
-```
-openshift-php-upload-demo-jegan-stateful-app.apps.tektutor.tektutor.org
-```
-First choose a file from the lab machine and then click on Upload.  You may now click on list files.
+The expected output is
 
-Let's try to understand where those files are uploaded by getting inside the pod shell
-```
-oc get pods
-oc rsh openshift-php-upload-demo-6dfbc686bb-gtjn6
-ls -1 /opt/app-root/src/uploaded
-```
+<pre>
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc apply -f spring-ms-loadbalancer-svc.yml</b>
+service/spring-ms created
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc get svc</b>
+NAME        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+spring-ms   LoadBalancer   172.30.215.214   <pending>     8080:31301/TCP   2s
+jegan@tektutor:~/tekton/Day2/declarative-manifests$ <b>oc describe svc/spring-ms</b>
+Name:                     spring-ms
+Namespace:                jegan
+Labels:                   app=spring-ms
+Annotations:              <none>
+Selector:                 deployment=spring-ms
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       172.30.215.214
+IPs:                      172.30.215.214
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  31301/TCP
+Endpoints:                10.128.3.19:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+</pre>
 
-Let's now delete the pod
-```
-oc delete pod openshift-php-upload-demo-6dfbc686bb-gtjn6
-```
+## What is a Custom Resource in Kubernetes/OpenShift ?
+- an API extension mechanism in Kubernetes/OpenShift
+- helps you add a new kind of object in your OpenShift Cluster just like Deployment, ReplicaSet, Pod, etc.,
+- a Custom Resource Definition(CRD) defines a Custom Resource(CR)
+- once a CR is created using CRD it can be accessed using kubectl or oc commands
 
-OpenShift will spin a new pod automatically
+## What is an Operator in Kubernetes/OpenShift?
+- an Operator is a custom Kubernetes/OpenShift Controller that waches a CR
+- the custom application level controllers monitors CR 
+- Custom Controllers monitors CR compares its desired with actual state, if it deviates takes appropriate actions
+- Operators can help in 
+    - scaling up/down a CR
+    - upgrading a CR from one version to another
+    - helps infrasturce engineers & developers who would like to extend Kubernetes API to manage their site and software
 
-```
-oc get po
-```
-Get inside the new pod and list the file to see if the file you uploaded earlier is there.  File will be missing as the file
-was uploaded to the Pod storage.
+## What is Operator SDK?
+- builds on top of Kuberenetes controller-runtime libraries 
+- provides essential Kubernetes controller runtimes in Go programming lanaguage
+- a set of tools that helps in developing, building and deploying an Operator into Kubernetes/OpenShift
 
-To be done
+## What is Operator Lifecycle Manager (OLM) ?
+- it takes the Operator pattern one level above by creating a OLM Operator which manages Operators
+- it lets you define Operators declaratively
+
+## What is Operator Metering?
+- is used to analyze the resource usage of Operators running in Kubernetes/OpenShift
+- CPU Usage, memory usage, and other metrics
+
+
+
+
+
