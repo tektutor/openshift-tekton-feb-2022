@@ -57,11 +57,11 @@ Custom Resources added by Tekton project to your OpenShift Cluster
       - a Third Task could run Unit Tests on your compiled application
       - a Fourth Task could package the binaries
       - a Fifth Task could deploy the binaries to a JFrog Artifactory Server or Sonatype Nexus Server
-     
-    
 
 - TaskRun
-   - is an instance of Task that is executed
-  
-- Pipeline
+   - Task can be thought of like a Class, while TaskRun is a running instance of a Task
+   - TaskRun helps you supply Task arguments that are required for a Task to run
+     
 - PipelineRun 
+   - Pipeline can be thought of like a Class, while PipelineRun is a running instance of a Pipeline
+   - PipelineRun helps you supply Pipeline arguments that are required for a Pipeline while executing a CI/CD Pipeline
