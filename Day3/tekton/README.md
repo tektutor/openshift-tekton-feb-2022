@@ -186,3 +186,25 @@ The expected output is
 jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>tkn taskrun logs echo-hello-world-run-9cwrx -f -n jegan</b>
 [echo] <b>Hello World</b>
 </pre>
+
+## ⛹️‍♀️ Lab - Running the Task via TaskRun declaratively
+
+TaskRun code looks as shown below,
+
+<pre>
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: echo-hello-world-task-run
+spec:
+  taskRef:
+    name: echo-hello-world
+</pre>
+
+Executing the above TaskRun
+```
+cd ~/openshift-tekton-feb-2022
+git pull
+cd Day3/tekton/
+
+```
