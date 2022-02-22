@@ -13,17 +13,17 @@ oc delete project jegan
 oc new-project jegan
 oc new-app twalter/openshift-nginx:stable --name nginx
 oc delete svc/nginx
-oc expose deploy/nginx --type=NodePort --port=8080
+oc expose deploy/nginx --type=NodePort --port=8081
 ```
 
 The expected output is
 
 <pre>
-jegan@tektutor:~$ <b>oc expose deploy/nginx --type=NodePort --port=80</b>
+jegan@tektutor:~$ <b>oc expose deploy/nginx --type=NodePort --port=8081</b>
 service/nginx exposed
 jegan@tektutor:~$ <b>oc get svc</b>
 <b>NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE</b>
-nginx   NodePort   172.30.216.75   <none>        80:30327/TCP   4s
+nginx   NodePort   172.30.216.75   <none>        8081:30327/TCP   4s
 jegan@tektutor:~$ <b>oc describe svc/nginx</b>
 Name:                     nginx
 Namespace:                jegan
@@ -37,10 +37,10 @@ IP Family Policy:         SingleStack
 IP Families:              IPv4
 IP:                       172.30.216.75
 IPs:                      172.30.216.75
-Port:                     <unset>  80/TCP
-TargetPort:               80/TCP
+Port:                     <unset>  8081/TCP
+TargetPort:               8081/TCP
 NodePort:                 <unset>  30327/TCP
-Endpoints:                <b>10.128.2.23:80,10.128.2.26:80,10.128.2.27:80 + 2 more...</b>
+Endpoints:                <b>10.128.2.23:8081,10.128.2.26:8081,10.128.2.27:8081 + 2 more...</b>
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
