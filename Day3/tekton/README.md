@@ -14,6 +14,9 @@
   
 - Once Tekton is installed in your OpenShift cluster it gets listed in the Installed Operators section.
 
+Please check the screenshot below
+![Operators](OCP_Pipeline_Operator.png)
+
 ## Installing Tekton CLI tool
 ```
 cd ~/Downloads
