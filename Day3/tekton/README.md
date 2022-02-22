@@ -488,7 +488,7 @@ tkn clustertask start echoer --showlog
 
 The expected output is
 <pre>
-jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ tkn clustertask start echoer --showlog
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ <b>tkn clustertask start echoer --showlog</b>
 TaskRun started: echoer-run-lgbnt
 Waiting for logs to be available...
 
