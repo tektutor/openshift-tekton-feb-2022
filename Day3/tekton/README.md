@@ -4,6 +4,7 @@
 - Tekton is an opensource knative application that helps you create CI/CD 
   pipeline within Kubernetes/OpenShift cluster.
 - Tekton supports both Kubernetes and OpenShift
+- is a set of custom kubernetes resources
 
 ## Installing Tekton within OpenShift Cluster
 
@@ -374,4 +375,54 @@ skopeo-copy-1-6-0          Skopeo is a command...   48 minutes ago
 tkn                        This task performs ...   48 minutes ago
 tkn-1-6-0                  This task performs ...   48 minutes ago
 trigger-jenkins-job        The following task ...   48 minutes ago
+</pre>
+
+You may also try listing the clustertasks using oc cli tool
+```
+oc get clustertasks
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ <b>oc get clustertasks</b>
+<b>NAME                       AGE</b>
+buildah                    63m
+buildah-1-6-0              63m
+<b>echoer                     15m</b>
+git-cli                    63m
+git-clone                  63m
+git-clone-1-6-0            63m
+helm-upgrade-from-repo     63m
+helm-upgrade-from-source   63m
+jib-maven                  63m
+kn                         63m
+kn-1-6-0                   63m
+kn-apply                   63m
+kn-apply-1-6-0             63m
+kubeconfig-creator         63m
+maven                      63m
+openshift-client           63m
+openshift-client-1-6-0     63m
+pull-request               63m
+s2i-dotnet                 63m
+s2i-dotnet-1-6-0           63m
+s2i-go                     63m
+s2i-go-1-6-0               63m
+s2i-java                   63m
+s2i-java-1-6-0             63m
+s2i-nodejs                 63m
+s2i-nodejs-1-6-0           63m
+s2i-perl                   63m
+s2i-perl-1-6-0             63m
+s2i-php                    63m
+s2i-php-1-6-0              63m
+s2i-python                 63m
+s2i-python-1-6-0           63m
+s2i-ruby                   63m
+s2i-ruby-1-6-0             63m
+skopeo-copy                63m
+skopeo-copy-1-6-0          63m
+tkn                        63m
+tkn-1-6-0                  63m
+trigger-jenkins-job        63m
 </pre>
