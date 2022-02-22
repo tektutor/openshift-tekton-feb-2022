@@ -28,6 +28,11 @@ Once you Click on the Install button, you will be taken to below screen
 Once the Installation is complete, it will take you the below page
 
 ![Operators](OCP_View_Operator.png)
+You may now click on the View Operator button which then takes you to the final page.
+
+![Operators](OCP_View_Operator2.png)
+![Operators](OCP_View_Operator3.png)
+
 
 ## Installing Tekton CLI tool
 ```
