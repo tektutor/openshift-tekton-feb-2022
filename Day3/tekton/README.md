@@ -61,10 +61,11 @@ Custom Resources added by Tekton project to your OpenShift Cluster
    - Multiple Tasks in a Pipeline could be executed sequentially one after the other or in parallel
    - Example:-
       - a First Task could clone your source code from your GitHub Repo
-      - a Second Task could compile your application
-      - a Third Task could run Unit Tests on your compiled application
-      - a Fourth Task could package the binaries
-      - a Fifth Task could deploy the binaries to a JFrog Artifactory Server or Sonatype Nexus Server
+      - a Second Task could compile your application after the First Task completes successfully
+      - a Third Task could run Unit Tests on your compiled application if Second Task succeeds
+      - a Fourth Task could package the binaries if Third Task succeeds
+      - a Fifth Task could deploy the binaries to a JFrog Artifactory Server or Sonatype Nexus Server if Fourth Task succeeds
+      - a Sixth Task could in parallel to Fifth Task can deploy the microservice to staging environment if Fourth Task succeeds
 
 - TaskRun
    - is a Custom Resource added by Tekton to your OpenShift cluster using CRD
