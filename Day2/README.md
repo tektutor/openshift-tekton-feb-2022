@@ -719,7 +719,7 @@ oc delete project jegan
 oc new-project jegan
 oc new-app mariadb-ephemeral
 oc new-app php~https://github.com/wordpress/wordpress
-oc logs -f dc/wordpress
+oc logs -f deploy/wordpress
 oc expose svc/wordpress
 oc get routes
 ```
