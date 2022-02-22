@@ -229,21 +229,21 @@ oc apply -f hello-taskrun.yml
 
 The expected output is
 <pre>
-jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ oc apply -f hello-taskrun.yml 
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ <b>oc apply -f hello-taskrun.yml</b>
 taskrun.tekton.dev/echo-hello-world-task-run created
 </pre>
 
 Let's now check the status of the TaskRun as shown below
 <pre>
-jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ tkn taskrun list
-NAME                        STARTED         DURATION   STATUS
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ <b>tkn taskrun list</b>
+<b>NAME                        STARTED         DURATION   STATUS</b>
 echo-hello-world-task-run   9 seconds ago   ---        Running(Pending)
 </pre>
 
 Let's now check detailed status of our TaskRun as shown below
 
 <pre>
-jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ tkn taskrun describe echo-hello-world-task-run
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ <b>tkn taskrun describe echo-hello-world-task-run</b>
 Name:              echo-hello-world-task-run
 Namespace:         jegan
 Task Ref:          echo-hello-world
