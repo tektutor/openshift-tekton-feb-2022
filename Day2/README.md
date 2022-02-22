@@ -1050,7 +1050,7 @@ Events:                   <none>
 - Some references 
     - https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
 
-## Operator Frameworks Choices
+## Operator Framework Choices
 - Charmed Operator Framework - https://juju.is/
 - kopf - https://github.com/nolar/kopf
 - Kubebuilder - https://book.kubebuilder.io/
