@@ -76,22 +76,19 @@ Custom Resources added by Tekton project to your OpenShift Cluster
 A simple Hello World Task in Tekton looks as shown below
 
 <pre>
-  1 apiVersion: tekton.dev/v1beta1
-  2 kind: Task
-  3 metadata:
-  4   name: echo-hello-world
-  5   namespace: jegan
-  6 spec:
-  7   steps:
-  8     - name: echo
-  9       image: ubuntu
- 10       command:
- 11         - echojegan@tektutor:~/tekton/Day3/tekton/hello$ oc get task
-NAME               AGE
-echo-hello-world   92s
-
- 12       args:
- 13         - "Hello World"
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: echo-hello-world
+  namespace: jegan
+spec:
+  steps:
+    - name: echo
+      image: ubuntu
+      command:
+        - echo
+      args:
+        - "Hello World"
 </pre>
 
 ## ⛹️‍♂️ Lab - Creating your first Task using Tekton in OpenShift
@@ -144,7 +141,31 @@ tkn task start echo-hello-world
 
 The expected output is
 <pre>
-jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>tkn task start echo-hello-world</b>
+jegan@tektut  1 apiVersion: tekton.dev/v1beta1
+80
+  2 kind: Task
+81
+  3 metadata:
+82
+  4   name: echo-hello-world
+83
+  5   namespace: jegan
+84
+  6 spec:
+85
+  7   steps:
+86
+  8     - name: echo
+87
+  9       image: ubuntu
+88
+ 10       command:
+89
+ 11         - echo
+90
+ 12       args:
+91
+ 13         - "Hello World"or:~/tekton/Day3/tekton/hello$ <b>tkn task start echo-hello-world</b>
 TaskRun started: echo-hello-world-run-9cwrx
 
 In order to track the TaskRun progress run:
