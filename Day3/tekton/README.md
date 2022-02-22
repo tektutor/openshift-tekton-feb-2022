@@ -79,6 +79,7 @@ Custom Resources added by Tekton project to your OpenShift Cluster
 - PipelineRun 
    - is a Custom Resource added by Tekton to your OpenShift cluster using CRD 
    - Pipeline can be thought of like a Class, while PipelineRun is a running instance of a Pipeline
+   - PipelineRun invokes the Pipeline with custom parameter values that Pipeline expects
    - PipelineRun helps you supply Pipeline arguments that are required for a Pipeline while executing a CI/CD Pipeline
 
 ## What is a Tekton Trigger?
