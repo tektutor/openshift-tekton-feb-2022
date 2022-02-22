@@ -37,12 +37,14 @@ Triggers version: v0.16.1
 Custom Resources added by Tekton project to your OpenShift Cluster
 
 - Step
+   - is a Custom Resource added by Tekton to your OpenShift cluster using CRD
    - Steps dictates the container that will run as part of the task
    - This is where the actual operations are performed
    - Steps can't be executed independently
    - Steps are always enclosed within a Task
    
 - Task
+   - is a Custom Resource added by Tekton to your OpenShift cluster using CRD
    - Task can be executed independently outside a Pipeline
    - each Task can have one or more Steps
    - Task can be scoped to a Project Scope or Cluster wide
@@ -53,6 +55,7 @@ Custom Resources added by Tekton project to your OpenShift Cluster
        - A Task can build an container image, etc.,
 
 - Pipeline
+   - is a Custom Resource added by Tekton to your OpenShift cluster using CRD
    - collection of Tasks
    - results in an output based on your inputs given to CI/CD pipeline
    - Multiple Tasks in a Pipeline could be executed sequentially one after the other or in parallel
@@ -64,10 +67,12 @@ Custom Resources added by Tekton project to your OpenShift Cluster
       - a Fifth Task could deploy the binaries to a JFrog Artifactory Server or Sonatype Nexus Server
 
 - TaskRun
+   - is a Custom Resource added by Tekton to your OpenShift cluster using CRD
    - Task can be thought of like a Class, while TaskRun is a running instance of a Task
    - TaskRun helps you supply Task arguments that are required for a Task to run
      
 - PipelineRun 
+   - is a Custom Resource added by Tekton to your OpenShift cluster using CRD 
    - Pipeline can be thought of like a Class, while PipelineRun is a running instance of a Pipeline
    - PipelineRun helps you supply Pipeline arguments that are required for a Pipeline while executing a CI/CD Pipeline
 
