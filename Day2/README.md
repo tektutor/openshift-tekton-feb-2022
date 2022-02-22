@@ -1047,6 +1047,8 @@ Events:                   <none>
     - scaling up/down a CR
     - upgrading a CR from one version to another
     - helps infrasturce engineers & developers who would like to extend Kubernetes API to manage their site and software
+- Some references 
+    - https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
 
 ## What is Operator SDK?
 - builds on top of Kuberenetes controller-runtime libraries 
