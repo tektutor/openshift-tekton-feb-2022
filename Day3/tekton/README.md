@@ -12,7 +12,7 @@
 From the OpenShift web console, switch to Administrator view.  Navigate to Operators --> OperatorHub Menu on the Left side as shown in the screenshot below. In the search text box, you need to type "OpenShift Pipelines" to narrow down the search
 ![Operators](OCP_Pipeline_Operator.png)
 
-Select "Red Hat OpenShift Pipelines" and Click on "Install" button.
+Select "Red Hat OpenShift Pipelines".
 ![Operators](OCP_Pipeline_Install.png)
 
 Your screen will look like this now
