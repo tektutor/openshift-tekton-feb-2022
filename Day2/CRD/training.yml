@@ -1,0 +1,7 @@
+apiVersion: tektutor.org/v1
+kind: Training 
+metadata:
+  name: openshift-training 
+spec:
+  training: "Advanced OpenShift"
+  duration: "5 Days" 

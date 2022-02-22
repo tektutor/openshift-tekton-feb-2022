@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-ms
+  name: spring-ms
+  namespace: jegan
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: spring-ms
+  template:
+    metadata:
+      labels:
+        deployment: spring-ms
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/jegan/spring-ms@sha256:cc5803e713d4a2b8095f2e4c3548234f1d2084a35d2ae01f049f982845354feb
+        imagePullPolicy: IfNotPresent
+        name: spring-ms
