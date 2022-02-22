@@ -70,3 +70,65 @@ Custom Resources added by Tekton project to your OpenShift Cluster
 - PipelineRun 
    - Pipeline can be thought of like a Class, while PipelineRun is a running instance of a Pipeline
    - PipelineRun helps you supply Pipeline arguments that are required for a Pipeline while executing a CI/CD Pipeline
+
+## Simple Hello World Task
+
+A simple Hello World Task in Tekton looks as shown below
+
+<pre>
+  1 apiVersion: tekton.dev/v1beta1
+  2 kind: Task
+  3 metadata:
+  4   name: echo-hello-world
+  5   namespace: jegan
+  6 spec:
+  7   steps:
+  8     - name: echo
+  9       image: ubuntu
+ 10       command:
+ 11         - echo
+ 12       args:
+ 13         - "Hello World"
+</pre>
+
+## ⛹️‍♂️ Lab - Creating your first Task using Tekton in OpenShift
+
+Make sure Red Hat OpenShift pipelines Operator is already installed in your Cluster and you have personally installed tkn cli tool on your Linux lab machine before proceeding.
+
+```
+cd ~/openshift-tekton-feb-2022
+git pull
+cd Day3/tekton/hello
+oc apply -f hello-world-task.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>oc apply -f hello-world-task.yml</b>
+task.tekton.dev/echo-hello-world created
+</pre>
+
+You may now try to list the task using tkn cli utility
+
+```
+tkn task list
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>tkn task list</b>
+<b>NAME               DESCRIPTION   AGE</b>
+echo-hello-world                 1 minute ago
+</pre>
+
+You may also try listing the task using oc cli tool
+```
+oc get task
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello$ <b>oc get task</b>
+<b>NAME               AGE</b>
+echo-hello-world   92s
+</pre>
