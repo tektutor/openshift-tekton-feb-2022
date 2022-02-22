@@ -1,4 +1,4 @@
-# RedHat OpenShift Container Platform (OCP)
+# Day 1 - RedHat OpenShift Container Platform (OCP)
 For training/consulting/coaching, you may reach me
 
 <pre>
