@@ -20,6 +20,9 @@ Please check the screenshot below
 You need to select the "Red Hat OpenShift Pipelines" shown above and then Install it as shown below
 ![Operators](OCP_Pipeline_Install.png)
 
+Your screen will look like this now
+![Operators](OCP_Pipeline_Install.png)
+
 ## Installing Tekton CLI tool
 ```
 cd ~/Downloads
