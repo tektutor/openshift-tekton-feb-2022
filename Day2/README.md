@@ -1050,6 +1050,17 @@ Events:                   <none>
 - Some references 
     - https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
 
+## Operator Frameworks Choices
+- Charmed Operator Framework - https://juju.is/
+- kopf - https://github.com/nolar/kopf
+- Kubebuilder - https://book.kubebuilder.io/
+- KubeOps - https://buehler.github.io/dotnet-operator-sdk/
+- KUDO - https://kudo.dev/
+- MetaController - https://metacontroller.github.io/metacontroller/intro.html
+- Operator Framework - https://operatorframework.io/
+- shell operator - https://github.com/flant/shell-operator
+
+
 ## What is Operator SDK?
 - builds on top of Kuberenetes controller-runtime libraries 
 - provides essential Kubernetes controller runtimes in Go programming lanaguage
