@@ -3,7 +3,6 @@
 ## Tekton CI/CD Pipeline
 - Tekton is an opensource knative application that helps you create CI/CD 
   pipeline within Kubernetes/OpenShift cluster.
-
 - Tekton supports both Kubernetes and OpenShift
 
 ## Installing Tekton within OpenShift Cluster
