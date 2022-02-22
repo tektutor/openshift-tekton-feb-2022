@@ -226,3 +226,61 @@ cd Day3/tekton/
 
 oc apply -f hello-taskrun.yml
 ```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ oc apply -f hello-taskrun.yml 
+taskrun.tekton.dev/echo-hello-world-task-run created
+</pre>
+
+Let's us now check the status of the TaskRun as shown below
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ tkn taskrun list
+NAME                        STARTED          DURATION    STATUS
+echo-hello-world-task-run   42 seconds ago   0 seconds   Failed(TaskRunResolutionFailed)
+jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ tkn taskrun describe echo-hello-world-task-run
+Name:              echo-hello-world-task-run
+Namespace:         default
+Task Ref:          echo-hello-world
+Service Account:   pipeline
+Timeout:           1h0m0s
+Labels:
+ app.kubernetes.io/managed-by=tekton-pipelines
+
+🌡️  Status
+
+STARTED         DURATION    STATUS
+2 minutes ago   0 seconds   Failed(TaskRunResolutionFailed)
+
+Message
+
+<b>error when listing tasks for taskRun echo-hello-world-task-run: tasks.tekton.dev "echo-hello-world" not found</b>
+
+📨 Input Resources
+
+ No input resources
+
+📡 Output Resources
+
+ No output resources
+
+⚓ Params
+
+ No params
+
+📝 Results
+
+ No results
+
+📂 Workspaces
+
+ No workspaces
+
+🦶 Steps
+
+No steps
+
+🚗 Sidecars
+
+No sidecars
+</pre>
