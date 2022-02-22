@@ -71,6 +71,21 @@ Custom Resources added by Tekton project to your OpenShift Cluster
    - Pipeline can be thought of like a Class, while PipelineRun is a running instance of a Pipeline
    - PipelineRun helps you supply Pipeline arguments that are required for a Pipeline while executing a CI/CD Pipeline
 
+## What is a Tekton Trigger?
+- Tekton Triggers is a Tekton component that allows you to detect and extract information from events from a variety of sources
+- Tekton Triggers can invoke TaskRun and/or PipelineRun with the parameters retrieved from events
+- Tekton Triggers is an extension to Tekton Pipelines
+- For example:-
+    - This helps in triggering a Tekton CI/CD pipeline based on code commit in GitHub repo or similar version control servers
+
+## What is a Tekton Catalog?
+ - Reusable Task and Pipeline Resources 
+
+## What is Tekton Dashboard?
+ - Web-based Dashboard for Tekton 
+ - This needs to installed separately on-need basis
+ - As OpenShift already comes with a GUI, this may not be necessary for us.
+
 ## Simple Hello World Task
 
 A simple Hello World Task in Tekton looks as shown below
