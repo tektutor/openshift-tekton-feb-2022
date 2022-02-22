@@ -301,6 +301,21 @@ jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ <b>tkn taskrun logs echo-hell
 </pre>
 
 ## ⛹️‍♂️ Lab - Creating a Cluster-wide Task
+The cluster task looks as below
+<pre>
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask 
+metadata:
+  name: echoer
+spec:
+  steps:
+    - image: alpine
+      script: | 
+        #!/bin/sh
+        echo 'Meeow!! from Tekton 😺🚀'
+</pre>
+
+You can directly the create the task from the below folder.
 ```
 cd ~/openshift-tekton-feb-2022
 git pull
@@ -426,3 +441,57 @@ tkn                        63m
 tkn-1-6-0                  63m
 trigger-jenkins-job        63m
 </pre>
+
+Let's try describing our clustertask
+```
+tkn clustertask describe echoer
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ <b>tkn clustertask describe echoer</b>
+Name:   echoer
+
+📨 Input Resources
+
+ No input resources
+
+📡 Output Resources
+
+ No output resources
+
+⚓ Params
+
+ No params
+
+📝 Results
+
+ No results
+
+📂 Workspaces
+
+ No workspaces
+
+🦶 Steps
+
+ ∙ unnamed-0
+
+🗂  Taskruns
+
+ No taskruns
+</pre>
+
+Let's now run the task in the current namespace
+```
+tkn clustertask start echoer --showlog
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ tkn clustertask start echoer --showlog
+TaskRun started: echoer-run-lgbnt
+Waiting for logs to be available...
+
+[unnamed-0] Meeow!! from Tekton 😺🚀
+</pre>
+It might take few seconds to show the above output which is normal as it has to spin a new Pod.
