@@ -6,7 +6,7 @@
 - Tekton supports both Kubernetes and OpenShift
 
 ## Installing Tekton within OpenShift Cluster
-- From the OpenShift webconsole, switch to Administrator view and select Operators --> Operators Hub 
+- From the OpenShift web console, switch to Administrator view and select Operators --> Operators Hub 
   and search for "Red Hat OpenShift Pipelines" and install it.
 
 ## Installing Tekton CLI tool
