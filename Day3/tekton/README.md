@@ -495,3 +495,38 @@ Waiting for logs to be available...
 [unnamed-0] Meeow!! from Tekton 😺🚀
 </pre>
 It might take few seconds to show the above output which is normal as it has to spin a new Pod.
+
+Running the cluster task from other project namespace.
+Let's first create a new project as shown below
+```
+oc new-project jegan-tekton-project
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ oc new-project jegan-tekton-project
+Now using project "jegan-tekton-project" on server "https://api.tektutor.tektutor.org:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app rails-postgresql-example
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
+<pre>
+
+Now let's run the cluster task in the new project namespaces
+```
+kubectl config set-context --current --namespace=jegan-tekton-project
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ <b>kubectl config set-context --current --namespace=jegan-tekton-project</b>
+Context "jegan-tekton-project/api-tektutor-tektutor-org:6443/system:admin" modified.
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ tkn clustertask start echoer --showlog
+TaskRun started: echoer-run-7bkbp
+Waiting for logs to be available...
+<b>[unnamed-0] Meeow!! from Tekton 😺🚀</b>
+</pre>
