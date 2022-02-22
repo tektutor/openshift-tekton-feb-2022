@@ -1027,3 +1027,18 @@ Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
 </pre>
+
+## What is a Custom Resource in Kubernetes/OpenShift ?
+- an API extension mechanism in Kubernetes/OpenShift
+- a Custom Resource Definition(CRD) defines a Custom Resource(CR)
+- once a CR is created using CRD it can be accessed using kubectl or oc commands
+
+## What is an Operator in Kubernetes/OpenShift?
+- an Operator is a custom Kubernetes/OpenShift Controller that waches a CR
+- the custom application level controllers monitors CR 
+- Custom Controllers monitors CR compares its desired with actual state, if it deviates takes appropriate actions
+- Operators can help in 
+    - scaling up/down a CR
+    - upgrading a CR from one version to another
+    - helps infrasturce engineers & developers who would like to extend Kubernetes API to manage their site and software
+
