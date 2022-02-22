@@ -232,6 +232,12 @@ We need to delete any existing service for nginx deployment before we can create
 ```
 oc delete svc/nginx
 ```
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc delete svc nginx</b>
+service "nginx" deleted
+</pre>
 
 Now let's create the ClusterIP internal service for nginx deployment
 
@@ -251,8 +257,6 @@ oc run dnstest -it --restart Never --rm --image tutum/dnsutils bash
 The expected output is
 
 <pre>
-jegan@tektutor:~$ <b>oc delete svc nginx</b>
-service "nginx" deleted
 jegan@tektutor:~$ <b>oc expose deploy/nginx --type=ClusterIP --port=8081</b>
 service/nginx exposed
 jegan@tektutor:~$ <b>oc get svc</b>
