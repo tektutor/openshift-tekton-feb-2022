@@ -27,7 +27,7 @@ You may now click on the View Operator button which then takes you to the final 
 
 ![Operators](OCP_View2.png)
 ![Operators](OCP_View_Operator3.png)
-At this point, you would have successfully
+
 Congratulations! you have installed Tekton in your OpenShift Cluster.
 
 
