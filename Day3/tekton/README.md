@@ -298,3 +298,80 @@ The expected output is
 jegan@tektutor:~/tekton/Day3/tekton/hello-taskrun$ <b>tkn taskrun logs echo-hello-world-task-run</b>
 [echo] Hello World
 </pre>
+
+## ⛹️‍♂️ Lab - Creating a Cluster-wide Task
+```
+cd ~/openshift-tekton-feb-2022
+git pull
+cd Day3/tekton/cluster-wide-task
+
+oc apply -f cluster-wide-task.yml
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ <b>oc apply -f cluster-wide-task.yml</b>
+clustertask.tekton.dev/echoer created
+</pre>
+
+Now let's check if the cluster-wide task that we created is there
+```
+tkn task list
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ <b>tkn task list</b>
+<b>NAME               DESCRIPTION   AGE</b>
+echo-hello-world                 14 minutes ago
+</pre>
+The reason we don't see the cluster-wide task is, the above command will only show the tasks created within the project namespace
+but cluster-wide task is running on the cluster scope. Hence we need to use a different command to see that.
+
+Listing the cluster-wide tasks
+```
+tkn clustertask ls
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/cluster-wide-task$ tkn clustertask ls
+NAME                       DESCRIPTION              AGE
+buildah                    Buildah task builds...   48 minutes ago
+buildah-1-6-0              Buildah task builds...   48 minutes ago
+<b>echoer                                              21 seconds ago</b>
+git-cli                    This task can be us...   48 minutes ago
+git-clone                  These Tasks are Git...   48 minutes ago
+git-clone-1-6-0            These Tasks are Git...   48 minutes ago
+helm-upgrade-from-repo     These tasks will in...   48 minutes ago
+helm-upgrade-from-source   These tasks will in...   48 minutes ago
+jib-maven                  This Task builds Ja...   48 minutes ago
+kn                         This Task performs ...   48 minutes ago
+kn-1-6-0                   This Task performs ...   48 minutes ago
+kn-apply                   This task deploys a...   48 minutes ago
+kn-apply-1-6-0             This task deploys a...   48 minutes ago
+kubeconfig-creator         This Task do a simi...   48 minutes ago
+maven                      This Task can be us...   48 minutes ago
+openshift-client           This task runs comm...   48 minutes ago
+openshift-client-1-6-0     This task runs comm...   48 minutes ago
+pull-request               This Task allows a ...   48 minutes ago
+s2i-dotnet                 s2i-dotnet task fet...   48 minutes ago
+s2i-dotnet-1-6-0           s2i-dotnet task fet...   48 minutes ago
+s2i-go                     s2i-go task clones ...   48 minutes ago
+s2i-go-1-6-0               s2i-go task clones ...   48 minutes ago
+s2i-java                   s2i-java task clone...   48 minutes ago
+s2i-java-1-6-0             s2i-java task clone...   48 minutes ago
+s2i-nodejs                 s2i-nodejs task clo...   48 minutes ago
+s2i-nodejs-1-6-0           s2i-nodejs task clo...   48 minutes ago
+s2i-perl                   s2i-perl task clone...   48 minutes ago
+s2i-perl-1-6-0             s2i-perl task clone...   48 minutes ago
+s2i-php                    s2i-php task clones...   48 minutes ago
+s2i-php-1-6-0              s2i-php task clones...   48 minutes ago
+s2i-python                 s2i-python task clo...   48 minutes ago
+s2i-python-1-6-0           s2i-python task clo...   48 minutes ago
+s2i-ruby                   s2i-ruby task clone...   48 minutes ago
+s2i-ruby-1-6-0             s2i-ruby task clone...   48 minutes ago
+skopeo-copy                Skopeo is a command...   48 minutes ago
+skopeo-copy-1-6-0          Skopeo is a command...   48 minutes ago
+tkn                        This task performs ...   48 minutes ago
+tkn-1-6-0                  This task performs ...   48 minutes ago
+trigger-jenkins-job        The following task ...   48 minutes ago
+</pre>
