@@ -14,6 +14,19 @@
 sudo dnf copr enable chmouel/tektoncd-cli
 sudo dnf install tektoncd-cli
 ```
+Once tkn is installed, you may check the version of tkn cli tool by issuing the below command
+```
+tkn version
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/tekton/lab1$ <b>tkn version</b>
+Client version: 0.17.2
+Pipeline version: v0.28.3
+Triggers version: v0.16.1
+</pre>
+
 
 ## Tekton Jargons
 Custom Resources added by Tekton project to your OpenShift Cluster
