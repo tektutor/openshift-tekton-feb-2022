@@ -12,17 +12,18 @@ For training/consulting/coaching, you may reach me
 oc delete project jegan
 oc new-project jegan
 oc new-app twalter/openshift-nginx:stable --name nginx
-oc expose deploy/nginx --type=NodePort --port=80
+oc delete svc/nginx
+oc expose deploy/nginx --type=NodePort --port=8081
 ```
 
 The expected output is
 
 <pre>
-jegan@tektutor:~$ <b>oc expose deploy/nginx --type=NodePort --port=80</b>
+jegan@tektutor:~$ <b>oc expose deploy/nginx --type=NodePort --port=8081</b>
 service/nginx exposed
 jegan@tektutor:~$ <b>oc get svc</b>
 <b>NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE</b>
-nginx   NodePort   172.30.216.75   <none>        80:30327/TCP   4s
+nginx   NodePort   172.30.216.75   <none>        8081:30327/TCP   4s
 jegan@tektutor:~$ <b>oc describe svc/nginx</b>
 Name:                     nginx
 Namespace:                jegan
@@ -36,10 +37,10 @@ IP Family Policy:         SingleStack
 IP Families:              IPv4
 IP:                       172.30.216.75
 IPs:                      172.30.216.75
-Port:                     <unset>  80/TCP
-TargetPort:               80/TCP
+Port:                     <unset>  8081/TCP
+TargetPort:               8081/TCP
 NodePort:                 <unset>  30327/TCP
-Endpoints:                <b>10.128.2.23:80,10.128.2.26:80,10.128.2.27:80 + 2 more...</b>
+Endpoints:                <b>10.128.2.23:8081,10.128.2.26:8081,10.128.2.27:8081 + 2 more...</b>
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
@@ -231,6 +232,12 @@ We need to delete any existing service for nginx deployment before we can create
 ```
 oc delete svc/nginx
 ```
+The expected output is
+
+<pre>
+jegan@tektutor:~$ <b>oc delete svc nginx</b>
+service "nginx" deleted
+</pre>
 
 Now let's create the ClusterIP internal service for nginx deployment
 
@@ -250,8 +257,6 @@ oc run dnstest -it --restart Never --rm --image tutum/dnsutils bash
 The expected output is
 
 <pre>
-jegan@tektutor:~$ <b>oc delete svc nginx</b>
-service "nginx" deleted
 jegan@tektutor:~$ <b>oc expose deploy/nginx --type=ClusterIP --port=8081</b>
 service/nginx exposed
 jegan@tektutor:~$ <b>oc get svc</b>
@@ -714,7 +719,7 @@ oc delete project jegan
 oc new-project jegan
 oc new-app mariadb-ephemeral
 oc new-app php~https://github.com/wordpress/wordpress
-oc logs -f dc/wordpress
+oc logs -f deploy/wordpress
 oc expose svc/wordpress
 oc get routes
 ```
@@ -1042,6 +1047,19 @@ Events:                   <none>
     - scaling up/down a CR
     - upgrading a CR from one version to another
     - helps infrasturce engineers & developers who would like to extend Kubernetes API to manage their site and software
+- Some references 
+    - https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+
+## Operator Framework Choices
+- Charmed Operator Framework - https://juju.is/
+- kopf - https://github.com/nolar/kopf
+- Kubebuilder - https://book.kubebuilder.io/
+- KubeOps - https://buehler.github.io/dotnet-operator-sdk/
+- KUDO - https://kudo.dev/
+- MetaController - https://metacontroller.github.io/metacontroller/intro.html
+- Operator Framework - https://operatorframework.io/
+- shell operator - https://github.com/flant/shell-operator
+
 
 ## What is Operator SDK?
 - builds on top of Kuberenetes controller-runtime libraries 
