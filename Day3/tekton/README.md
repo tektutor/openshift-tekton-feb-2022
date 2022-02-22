@@ -112,9 +112,11 @@ spec:
         - "Hello World"
 </pre>
 
+In the above manifest file, you need to replace "jegan" with your project name.  You need to do this in all the following Lab exercises.
+
 ## ⛹️‍♂️ Lab - Creating your first Task using Tekton in OpenShift
 
-Make sure Red Hat OpenShift pipelines Operator is already installed in your Cluster and you have personally installed tkn cli tool on your Linux lab machine before proceeding.
+Make sure "Red Hat OpenShift Pipelines" Operator is already installed in your Cluster and you have to personally install tkn cli tool on your Linux lab machine before proceeding below.
 
 ```
 cd ~/openshift-tekton-feb-2022
