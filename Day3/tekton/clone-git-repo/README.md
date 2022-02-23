@@ -1,4 +1,4 @@
-## Executing the git clone taskrun
+## ⛹️‍♂️ Lab - Executing the git clone taskrun
 
 Let's write a TaskRun as shown below
 
@@ -113,4 +113,63 @@ jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ tkn taskrun logs  git-clone-
 [clone] + '[' 0 '!=' 0 ]
 [clone] + printf '%s' 9d00d37f0027ecba28c943b5d31dca8b0c5674a1
 [clone] + printf '%s' https://github.com/tektutor/spring-ms.git
+</pre>
+
+## ⛹️‍♀️ Lab - In this lab we will create a Persistent Volume and Claim
+
+Let's create a PersistentVolume as shown below
+
+🔴 Each one of you need to prefix your name in front of the PersistentVolume. Consider reducing the size to 50Mi. 🔴
+
+```
+cd ~/openshift-tekton-feb-2022
+git pull
+cd Day3/tekton/clone-git-repo
+
+oc apply -f maven-tekton-pv.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-pv.yml</b>
+persistentvolume/maven-tekton-pv created
+</pre>
+
+Let's now create the PersistentVolumeClaim as shown below
+
+🔴 Each one of you need to prefix your name in front of the PersistentVolumeClaim. Consider reducing the size to 50Mi. 🔴
+
+```
+oc apply -f maven-tekton-pvc.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-pvc.yml</b>
+persistentvolumeclaim/maven-tekton-pvc created
+</pre>
+
+
+Let's list and see the Persistent volume
+```
+oc get pv
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc get pv</b>
+<b>NAME              CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                    STORAGECLASS    REASON   AGE</b>
+maven-tekton-pv   500Mi      RWX            Retain           Bound    jegan/maven-tekton-pvc   local-storage            9m56s
+</pre>
+
+Let's list and see if the Persistent Volume Claim is created
+```
+oc get pvc
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc get pvc</b>
+<b>NAME               STATUS   VOLUME            CAPACITY   ACCESS MODES   STORAGECLASS    AGE</b>
+maven-tekton-pvc   Bound    maven-tekton-pv   500Mi      RWX            local-storage   9m1s
 </pre>
