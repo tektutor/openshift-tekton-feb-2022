@@ -635,6 +635,15 @@ jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>tkn hub install task
 Task maven(0.2) installed in jegan-tekton-project namespace
 </pre>
 
+## ⛹️‍♂️ Lab - Install git-clone Task from Tekton Hub
+```
+tkn hub install task git-clone
+```
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>tkn hub install task git-clone</b>
+Task git-clone(0.5) installed in jegan-tekton-project namespace
+</pre>
 
 ## ⛹️‍♂️ Lab - Building a maven project and preparing a custom docker image
 Let's first verify are we in the correct project
@@ -647,4 +656,13 @@ The expected output is
 jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>kubectl config view --minify | grep namespace</b>
     namespace: jegan-tekton-project
 </pre>
+
+Let us now create the pipeline in our project namespace
+```
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ oc apply -f maven-pipeline.yml 
+pipeline.tekton.dev/maven-test-pipeline created
+pipelinerun.tekton.dev/maven-test-pipeline-run created
+```
+
+You may now view the Pipeline as Administrator from the Pipelines section.
 
