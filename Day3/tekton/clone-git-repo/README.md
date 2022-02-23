@@ -203,7 +203,7 @@ echo-hello-world-run-qzstf              True        Succeeded                 3h
 echo-hello-world-task-run               True        Succeeded                 11h         11h
 echoer-run-lgbnt                        True        Succeeded                 11h         11h
 git-clone-9txdd                         True        Succeeded                 82m         82m
-git-clone-pvc-zzftr                     True        Succeeded                 11s         0s
+<b>git-clone-pvc-zzftr                     True        Succeeded                 11s         0s</b>
 hello-world-with-params-run-s4p9c       True        Succeeded                 3h13m       3h12m
 hello-world-with-params-run-stk8k       True        Succeeded                 3h13m       3h13m
 source-lister-run-zlth4                 False       TaskRunResolutionFailed   102m        102m
