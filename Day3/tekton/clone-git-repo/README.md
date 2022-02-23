@@ -1,5 +1,27 @@
 ## Executing the git clone taskrun
 
+Let's write a TaskRun as shown below
+
+<pre>
+  1 apiVersion: tekton.dev/v1beta1
+  2 kind: TaskRun
+  3 metadata:
+  4   generateName: git-clone-
+  5   labels:
+  6      tekton.dev/task: git-clone
+  7 spec:
+  8   taskRef:
+  9     name: git-clone
+ 10   params:
+ 11     - name: url
+ 12       value: https://github.com/tektutor/spring-ms.git
+ 13     - name: revision
+ 14       value: master
+ 15   workspaces:
+ 16     - name: output
+ 17       emptyDir: {}
+</pre>
+
 This taskrun depends on git-clone task from Tekton catalog. Check if you already have the git-clone task installed in your cluster
 ```
 tkn task ls
