@@ -6,6 +6,19 @@ spec:
   group: tektutor.org 
   versions:
     - name: v1
+      served: true 
+      storage: false 
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            training:
+               type: string
+            duration:
+               type: string
+          required:
+            - training
+    - name: v2
       served: true
       storage: true
       schema:
@@ -15,6 +28,12 @@ spec:
             training:
                type: string
             duration:
+               type: string
+            city:
+               type: string
+            from:
+               type: string
+            to:
                type: string
   conversion:
     strategy: None

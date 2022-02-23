@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: echo-hello-world-multisteps
+  namespace: jegan
+spec:
+  steps:
+    - name: step1 
+      image: ubuntu
+      command:
+        - echo
+      args:
+        - "Step 1"
+
+    - name: step2 
+      image: ubuntu
+      command:
+        - echo
+      args:
+        - "Step 2"
+
+    - name: step3 
+      image: ubuntu
+      command:
+        - echo
+      args:
+        - "Step 3"

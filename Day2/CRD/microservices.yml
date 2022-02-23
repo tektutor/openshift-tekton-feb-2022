@@ -1,0 +1,10 @@
+apiVersion: tektutor.org/v2
+kind: Training 
+metadata:
+  name: microservices-training 
+spec:
+  training: "Microservices"
+  duration: "5 Days" 
+  city: "Bengaluru"
+  from: "1st March 2022"
+  to:   "5th March 2022"
