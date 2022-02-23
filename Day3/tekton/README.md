@@ -64,6 +64,7 @@ Custom Resources added by Tekton project to your OpenShift Cluster
    - This is where the actual operations are performed
    - Steps can't be executed independently
    - Steps are always enclosed within a Task
+   - Each Step runs in its own Container
    
 - Task
    - is a Custom Resource added by Tekton to your OpenShift cluster using CRD
@@ -72,6 +73,7 @@ Custom Resources added by Tekton project to your OpenShift Cluster
    - Task can be scoped to a Project Scope or Cluster wide
    - Steps are the only required objects to create a Task
    - Tasks can be resused across Pipelines
+   - Each Step in a Task runs in a separate container within the same Pod
    - Example:-
        - A Task can clone source code from a GitHub
        - A Task can build an container image, etc.,
@@ -530,3 +532,119 @@ TaskRun started: echoer-run-7bkbp
 Waiting for logs to be available...
 <b>[unnamed-0] Meeow!! from Tekton 😺🚀</b>
 </pre>
+
+## ⛹️‍♂️ Lab - Printing detailed config view of OpenShift cluster
+```
+oc config view
+```
+oc or kubectl can be used interchangingly.  Both tools will give the same results for the above command.
+
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>oc config view</b>
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://api.tektutor.tektutor.org:6443
+  name: api-tektutor-tektutor-org:6443
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://api.tektutor.tektutor.org:6443
+  name: tektutor
+contexts:
+- context:
+    cluster: tektutor
+    user: admin
+  name: admin
+- context:
+    cluster: api-tektutor-tektutor-org:6443
+    namespace: jegan-tekton-project
+    user: system:admin/api-tektutor-tektutor-org:6443
+  name: jegan-tekton-project/api-tektutor-tektutor-org:6443/system:admin
+- context:
+    cluster: api-tektutor-tektutor-org:6443
+    namespace: tektontutorial
+    user: system:admin/api-tektutor-tektutor-org:6443
+  name: jegan/api-tektutor-tektutor-org:6443/system:admin
+current-context: jegan-tekton-project/api-tektutor-tektutor-org:6443/system:admin
+kind: Config
+preferences: {}
+users:
+- name: admin
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+- name: system:admin/api-tektutor-tektutor-org:6443
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+</pre>
+
+## ⛹️‍♂️ Lab - Printing short and crisp config view of OpenShift cluster
+Using oc tool in the place of kubectl also will fetch the same results.
+```
+kubectl config view --minify
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>kubectl config view --minify</b>
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://api.tektutor.tektutor.org:6443
+  name: api-tektutor-tektutor-org:6443
+contexts:
+- context:
+    cluster: api-tektutor-tektutor-org:6443
+    namespace: jegan-tekton-project
+    user: system:admin/api-tektutor-tektutor-org:6443
+  name: jegan-tekton-project/api-tektutor-tektutor-org:6443/system:admin
+current-context: jegan-tekton-project/api-tektutor-tektutor-org:6443/system:admin
+kind: Config
+preferences: {}
+users:
+- name: system:admin/api-tektutor-tektutor-org:6443
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+</pre>
+
+## ⛹️‍♀️ Lab - Extracting namespace i.e project name from the config view
+You may also substitute oc in the place of kubectl to observe the same results.
+```
+kubectl config view --minify | grep namespace
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>kubectl config view --minify | grep namespace</b>
+    namespace: jegan-tekton-project
+</pre>
+
+
+## ⛹️‍♀️ Lab - Install Maven Task from Tekton Hub
+```
+tkn hub install task maven
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>tkn hub install task maven</b>
+Task maven(0.2) installed in jegan-tekton-project namespace
+</pre>
+
+
+## ⛹️‍♂️ Lab - Building a maven project and preparing a custom docker image
+Let's first verify are we in the correct project
+```
+kubectl config view --minify | grep namespace
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/build-maven-project$ <b>kubectl config view --minify | grep namespace</b>
+    namespace: jegan-tekton-project
+</pre>
+
