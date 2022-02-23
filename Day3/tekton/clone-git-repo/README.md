@@ -132,6 +132,18 @@ jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-
 persistentvolume/maven-tekton-pv created
 </pre>
 
+Let's now create the PersistentVolumeClaim as shown below
+```
+oc apply -f maven-tekton-pvc.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-pvc.yml</b>
+persistentvolumeclaim/maven-tekton-pvc created
+</pre>
+
+
 Let's list and see the Persistent volume
 ```
 oc get pv
@@ -139,15 +151,19 @@ oc get pv
 
 The expected output is
 <pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc get pv</b>
+<b>NAME              CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                    STORAGECLASS    REASON   AGE</b>
+maven-tekton-pv   500Mi      RWX            Retain           Bound    jegan/maven-tekton-pvc   local-storage            9m56s
 </pre>
 
-Let's now create the PersistentVolumeClaim as shown below
+Let's list and see if the Persistent Volume Claim is created
 ```
-oc apply -f 
+oc get pvc
 ```
 
 The expected output is
 <pre>
-jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-pvc.yml</b>
-persistentvolumeclaim/maven-tekton-pvc created
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc get pvc</b>
+<b>NAME               STATUS   VOLUME            CAPACITY   ACCESS MODES   STORAGECLASS    AGE</b>
+maven-tekton-pvc   Bound    maven-tekton-pv   500Mi      RWX            local-storage   9m1s
 </pre>
