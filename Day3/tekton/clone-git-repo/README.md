@@ -173,3 +173,72 @@ jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc get pvc</b>
 <b>NAME               STATUS   VOLUME            CAPACITY   ACCESS MODES   STORAGECLASS    AGE</b>
 maven-tekton-pvc   Bound    maven-tekton-pv   500Mi      RWX            local-storage   9m1s
 </pre>
+
+## ⛹️‍♂️ Lab - In this lab we will clone the source code from GitHub into a Persistent Volume
+```
+cd ~/openshift-tekton-feb-2022
+git pull
+cd Day3/tekton/clone-git-repo
+
+oc apply -f git-clone-taskrun-with-pvc.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc create -f git-clone-taskrun-with-pvc.yml --save-config=true</b>
+taskrun.tekton.dev/git-clone-pvc-zzftr created
+</pre>
+
+Let's check if the taskrun is created as expected
+```
+oc get taskrun
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc get taskrun</b>
+<b>NAME                                    SUCCEEDED   REASON                    STARTTIME   COMPLETIONTIME</b>
+echo-hello-world-multisteps-run-9kzvp   True        Succeeded                 3h34m       3h34m
+echo-hello-world-run-qzstf              True        Succeeded                 3h42m       3h42m
+echo-hello-world-task-run               True        Succeeded                 11h         11h
+echoer-run-lgbnt                        True        Succeeded                 11h         11h
+git-clone-9txdd                         True        Succeeded                 82m         82m
+git-clone-pvc-zzftr                     True        Succeeded                 11s         0s
+hello-world-with-params-run-s4p9c       True        Succeeded                 3h13m       3h12m
+hello-world-with-params-run-stk8k       True        Succeeded                 3h13m       3h13m
+source-lister-run-zlth4                 False       TaskRunResolutionFailed   102m        102m
+</pre>
+
+Let us now check the logs generated within the taskrun to investigate if everything is working as expected
+```
+tkn taskrun logs git-clone-pvc-zzftr
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>tkn taskrun logs git-clone-pvc-zzftr</b>
+True        Succeeded                 11s         0s
+[clone] + '[' false '=' true ]
+[clone] + '[' false '=' true ]
+[clone] + '[' false '=' true ]
+[clone] + CHECKOUT_DIR=/workspace/output/
+[clone] + '[' true '=' true ]
+[clone] + cleandir
+[clone] + '[' -d /workspace/output/ ]
+[clone] + rm -rf /workspace/output//CHANGELOG.md /workspace/output//CONTRIBUTING.md /workspace/output//LICENSE /workspace/output//README.md /workspace/output//bin /workspace/output//dev-site.yml /workspace/output//devfile.yaml /workspace/output//documentation /workspace/output//gulpfile.babel.js /workspace/output//install /workspace/output//kubernetes /workspace/output//lib /workspace/output//openshift /workspace/output//package-lock.json /workspace/output//package.json /workspace/output//pipelines /workspace/output//private_repos_reg /workspace/output//resources /workspace/output//site.yml /workspace/output//staging.sh /workspace/output//staging.yml /workspace/output//supplemental-ui /workspace/output//tasks /workspace/output//triggers /workspace/output//version.txt /workspace/output//workshop.yaml /workspace/output//workshopDocs.sh /workspace/output//workspaces /workspace/output//yarn.lock
+[clone] + rm -rf /workspace/output//.devcontainer /workspace/output//.editorconfig /workspace/output//.git /workspace/output//.gitattributes /workspace/output//.github /workspace/output//.gitignore /workspace/output//.tool-versions
+[clone] + rm -rf '/workspace/output//..?*'
+[clone] + test -z 
+[clone] + test -z 
+[clone] + test -z 
+[clone] + /ko-app/git-init '-url=https://github.com/tektutor/spring-ms.git' '-revision=master' '-refspec=' '-path=/workspace/output/' '-sslVerify=true' '-submodules=true' '-depth=1' '-sparseCheckoutDirectories='
+[clone] {"level":"info","ts":1645613761.0644274,"caller":"git/git.go:169","msg":"Successfully cloned https://github.com/tektutor/spring-ms.git @ 9d00d37f0027ecba28c943b5d31dca8b0c5674a1 (grafted, HEAD, origin/master) in path /workspace/output/"}
+[clone] {"level":"info","ts":1645613761.11738,"caller":"git/git.go:207","msg":"Successfully initialized and updated submodules in path /workspace/output/"}
+[clone] + cd /workspace/output/
+[clone] + git rev-parse HEAD
+[clone] + RESULT_SHA=9d00d37f0027ecba28c943b5d31dca8b0c5674a1
+[clone] + EXIT_CODE=0
+[clone] + '[' 0 '!=' 0 ]
+[clone] + printf '%s' 9d00d37f0027ecba28c943b5d31dca8b0c5674a1
+[clone] + printf '%s' https://github.com/tektutor/spring-ms.git
+</pre>
