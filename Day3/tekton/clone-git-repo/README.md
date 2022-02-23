@@ -1,4 +1,4 @@
-## Executing the git clone taskrun
+## ⛹️‍♂️ Lab - Executing the git clone taskrun
 
 Let's write a TaskRun as shown below
 
@@ -113,4 +113,41 @@ jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ tkn taskrun logs  git-clone-
 [clone] + '[' 0 '!=' 0 ]
 [clone] + printf '%s' 9d00d37f0027ecba28c943b5d31dca8b0c5674a1
 [clone] + printf '%s' https://github.com/tektutor/spring-ms.git
+</pre>
+
+## ⛹️‍♀️ Lab - In this lab we will create a Persistent Volume and Claim
+
+Let's create a PersistentVolume as shown below
+```
+cd ~/openshift-tekton-feb-2022
+git pull
+cd Day3/tekton/clone-git-repo
+
+oc apply -f maven-tekton-pv.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-pv.yml</b>
+persistentvolume/maven-tekton-pv created
+</pre>
+
+Let's list and see the Persistent volume
+```
+oc get pv
+```
+
+The expected output is
+<pre>
+</pre>
+
+Let's now create the PersistentVolumeClaim as shown below
+```
+oc apply -f 
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ <b>oc apply -f maven-tekton-pvc.yml</b>
+persistentvolumeclaim/maven-tekton-pvc created
 </pre>
