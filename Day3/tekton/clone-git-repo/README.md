@@ -118,6 +118,9 @@ jegan@tektutor:~/tekton/Day3/tekton/clone-git-repo$ tkn taskrun logs  git-clone-
 ## ⛹️‍♀️ Lab - In this lab we will create a Persistent Volume and Claim
 
 Let's create a PersistentVolume as shown below
+
+🔴 Each one of you need to prefix your name in front of the PersistentVolume. Consider reducing the size to 50Mi. 🔴
+
 ```
 cd ~/openshift-tekton-feb-2022
 git pull
@@ -133,6 +136,9 @@ persistentvolume/maven-tekton-pv created
 </pre>
 
 Let's now create the PersistentVolumeClaim as shown below
+
+🔴 Each one of you need to prefix your name in front of the PersistentVolumeClaim. Consider reducing the size to 50Mi. 🔴
+
 ```
 oc apply -f maven-tekton-pvc.yml
 ```
