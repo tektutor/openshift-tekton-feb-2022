@@ -53,6 +53,9 @@ Create a new Project
 oc new-project jegan
 ```
 
+If your userid is between user31 to user40 then you should use the 192.168.1.105 NFS Server.
+If your userid is between user41 to user50 then you should use the 192.168.1.118 NFS Server.
+
 First let us create the Persistent Volume 
 
 In the below file i.e "maven-tekton-pv.yml", you need to update the IP Address of NFS Server either to 192.168.1.105 if you are connected to OCP Cluster1.
