@@ -42,6 +42,68 @@ sudo firewall-cmd --permanent --add-service nfs
 firewall-cmd --reload
 ```
 
+## Executing the pipeline which shares files via PersistentVolume using Workspaces in Tekton
+Delete your project in case it is already there to free up memory resources
+```
+oc delete project jegan
+```
+
+Create a new Project
+```
+oc new-project jegan
+```
+
+First let us create the Persistent Volume 
+
+In the above file, you need to update the IP Address of NFS Server either to 192.168.1.105 if you are connected to OCP Cluster1.
+Otherwise, you need to change the NFS Server IP address to 192.168.1.118 in the above file before running it.
+
+You also need to change the Path to /nfsshare/user<x> in case you are connected to 192.168.1.105. The x can be 1 to 10, dependending on which user you are using to login to the lab machine.
+  
+You also need to change the Path to /nfsshare/user<x>. The value of x is 1 to 10, you need to change that as per the user alloted to you on the first day.
+
+```
+cd ~/openshif-tekton-feb-2022
+git pull
+cd Day3/tekton/build-maven-project
+oc apply -f maven-tekton-pv.yml
+```
+
+You may list and see the Persistent Volume
+```
+oc get pv
+```
+The above Persistent volume is created on the NFS Server we connected in the PersistentVolume Manifest file.
+
+
+Then you can create the Persistent Volume Claim
+```
+cd ~/openshif-tekton-feb-2022
+git pull
+cd Day3/tekton/build-maven-project
+oc apply -f maven-tekton-pvc.yml
+```
+
+You may list and see the Persistent Volume and Persistent Volume Claim here
+```
+oc get pv, pvc
+```
+
+If the PersistentVolumeClaim is found to Bound with the PersistentVolume created above, then you are good to proceed
+```
+cd ~/openshif-tekton-feb-2022
+git pull
+cd Day3/tekton/build-maven-project
+oc apply -f maven-tekton-pipeline.yml
+```
+
+You may list the pipeline as shown below
+```
+tkn pipeline list
+```
+
+At this point, it is a good idea to move to the OpenShift Webconsole. Make sure you select your project.
+
 ## Tekton variables
 - Tekton variables can be either string or array
 - if no type is specified, Tekton assumes it is a string
