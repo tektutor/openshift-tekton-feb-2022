@@ -1,4 +1,4 @@
-## Installing NFS Server in CentOS 7.x/8.x
+## ⛹️‍♀️ Lab - Installing NFS Server in CentOS 7.x/8.x
 ```
 sudo yum install -y nfs-utils
 ```
@@ -42,7 +42,7 @@ sudo firewall-cmd --permanent --add-service nfs
 firewall-cmd --reload
 ```
 
-## Executing the pipeline which shares files via PersistentVolume using Workspaces in Tekton
+## ⛹️‍♂️ Lab - Executing the pipeline which shares files via PersistentVolume using Workspaces in Tekton
 Delete your project in case it is already there to free up memory resources
 ```
 oc delete project jegan
