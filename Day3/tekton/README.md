@@ -6,7 +6,7 @@
 - Tekton supports both Kubernetes and OpenShift
 - is a set of custom kubernetes resources
 
-## Installing Tekton within OpenShift Cluster
+## Installing Tekton within OpenShift Webconsole
 
 🔴 Only one person can perform this task in a Cluster as Tekton is installed cluster wide. 🔴
 
@@ -31,6 +31,25 @@ You may now click on the View Operator button which then takes you to the final 
 
 Congratulations! you have installed Tekton in your OpenShift Cluster.
 
+## Installing Tekton via CLI
+```
+oc new-project tekton-pipelines
+oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
+oc adm policy add-scc-to-user anyuid -z tekton-pipelines-webhook
+oc apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.notags.yaml
+```
+
+## Enabling NFS External Access in OpenShift Cluster
+This is critical to make NFS External access.  Otherwise, Persistent Volume that uses external volume will not work.
+
+```
+nodes=$(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+$ for node in ${nodes[@]}
+do
+    echo "==== Enable NFS $node ===="
+    ssh core@$node sudo setsebool -P virt_use_nfs 1
+done
+```
 
 ## Installing Tekton CLI tool
 ```
