@@ -43,7 +43,7 @@ firewall-cmd --reload
 ```
 
 ## ⛹️‍♂️ Lab - Executing the pipeline which shares files via PersistentVolume using Workspaces in Tekton
-Delete your project in case it is already there to free up memory resources
+Delete your project in case it is already there to free up memory, disk and computing resources.
 ```
 oc delete project jegan
 ```
