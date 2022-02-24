@@ -66,9 +66,9 @@ tkn version
 The expected output will be similar to shown below
 
 <pre>
-jegan@tektutor:~/tekton/tekton/lab1$ <b>tkn version</b>
-Client version: 0.17.2
-Pipeline version: v0.28.3
+jegan@tektutor:~/tekton$ <b>tkn version</b>
+Client version: 0.22.0
+Pipeline version: v0.33.0
 Triggers version: v0.16.1
 </pre>
 
