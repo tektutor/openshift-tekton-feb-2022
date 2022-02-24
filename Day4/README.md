@@ -60,13 +60,12 @@ tkn hub install task maven
 ```
 
 <pre>
-If your userid is between user31 to user40 then you should use the 192.168.1.105 NFS Server.
-If your userid is between user41 to user50 then you should use the 192.168.1.118 NFS Server.
+If your userid is between user31 to user40 you are using Cluster1. Hence you should use the 192.168.1.105 NFS Server.
+If your userid is between user41 to user50 you are using Cluster2. Hence you should use the 192.168.1.118 NFS Server.
 </pre>
 First let us create the Persistent Volume 
 
-In the below file i.e "maven-tekton-pv.yml", you need to update the IP Address of NFS Server either to 192.168.1.105 if you are connected to OCP Cluster1.
-Otherwise, you need to change the NFS Server IP address to 192.168.1.118 in the above file before running it.
+In the below file i.e "maven-tekton-pv.yml", you need to update the IP Address of the NFS Server either to 192.168.1.105 or to 192.168.1.118 depending on the Cluster you are connected to.
 
 You also need to change the Path to /nfsshare/user<x> in case you are connected to 192.168.1.105. The x can be 1 to 10, dependending on which user you are using to login to the lab machine.
   
