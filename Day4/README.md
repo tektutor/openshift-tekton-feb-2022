@@ -60,3 +60,8 @@ clusterinterceptor.triggers.tekton.dev/bitbucket created
 clusterinterceptor.triggers.tekton.dev/github created
 clusterinterceptor.triggers.tekton.dev/gitlab created
 </pre>  
+
+You may monitor the installation status
+```
+kubectl get pods --namespace tekton-pipelines --watch
+```
