@@ -1,3 +1,47 @@
+## Installing NFS Server in CentOS 7.x/8.x
+```
+sudo yum install -y nfs-utils
+```
+
+Enable nfs service and start it
+```
+sudo systemctl enable nfs-server rpcbind
+sudo systemctl start nfs-server rpcbind
+```
+
+Let's create a directory that can be used by our OpenShift Cluster as a PersistentVolume.
+```
+sudo mkdir -p /nfsshare
+```
+
+Let's make sure everyone can access the folder
+```
+sudo chmod 777 /nfsshare/
+```
+
+Now we need to add the above folder to the /etc/exports file to actually expose the folders to the outside world
+```
+sudo vim /etc/exports
+```
+Add the below line to the file
+<pre>
+/nfsshare  192.168.122.0/24(rw,sync,no_roo_squash)
+</pre>
+The above 192.168.122.0/24 is the the subnet of the OpenShift node IPs.  In case this is different, we need to modify accordingly.
+
+Let's make sure the NFS servers exported the folders
+```
+exportfs -r
+```
+
+Let's open up the firewall ports to it will let in the NFS connection requests
+```
+sudo firewall-cmd --permanent --add-service mountd
+sudo firewall-cmd --permanent --add-service rpc-bind
+sudo firewall-cmd --permanent --add-service nfs
+firewall-cmd --reload
+```
+
 ## Tekton variables
 - Tekton variables can be either string or array
 - if no type is specified, Tekton assumes it is a string
