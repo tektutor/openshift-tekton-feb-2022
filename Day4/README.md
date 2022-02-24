@@ -25,7 +25,7 @@ sudo vim /etc/exports
 ```
 Add the below line to the file
 <pre>
-/nfsshare  192.168.122.0/24(rw,sync,no_roo_squash)
+/nfsshare  192.168.122.0/24(rw,sync,no_root_squash)
 </pre>
 The above 192.168.122.0/24 is the the subnet of the OpenShift node IPs.  In case this is different, we need to modify accordingly.
 
