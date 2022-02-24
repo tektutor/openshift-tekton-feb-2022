@@ -60,8 +60,8 @@ tkn hub install task maven
 ```
 
 <pre>
-If your userid is between user31 to user40 you are using Cluster1. Hence you should use the 192.168.1.105 NFS Server.
-If your userid is between user41 to user50 you are using Cluster2. Hence you should use the 192.168.1.118 NFS Server.
+If your userid is between user31 to user40 you are using Cluster1. Hence you should use 192.168.1.105 NFS Server.
+If your userid is between user41 to user50 you are using Cluster2. Hence you should use 192.168.1.118 NFS Server.
 </pre>
 First let us create the Persistent Volume 
 
