@@ -39,6 +39,39 @@ oc adm policy add-scc-to-user anyuid -z tekton-pipelines-webhook
 oc apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.notags.yaml
 ```
 
+## Installing NFS Server in Ubuntu
+```
+sudo apt update
+sudo apt install nfs-kernel-server
+sudo mkdir -p /mnt/nfs_share
+sudo chown -R nobody:nogroup /mnt/nfs_share/
+sudo chmod 777 /mnt/nfs_share/
+```
+
+Edit /etc/exports and add the below line
+```
+sudo vim /etc/exports
+```
+<pre>
+/mnt/nfs_share  192.168.122.0/24(rw,sync,no_subtree_check)
+</pre>
+192.168.122.0/24 are the IPs of my OpenShift Cluster VMs, you may have to modify as per your OpenShift Cluster Node IPs.
+
+Export the NFS Shared Directory
+```
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+```
+
+Allow NFS Access via Firewall
+```
+sudo ufw allow from 192.168.122.0/24 to any port nfs
+sudo ufw enable
+sudo ufw status
+```
+In whichever machine you have setup your NFS Server, find the IP address of that machine so that you can use them while
+creating a PersistentVolume.
+
 ## Enabling NFS External Access in OpenShift Cluster
 This is critical to make NFS External access.  Otherwise, Persistent Volume that uses external volume will not work.
 
