@@ -9,18 +9,6 @@ spec:
   accessModes:
   - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain 
-  storageClassName: local-storage
-  local:
-    path: /mnt
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          -  master-1.tektutor.tektutor.org
-          -  master-2.tektutor.tektutor.org
-          -  master-3.tektutor.tektutor.org
-          -  worker-1.tektutor.tektutor.org
-          -  worker-2.tektutor.tektutor.org
+  nfs: 
+    path: /mnt/nfs_share 
+    server: 192.168.1.80 

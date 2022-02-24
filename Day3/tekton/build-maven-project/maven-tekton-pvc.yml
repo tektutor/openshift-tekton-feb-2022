@@ -3,7 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: maven-tekton-pvc
 spec:
-  storageClassName: local-storage 
   accessModes:
     - ReadWriteMany
   resources:
