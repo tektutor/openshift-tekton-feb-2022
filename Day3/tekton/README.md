@@ -6,7 +6,7 @@
 - Tekton supports both Kubernetes and OpenShift
 - is a set of custom kubernetes resources
 
-## Installing Tekton within OpenShift Cluster
+## Installing Tekton within OpenShift Webconsole
 
 🔴 Only one person can perform this task in a Cluster as Tekton is installed cluster wide. 🔴
 
@@ -31,6 +31,58 @@ You may now click on the View Operator button which then takes you to the final 
 
 Congratulations! you have installed Tekton in your OpenShift Cluster.
 
+## Installing Tekton via CLI
+```
+oc new-project tekton-pipelines
+oc adm policy add-scc-to-user anyuid -z tekton-pipelines-controller
+oc adm policy add-scc-to-user anyuid -z tekton-pipelines-webhook
+oc apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.notags.yaml
+```
+
+## Installing NFS Server in Ubuntu
+```
+sudo apt update
+sudo apt install nfs-kernel-server
+sudo mkdir -p /mnt/nfs_share
+sudo chown -R nobody:nogroup /mnt/nfs_share/
+sudo chmod 777 /mnt/nfs_share/
+```
+
+Edit /etc/exports and add the below line
+```
+sudo vim /etc/exports
+```
+<pre>
+/mnt/nfs_share  192.168.122.0/24(rw,sync,no_subtree_check)
+</pre>
+192.168.122.0/24 are the IPs of my OpenShift Cluster VMs, you may have to modify as per your OpenShift Cluster Node IPs.
+
+Export the NFS Shared Directory
+```
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+```
+
+Allow NFS Access via Firewall
+```
+sudo ufw allow from 192.168.122.0/24 to any port nfs
+sudo ufw enable
+sudo ufw status
+```
+In whichever machine you have setup your NFS Server, find the IP address of that machine so that you can use them while
+creating a PersistentVolume.
+
+## Enabling NFS External Access in OpenShift Cluster
+This is critical to make NFS External access.  Otherwise, Persistent Volume that uses external volume will not work.
+
+```
+nodes=$(oc get nodes -o jsonpath='{.items[*].metadata.name}')
+$ for node in ${nodes[@]}
+do
+    echo "==== Enable NFS $node ===="
+    ssh core@$node sudo setsebool -P virt_use_nfs 1
+done
+```
 
 ## Installing Tekton CLI tool
 ```
@@ -47,9 +99,9 @@ tkn version
 The expected output will be similar to shown below
 
 <pre>
-jegan@tektutor:~/tekton/tekton/lab1$ <b>tkn version</b>
-Client version: 0.17.2
-Pipeline version: v0.28.3
+jegan@tektutor:~/tekton$ <b>tkn version</b>
+Client version: 0.22.0
+Pipeline version: v0.33.0
 Triggers version: v0.16.1
 </pre>
 
