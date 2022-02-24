@@ -61,6 +61,11 @@ clusterinterceptor.triggers.tekton.dev/github created
 clusterinterceptor.triggers.tekton.dev/gitlab created
 </pre>  
 
+Let's give permission for the interceptor
+```
+kubectl apply -f https://raw.githubusercontent.com/arthurk/tekton-triggers-example/master/01-rbac.yaml
+```
+
 You may monitor the installation status
 ```
 kubectl get pods --namespace tekton-pipelines --watch
