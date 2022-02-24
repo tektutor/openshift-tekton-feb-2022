@@ -1,18 +1,17 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: hello-world-with-params
+  name: hello-world-with-array-params
   namespace: jegan
 spec:
   params:
     - name: message
-      value: 
-        - "First value"
-        - "Second value"
-        - "Third value" 
+      type: array
+      default: [ "first", "second", "third" ] 
   steps:
     - name: echo
       image: ubuntu
       command:
         - echo
-      args: ["$(params.message[*])"]
+      args:
+        - $(params.message) 

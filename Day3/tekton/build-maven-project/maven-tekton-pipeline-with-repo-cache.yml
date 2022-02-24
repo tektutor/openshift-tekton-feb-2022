@@ -1,15 +1,42 @@
 apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: clean-target-dir
+spec:
+  workspaces:
+    - name: target-dir
+
+  steps:
+    - name: cleanup 
+      image: ubuntu
+      command:
+        - rm 
+      args:
+        - -rf
+        - "$(target-dir)/source/target"
+---
+
+apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: maven-tekton-pipeline
+  name: maven-tekton-pipeline-cached
 spec:
   workspaces:
     - name: shared-workspace
-    - name: maven-repo
+    - name: maven-repo 
   tasks:
+    - name: cleanup-target-folder
+      taskRef:
+        name: clean-target-dir 
+      workspaces:
+        - name: target-dir
+          workspace: shared-workspace
+
     - name: clone-github-repo 
       taskRef:
         name: git-clone
+      runAfter:
+        - cleanup-target-folder 
       workspaces:
         - name: output 
           workspace: shared-workspace
@@ -34,8 +61,10 @@ spec:
         - name: GOALS
           value:
             - -DskipTests
+            - -Dmaven.repo.local="../$(shared-workspace)/m2"
             - clean
             - package
+            - -X
       workspaces:
         - name: maven-settings 
           workspace: maven-repo
@@ -45,10 +74,10 @@ spec:
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: maven-tekton-pipeline-run
+  name: maven-tekton-pipeline-cached-run
 spec:
   pipelineRef:
-    name: maven-tekton-pipeline
+    name: maven-tekton-pipeline-cached
   taskRunSpecs:
     - pipelineTaskName: clone-github-repo 
       taskPodTemplate:
@@ -59,10 +88,9 @@ spec:
             fsGroup: 2000
   workspaces:
     - name: maven-repo
-      persistentvolumeclaim:
-        claimName: maven-tekton-pvc
-      subPath: local-repo
-         
+      configMap:
+        name: custom-maven-settings
     - name: shared-workspace
       persistentvolumeclaim:
         claimName: maven-tekton-pvc
+      subPath: source

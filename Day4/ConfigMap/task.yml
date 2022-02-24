@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config-map 
+  namespace: jegan
+data:
+    logo1: /home/jegan/logos/logo1.png
+    logo2: /home/jegan/logos/logo2.png
+    logo3: /home/jegan/logos/logo3.png
+
+---
+

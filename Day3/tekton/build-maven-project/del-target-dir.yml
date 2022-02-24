@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: clean-target-dir
+spec:
+  workspaces:
+     - name: shared-workspace 
+  steps:
+     - name: print
+       image: ubuntu
+       command:
+         - echo
+       args:
+         - "$(workspaces.shared-workspace)/target"
+       workspaces:
+         - name: source 
+           workspace: shared-workspace 
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+   name: delete-taskrun
+spec:
+   taskRef:
+     name: clean-target-dir 
+   workspaces:
+      - name: shared-workspace 
+        persistentVolumeClaim:
+          claimName: maven-tekton-pvc
