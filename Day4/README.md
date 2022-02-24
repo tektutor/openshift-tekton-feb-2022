@@ -52,6 +52,13 @@ Create a new Project
 ```
 oc new-project jegan
 ```
+
+As the pipeline uses git-clone and maven tasks from Tekton Catalog, you need to install them first in your project scope.
+```
+tkn hub install task git-clone
+tkn hub install task maven
+```
+
 <pre>
 If your userid is between user31 to user40 then you should use the 192.168.1.105 NFS Server.
 If your userid is between user41 to user50 then you should use the 192.168.1.118 NFS Server.
