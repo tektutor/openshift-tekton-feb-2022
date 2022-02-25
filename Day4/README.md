@@ -187,8 +187,7 @@ kubectl get pods --namespace tekton-pipelines --watch
 ```
 
 ## ⛹️‍♀️ Lab - Caching Maven Local Repo to speed up build as part of a pipeline
-This pipeline will create a PersistentVolume in your NFS Server. Then creates a PersistenVolumeClaim that is
-used by all the tasks used in the pipeline.
+This pipeline will create a PersistentVolume in your NFS Server. Then creates a PersistenVolumeClaim to reserve the space on the Persistent Volume.  The PersistentVolume is used by all the tasks used in the pipeline.
   
 In the persistent volume both source code and local repository will be cached, but the local repository will be retained.
 ```
