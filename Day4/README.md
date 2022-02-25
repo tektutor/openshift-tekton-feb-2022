@@ -185,3 +185,31 @@ You may monitor the installation status
 ```
 kubectl get pods --namespace tekton-pipelines --watch
 ```
+
+## ⛹️‍♀️ Lab - Caching Maven Local Repo to speed up build as part of a pipeline
+This pipeline will create a PersistentVolume in your NFS Server. Then creates a PersistenVolumeClaim that is
+used by all the tasks used in the pipeline.
+  
+In the persistent volume both source code and local repository will be cached, but the local repository will be retained.
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day4/CachingMavenLocalRepo
+  
+oc apply -f pipeline.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ <b>oc apply -f pipeline.yml</b>
+persistentvolume/maven-tekton-pv created
+persistentvolumeclaim/maven-tekton-pvc created
+task.tekton.dev/mvn created
+pipeline.tekton.dev/maven-build created
+pipelinerun.tekton.dev/hello-springboot-app created
+</pre>
+
+You may now check the webconsole for the pipeline ru name maven-build.
+ 
+  
