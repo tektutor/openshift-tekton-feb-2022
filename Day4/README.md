@@ -216,4 +216,4 @@ You may now check the webconsole for the pipeline with a name "hello-springboot-
 The first time you execute this pipeline, it will cache all the plugins, dependencies in your Persistent Volume that was claimed by the Persistent Volume as shown in the screenshot below
 ![local-repo](local-repo.png)
   
-The next time you attempt to rerun the pipeline, all your build stages will complete relatively very fast as it will only download the delta dependencies(if any) that were added post 
+The next time you attempt to rerun the pipeline, all your build stages will complete relatively very fast as it will only download the delta dependencies(if any) that were added post the previous pipeline execution.
