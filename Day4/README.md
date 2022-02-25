@@ -42,7 +42,7 @@ sudo firewall-cmd --permanent --add-service nfs
 firewall-cmd --reload
 ```
 
-## ⛹️‍♂️ Lab - Executing the pipeline which shares files via PersistentVolume using Workspaces in Tekton
+## ⛹️‍♂️ Lab - Executing the pipeline which shares files via PersistentVolume
 Delete your project in case it is already there to free up memory, disk and computing resources.
 ```
 oc delete project jegan
