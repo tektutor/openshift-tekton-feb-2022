@@ -212,3 +212,6 @@ pipelinerun.tekton.dev/hello-springboot-app created
 
 You may now check the webconsole for the pipeline with a name "hello-springboot-app".
 ![pipeline](pipeline-caches-local-repo.png)
+
+The first time you execute this pipeline, it will cache all the plugins, dependencies in your Persistent Volume that was claimed by the Persistent Volume as shown in the screenshot below
+![local-repo](local-repo.png)
