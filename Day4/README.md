@@ -211,5 +211,4 @@ pipelinerun.tekton.dev/hello-springboot-app created
 </pre>
 
 You may now check the webconsole for the pipeline ru name maven-build.
- 
-  
+![pipeline](pipeline-caches-local-repo.png)
