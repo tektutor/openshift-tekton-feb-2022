@@ -301,3 +301,4 @@ You may try the default SonarQube credentials
 username - admin
 password - admin
 </pre>
+During the first login, SonarQube may prompt you to change the password, in my case I changed it to "Admin@123" without quotes.
