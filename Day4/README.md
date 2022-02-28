@@ -42,7 +42,7 @@ sudo firewall-cmd --permanent --add-service nfs
 firewall-cmd --reload
 ```
 
-## ⛹️‍♂️ Lab - Executing the pipeline which shares files via PersistentVolume using Workspaces in Tekton
+## ⛹️‍♂️ Lab - Executing the pipeline which shares files via PersistentVolume
 Delete your project in case it is already there to free up memory, disk and computing resources.
 ```
 oc delete project jegan
@@ -185,3 +185,34 @@ You may monitor the installation status
 ```
 kubectl get pods --namespace tekton-pipelines --watch
 ```
+
+## ⛹️‍♀️ Lab - Caching Maven Local Repo to speed up build as part of a pipeline
+This pipeline will create a PersistentVolume in your NFS Server. Then creates a PersistenVolumeClaim to reserve the space on the Persistent Volume.  The PersistentVolume is used by all the tasks used in the pipeline.
+  
+In the persistent volume both source code and local repository will be cached, but the local repository will be retained.
+```
+cd ~
+cd openshift-tekton-feb-2022
+git pull
+cd Day4/CachingMavenLocalRepo
+  
+oc apply -f pipeline.yml
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ <b>oc apply -f pipeline.yml</b>
+persistentvolume/maven-tekton-pv created
+persistentvolumeclaim/maven-tekton-pvc created
+task.tekton.dev/mvn created
+pipeline.tekton.dev/maven-build created
+pipelinerun.tekton.dev/hello-springboot-app created
+</pre>
+
+You may now check the webconsole for the pipeline with a name "hello-springboot-app".
+![pipeline](pipeline-caches-local-repo.png)
+
+The first time you execute this pipeline, it will cache all the plugins, dependencies in your Persistent Volume that was claimed by the Persistent Volume as shown in the screenshot below
+![local-repo](local-repo.png)
+  
+The next time you attempt to rerun the pipeline, all your build stages will complete relatively very fast as it will only download the delta dependencies(if any) that were added post the previous pipeline execution.
