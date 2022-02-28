@@ -216,3 +216,88 @@ The first time you execute this pipeline, it will cache all the plugins, depende
 ![local-repo](local-repo.png)
   
 The next time you attempt to rerun the pipeline, all your build stages will complete relatively very fast as it will only download the delta dependencies(if any) that were added post the previous pipeline execution.
+
+## Installing Docker in CentOS 7.x/8.x
+In an ideal scenario, your organization will already have a SonarQube Server setup, in which case the below can be ignored.  We are creating SonarQube container for our learning purpose.  Creating SonarQube as a Task within Tekton pipeline isn't a good idea as we won't be able to refer to Sonar Static code analysis reports if the SonarQube Pod isn't running anymore.
+ 
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce
+sudo usermod -aG docker $(whoami)
+sudo su $(whoami)
+```
+
+Starting docker service
+```
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker
+```
+  
+You may now test if docker is working
+```
+docker images
+```
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE</b>
+</pre>
+  
+You may now deploy sonarqube server as a docker container
+```
+docker run -d --name sonar --hostname sonar sonarqube:latest
+```
+  
+The expected ouput is
+<pre>
+jegan@tektutor:~$ docker run -d --name sonar --hostname sonar sonarqube:latest
+Unable to find image 'sonarqube:latest' locally
+latest: Pulling from library/sonarqube
+97518928ae5f: Pull complete 
+57709a8c10d4: Pull complete 
+fa4b951c4c9e: Pull complete 
+Digest: sha256:ac3a1965cabafb8728a14ac572bb0803b5badb2940bcc289f8fa4b697cd0d6d1
+Status: Downloaded newer image for sonarqube:latest
+666b2dd4d98bd38fe13b898a28e9e567c786887a1c4df11d5bed15621bcffb00
+</pre>
+  
+You may now check if the sonar container is running
+```
+docker ps
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>docker ps</b>
+<b>CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS      NAMES</b>
+666b2dd4d98b   sonarqube:latest   "/opt/sonarqube/bin/…"   12 seconds ago   Up 11 seconds   9000/tcp   sonar
+</pre>
+
+Find the IP Address of the sonar container
+```
+docker inspect sonar | grep IPA
+```
+  
+The expected output is
+<pre>
+jegan@tektutor:~$ <b>docker inspect sonar | grep IPA</b>
+            "SecondaryIPAddresses": null,
+            "IPAddress": <b>"172.17.0.2",</b>
+                    "IPAMConfig": null,
+                    "IPAddress": "172.17.0.2",
+</pre>
+As I have no other containers running in my system, the very first IP address in the docker0 bridge is assigned, but it might be different in your system. Hence, whatever IP address you see for the above command you need to replace "172.17.0.2" with your sonar container IP Address.  
+  
+You may now try accessing the sonarqube server from your Google Chrome Web browser
+```
+http://172.17.0.2:9000
+```
+You may try the default SonarQube credentials
+<pre>
+username - admin
+password - admin
+</pre>
