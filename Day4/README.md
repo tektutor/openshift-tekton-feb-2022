@@ -302,3 +302,9 @@ username - admin
 password - admin
 </pre>
 During the first login, SonarQube may prompt you to change the password, in my case I changed it to "Admin@123" without quotes.
+
+My updated Sonarqube Server credentials are
+<pre>
+username - admin
+password - Admin@123
+</pre>
