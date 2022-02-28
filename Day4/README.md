@@ -254,7 +254,7 @@ docker run -d --name sonar --hostname sonar sonarqube:latest
   
 The expected ouput is
 <pre>
-jegan@tektutor:~$ docker run -d --name sonar --hostname sonar sonarqube:latest
+jegan@tektutor:~$ <b>docker run -d --name sonar --hostname sonar sonarqube:latest</b>
 Unable to find image 'sonarqube:latest' locally
 latest: Pulling from library/sonarqube
 97518928ae5f: Pull complete 
