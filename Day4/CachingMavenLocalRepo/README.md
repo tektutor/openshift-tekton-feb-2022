@@ -95,3 +95,6 @@ You may check the deployed files in JFrog Artifactory as shown in the screenshot
 
 You may check the SonarQube Static Analysis Report as shown in the screenshot below
 ![SonarQube](SonarQubeReport.png)
+
+You may now your NFS share folder for the cached maven local repo under m2 folder and the source code under source folder.
+![local-repo](nfs_share.png)
