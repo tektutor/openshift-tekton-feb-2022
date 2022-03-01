@@ -17,6 +17,7 @@ data:
       </servers>
     </settings>
 ```
+The server ID given above should match the ID given under distributionManagement tag in the pom.xml.
 
 #### Creating Config map from the above file
 ```
