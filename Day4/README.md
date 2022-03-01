@@ -361,3 +361,38 @@ jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ docker inspect artifactory |
                     "IPAMConfig": null,
                     "IPAddress": "172.17.0.3",
 </pre>
+  
+You may access the JFrog Artifactory web page from Google chrome browser
+```
+172.17.0.3:8081
+```
+
+When prompted for login credentials, type the below
+<pre>
+username - admin
+password - password
+</pre>
+  
+During the first login, artifactory server prompted me to change the password, hence I changed it to "Admin@123"
+
+My updated JFrog Artifactory credential is
+<pre>
+username - admin
+password - Admin@123
+</pre>
+  
+We need to capture the above JFrog Credentials in the maven settings.xml file so that maven can login to the Artifactory server
+with the credentials to deploy the artifacts.
+
+The settings.xml file typically should look like this
+<pre>  
+<settings>
+  <servers>
+    <server>
+      <id>artifactory</id>
+      <username>admin</username>
+      <password>Admin@123</password>
+    </server>
+  </server>
+</setttings>
+</pre>
