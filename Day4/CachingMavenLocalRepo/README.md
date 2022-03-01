@@ -92,3 +92,6 @@ Now switch to OpenShift webconsole and select the pipeline run as shown below
 
 You may check the deployed files in JFrog Artifactory as shown in the screenshot below
 ![deployed-files](deployed-files.png)
+
+You may check the SonarQube Static Analysis Report as shown in the screenshot below
+![SonarQube](SonarQubeReport.png)
