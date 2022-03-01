@@ -308,3 +308,56 @@ My updated Sonarqube Server credentials are
 username - admin
 password - Admin@123
 </pre>
+
+## Set up JFrog Artifactory server to try out deploy your maven project packaged binaries to JFrog Artifactory
+```
+docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ <b>docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest</b>
+Unable to find image 'docker.bintray.io/jfrog/artifactory-oss:latest' locally
+latest: Pulling from jfrog/artifactory-oss
+4f4fb700ef54: Pull complete 
+f311cd70d478: Pull complete 
+d11f13c0b022: Pull complete 
+3e2c74427565: Pull complete 
+a2fee7a2add8: Pull complete 
+d913332997ca: Pull complete 
+c68aa530be30: Pull complete 
+e55fae091863: Pull complete 
+f449e5d331af: Pull complete 
+43a87a8518e2: Pull complete 
+Digest: sha256:c27d4bb28947efb4d7f3e77e00d66d099d21b32dfa5b4c23f06c501394728ebc
+Status: Downloaded newer image for docker.bintray.io/jfrog/artifactory-oss:latest
+dfb229280214b5b335ccd9bd920372fad3489fda376c1121ba842882f98e282e
+</pre>
+  
+You may list the docker container to see if the artifactory server is up and running
+```
+docker ps
+```
+
+The expected output is
+<pre>
+jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ docker ps
+CONTAINER ID   IMAGE                                            COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+dfb229280214   docker.bintray.io/jfrog/artifactory-oss:latest   "/entrypoint-artifac…"   49 seconds ago   Up 48 seconds   0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   artifactory
+666b2dd4d98b   sonarqube:latest                                 "/opt/sonarqube/bin/…"   20 hours ago     Up 20 hours     9000/tcp                                    sonar
+</pre>
+
+Let's now retrieve the IP Address of the artifactory container
+```
+docker inspect artifactory | grep IPA
+```
+
+The output below reveals the IP address of the artifactory container, as port-forwarding is done you may also access the container via the IP address of the host machine where the container is running.
+
+<pre>
+jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ docker inspect artifactory | grep IPA
+            "SecondaryIPAddresses": null,
+            <b>"IPAddress": "172.17.0.3",</b>
+                    "IPAMConfig": null,
+                    "IPAddress": "172.17.0.3",
+</pre>
