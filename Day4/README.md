@@ -309,7 +309,7 @@ username - admin
 password - Admin@123
 </pre>
 
-## Set up JFrog Artifactory server to try out deploy your maven project packaged binaries to JFrog Artifactory
+## Set up JFrog Artifactory server to try deploying your maven project packaged binaries to JFrog Artifactory
 ```
 docker run --name artifactory -d -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest
 ```
