@@ -40,10 +40,6 @@ spec:
         - name: url
           value: 'https://github.com/tektutor/spring-ms.git'
 
-        # This is a sub-directory where the cloned source will be kept in the Persistent Volume
-        - name: subdirectory
-          value: source
-
         # This is the git branch that you wish you clone
         - name: revision
           value: master
@@ -64,8 +60,6 @@ spec:
           value:
             - -Dmaven.repo.local=$(workspaces.maven-settings.path)
             - compile
-        - name: CONTEXT_DIR
-          value: source
       runAfter:
         - clone-git-repo
       taskRef:
@@ -87,8 +81,6 @@ spec:
           value:
             - -Dmaven.repo.local=$(workspaces.maven-settings.path)
             - test
-        - name: CONTEXT_DIR
-          value: source
       runAfter:
         - compile
       taskRef:
@@ -110,8 +102,6 @@ spec:
           value:
             - -Dmaven.repo.local=$(workspaces.maven-settings.path)
             - package
-        - name: CONTEXT_DIR
-          value: source
       runAfter:
         - test
       taskRef:
@@ -133,8 +123,6 @@ spec:
           value:
             - -Dmaven.repo.local=$(workspaces.maven-settings.path)
             - install
-        - name: CONTEXT_DIR
-          value: source
       runAfter:
         - package
       taskRef:
@@ -169,3 +157,4 @@ spec:
     - name: maven-repo 
       persistentVolumeClaim:
         claimName: maven-tekton-pvc
+      subPath: m2
