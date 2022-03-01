@@ -1,37 +1,18 @@
-## Create a ConfigMap that captures the login credentials of JFrog Artifactory
+## Create a CI/CD pipeline that compiles, test, packages, performs sonar static code-analysis and deploy the binaries to Artifactory
 ```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: custom-maven-settings
-data:
-  settings.xml: |
-    <?xml version="1.0" encoding="UTF-8"?>
-    <settings>
-      <servers>
-        <server>
-          <id>artifactory</id>
-          <username>admin</username>
-          <password>Admin@123</password>
-        </server>
-      </servers>
-    </settings>
-```
-The server ID given above should match the ID given under distributionManagement tag in the pom.xml.
-
-#### Creating Config map from the above file
-```
-oc create configmap custom-maven-settings --from-file=maven-settings-configmap.yml
-oc get cm
+git clone https://github.com/tektutor/openshift-tekton-feb-2022.git
+cd Day4/CachingMavenLocalRepo
+oc apply -f pipeline.yml
 ```
 
 The expected output is
 <pre>
-jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ <b>oc create configmap custom-maven-settings --from-file=maven-settings-configmap.yml</b>
-configmap/custom-maven-settings created
-jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ <b>oc get cm</b>
-<b>NAME                       DATA   AGE</b>
-custom-maven-settings      1      5s
-kube-root-ca.crt           1      5d2h
-openshift-service-ca.crt   1      5d2h
+jegan@tektutor:~/tekton/Day4/CachingMavenLocalRepo$ <b>oc apply -f pipeline.yml</b>
+persistentvolume/maven-tekton-pv created
+persistentvolumeclaim/maven-tekton-pvc created
+pipeline.tekton.dev/java-cicd-pipeline created
+pipelinerun.tekton.dev/java-cicd-pipeline-run created
 </pre>
+
+Now switch to OpenShift webconsole and select the pipeline run as shown below
+![Pipeline](pipeline.png)
