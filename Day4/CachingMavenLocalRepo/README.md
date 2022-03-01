@@ -89,3 +89,6 @@ pipelinerun.tekton.dev/java-cicd-pipeline-run created
 
 Now switch to OpenShift webconsole and select the pipeline run as shown below
 ![Pipeline](pipeline.png)
+
+You may check the deployed files in JFrog Artifactory as shown in the screenshot below
+![deployed-files](deployed-files.png)
