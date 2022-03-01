@@ -385,7 +385,7 @@ We need to capture the above JFrog Credentials in the maven settings.xml file so
 with the credentials to deploy the artifacts.
 
 The settings.xml file typically should look like this
-<pre>  
+```  
 <settings>
   <servers>
     <server>
@@ -395,4 +395,4 @@ The settings.xml file typically should look like this
     </server>
   </server>
 </setttings>
-</pre>
+```
