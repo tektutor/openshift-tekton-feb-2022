@@ -314,12 +314,10 @@ Our OpenShift version is 4.9.21 which uses Kubernetes v1.22.3.x
 There are 2 such separate OpenShift clusters setup for our training lab.
 
 Each OpenShift cluster supports upto 10 users.
-OpenShift Cluster - 1 ( 10 Users - user1 thru user10 )
-   - Server 1 ( 192.168.1.105 )
-   - user31 thru user40 will be using Cluster 1
-OpenShift Cluster - 2 ( 10 users - user1 thru user10 )
-   - Server 2 ( 192.168.1.118 )
-   - user41 thru user50 will be using Cluster 2
+OpenShift Cluster - 1 ( 8 Users )
+   - Server 1 ( 192.168.1.137 )
+OpenShift Cluster - 2 ( 8 users )
+   - Server 2 ( 192.168.1.138 )
 </pre>
 
 ## RedHat OpenShift Container Platform v4.9 Architecture
