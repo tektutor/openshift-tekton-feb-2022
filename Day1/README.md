@@ -454,7 +454,7 @@ You have access to 65 projects, the list has been suppressed. You can list all p
 
 ## ⛹️‍♀️ Lab - Listing the nodes in your OpenShift Cluster
 ```
-jegan@tektutor:~$ oc get nodes
+jegan@tektutor:~$ <b>oc get nodes</b>
 ```
 
 The expected output is
